@@ -5,11 +5,17 @@ import * as Core from './core';
 import * as Errors from './error';
 import * as Uploads from './uploads';
 import * as API from './resources/index';
-import { Chats } from './resources/chats/chats';
+import {
+  ChatCompletionCreateParams,
+  ChatCompletionCreateParamsNonStreaming,
+  ChatCompletionCreateParamsStreaming,
+  ChatCompletionCreateResponse,
+  ChatCompletions,
+} from './resources/chat-completions';
 
 export interface ClientOptions {
   /**
-   * Token for bearer authentication
+   * Bearer token for authentication
    */
   bearerToken?: string | undefined;
 
@@ -120,7 +126,7 @@ export class Sambanova extends Core.APIClient {
     this.bearerToken = bearerToken;
   }
 
-  chats: API.Chats = new API.Chats(this);
+  chatCompletions: API.ChatCompletions = new API.ChatCompletions(this);
 
   protected override defaultQuery(): Core.DefaultQuery | undefined {
     return this._options.defaultQuery;
@@ -158,11 +164,17 @@ export class Sambanova extends Core.APIClient {
   static fileFromPath = Uploads.fileFromPath;
 }
 
-Sambanova.Chats = Chats;
+Sambanova.ChatCompletions = ChatCompletions;
 export declare namespace Sambanova {
   export type RequestOptions = Core.RequestOptions;
 
-  export { Chats as Chats };
+  export {
+    ChatCompletions as ChatCompletions,
+    type ChatCompletionCreateResponse as ChatCompletionCreateResponse,
+    type ChatCompletionCreateParams as ChatCompletionCreateParams,
+    type ChatCompletionCreateParamsNonStreaming as ChatCompletionCreateParamsNonStreaming,
+    type ChatCompletionCreateParamsStreaming as ChatCompletionCreateParamsStreaming,
+  };
 }
 
 export { toFile, fileFromPath } from './uploads';

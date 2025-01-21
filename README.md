@@ -30,9 +30,9 @@ const client = new Sambanova({
 });
 
 async function main() {
-  const completion = await client.chats.completions.create();
+  const chatCompletion = await client.chatCompletions.create();
 
-  console.log(completion.id);
+  console.log(chatCompletion.id);
 }
 
 main();
@@ -47,9 +47,9 @@ import Sambanova from 'sambanova';
 
 const client = new Sambanova();
 
-const stream = await client.chats.completions.create({ stream: true });
-for await (const completionCreateResponse of stream) {
-  console.log(completionCreateResponse.id);
+const stream = await client.chatCompletions.create({ stream: true });
+for await (const chatCompletionCreateResponse of stream) {
+  console.log(chatCompletionCreateResponse.id);
 }
 ```
 
@@ -69,7 +69,7 @@ const client = new Sambanova({
 });
 
 async function main() {
-  const completion: Sambanova.Chats.CompletionCreateResponse = await client.chats.completions.create();
+  const chatCompletion: Sambanova.ChatCompletionCreateResponse = await client.chatCompletions.create();
 }
 
 main();
@@ -86,7 +86,7 @@ a subclass of `APIError` will be thrown:
 <!-- prettier-ignore -->
 ```ts
 async function main() {
-  const completion = await client.chats.completions.create().catch(async (err) => {
+  const chatCompletion = await client.chatCompletions.create().catch(async (err) => {
     if (err instanceof Sambanova.APIError) {
       console.log(err.status); // 400
       console.log(err.name); // BadRequestError
@@ -129,7 +129,7 @@ const client = new Sambanova({
 });
 
 // Or, configure per-request:
-await client.chats.completions.create({
+await client.chatCompletions.create({
   maxRetries: 5,
 });
 ```
@@ -146,7 +146,7 @@ const client = new Sambanova({
 });
 
 // Override per-request:
-await client.chats.completions.create({
+await client.chatCompletions.create({
   timeout: 5 * 1000,
 });
 ```
@@ -167,13 +167,13 @@ You can also use the `.withResponse()` method to get the raw `Response` along wi
 ```ts
 const client = new Sambanova();
 
-const response = await client.chats.completions.create().asResponse();
+const response = await client.chatCompletions.create().asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
-const { data: completion, response: raw } = await client.chats.completions.create().withResponse();
+const { data: chatCompletion, response: raw } = await client.chatCompletions.create().withResponse();
 console.log(raw.headers.get('X-My-Header'));
-console.log(completion.id);
+console.log(chatCompletion.id);
 ```
 
 ### Making custom/undocumented requests
@@ -277,7 +277,7 @@ const client = new Sambanova({
 });
 
 // Override per-request:
-await client.chats.completions.create({
+await client.chatCompletions.create({
   httpAgent: new http.Agent({ keepAlive: false }),
 });
 ```
