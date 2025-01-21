@@ -36,6 +36,24 @@ async function main() {
 main();
 ```
 
+## Streaming responses
+
+We provide support for streaming responses using Server Sent Events (SSE).
+
+```ts
+import Sambanova from 'sambanova';
+
+const client = new Sambanova();
+
+const stream = await client.chats.completions.create({ stream: true });
+for await (const completionCreateResponse of stream) {
+  console.log(completionCreateResponse.id);
+}
+```
+
+If you need to cancel a stream, you can `break` from the loop
+or call `stream.controller.abort()`.
+
 ### Request & Response types
 
 This library includes TypeScript definitions for all request params and response fields. You may import and use them like so:
