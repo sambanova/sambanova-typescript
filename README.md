@@ -25,7 +25,9 @@ The full API of this library can be found in [api.md](api.md).
 ```js
 import Sambanova from 'sambanova';
 
-const client = new Sambanova();
+const client = new Sambanova({
+  bearerToken: process.env['BEARER_TOKEN'], // This is the default and can be omitted
+});
 
 async function main() {
   const completion = await client.chats.completions.create();
@@ -62,7 +64,9 @@ This library includes TypeScript definitions for all request params and response
 ```ts
 import Sambanova from 'sambanova';
 
-const client = new Sambanova();
+const client = new Sambanova({
+  bearerToken: process.env['BEARER_TOKEN'], // This is the default and can be omitted
+});
 
 async function main() {
   const completion: Sambanova.Chats.CompletionCreateResponse = await client.chats.completions.create();
@@ -122,7 +126,6 @@ You can use the `maxRetries` option to configure or disable this:
 // Configure the default for all requests:
 const client = new Sambanova({
   maxRetries: 0, // default is 2
-  bearerToken: 'My Bearer Token',
 });
 
 // Or, configure per-request:
@@ -140,7 +143,6 @@ Requests time out after 1 minute by default. You can configure this with a `time
 // Configure the default for all requests:
 const client = new Sambanova({
   timeout: 20 * 1000, // 20 seconds (default is 1 minute)
-  bearerToken: 'My Bearer Token',
 });
 
 // Override per-request:
@@ -272,7 +274,6 @@ import { HttpsProxyAgent } from 'https-proxy-agent';
 // Configure the default for all requests:
 const client = new Sambanova({
   httpAgent: new HttpsProxyAgent(process.env.PROXY_URL),
-  bearerToken: 'My Bearer Token',
 });
 
 // Override per-request:
