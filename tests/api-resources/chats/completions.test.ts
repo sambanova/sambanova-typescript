@@ -3,7 +3,10 @@
 import Sambanova from 'sambanova';
 import { Response } from 'node-fetch';
 
-const client = new Sambanova({ baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010' });
+const client = new Sambanova({
+  bearerToken: 'My Bearer Token',
+  baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
+});
 
 describe('resource completions', () => {
   test('create', async () => {

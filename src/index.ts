@@ -9,6 +9,11 @@ import { Chats } from './resources/chats/chats';
 
 export interface ClientOptions {
   /**
+   * Token for bearer authentication
+   */
+  bearerToken?: string | undefined;
+
+  /**
    * Override the default base URL for the API, e.g., "https://api.example.com/v2/"
    *
    * Defaults to process.env['SAMBANOVA_BASE_URL'].
@@ -69,12 +74,15 @@ export interface ClientOptions {
  * API Client for interfacing with the Sambanova API.
  */
 export class Sambanova extends Core.APIClient {
+  bearerToken: string;
+
   private _options: ClientOptions;
 
   /**
    * API Client for interfacing with the Sambanova API.
    *
-   * @param {string} [opts.baseURL=process.env['SAMBANOVA_BASE_URL'] ?? https://petstore3.swagger.io/api/v3] - Override the default base URL for the API.
+   * @param {string | undefined} [opts.bearerToken=process.env['BEARER_TOKEN'] ?? undefined]
+   * @param {string} [opts.baseURL=process.env['SAMBANOVA_BASE_URL'] ?? https://api.sambanova.ai] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {number} [opts.httpAgent] - An HTTP agent used to manage HTTP(s) connections.
    * @param {Core.Fetch} [opts.fetch] - Specify a custom `fetch` function implementation.
@@ -82,10 +90,21 @@ export class Sambanova extends Core.APIClient {
    * @param {Core.Headers} opts.defaultHeaders - Default headers to include with every request to the API.
    * @param {Core.DefaultQuery} opts.defaultQuery - Default query parameters to include with every request to the API.
    */
-  constructor({ baseURL = Core.readEnv('SAMBANOVA_BASE_URL'), ...opts }: ClientOptions = {}) {
+  constructor({
+    baseURL = Core.readEnv('SAMBANOVA_BASE_URL'),
+    bearerToken = Core.readEnv('BEARER_TOKEN'),
+    ...opts
+  }: ClientOptions = {}) {
+    if (bearerToken === undefined) {
+      throw new Errors.SambanovaError(
+        "The BEARER_TOKEN environment variable is missing or empty; either provide it, or instantiate the Sambanova client with an bearerToken option, like new Sambanova({ bearerToken: 'My Bearer Token' }).",
+      );
+    }
+
     const options: ClientOptions = {
+      bearerToken,
       ...opts,
-      baseURL: baseURL || `https://petstore3.swagger.io/api/v3`,
+      baseURL: baseURL || `https://api.sambanova.ai`,
     };
 
     super({
@@ -97,6 +116,8 @@ export class Sambanova extends Core.APIClient {
     });
 
     this._options = options;
+
+    this.bearerToken = bearerToken;
   }
 
   chats: API.Chats = new API.Chats(this);
