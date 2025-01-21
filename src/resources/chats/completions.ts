@@ -1,17 +1,34 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../../resource';
+import { APIPromise } from '../../core';
 import * as Core from '../../core';
+import * as CompletionsAPI from './completions';
+import { Stream } from '../../streaming';
 
 export class Completions extends APIResource {
   /**
    * Creates a model response for the given chat conversation.
    */
   create(
+    body: CompletionCreateParamsNonStreaming,
+    options?: Core.RequestOptions,
+  ): APIPromise<CompletionCreateResponse>;
+  create(
+    body: CompletionCreateParamsStreaming,
+    options?: Core.RequestOptions,
+  ): APIPromise<Stream<CompletionCreateResponse>>;
+  create(
+    body: CompletionCreateParamsBase,
+    options?: Core.RequestOptions,
+  ): APIPromise<Stream<CompletionCreateResponse> | CompletionCreateResponse>;
+  create(
     body: CompletionCreateParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<CompletionCreateResponse> {
-    return this._client.post('/v1/chat/completions', { body, ...options });
+  ): APIPromise<CompletionCreateResponse> | APIPromise<Stream<CompletionCreateResponse>> {
+    return this._client.post('/v1/chat/completions', { body, ...options, stream: body.stream ?? false }) as
+      | APIPromise<CompletionCreateResponse>
+      | APIPromise<Stream<CompletionCreateResponse>>;
   }
 }
 
@@ -61,7 +78,9 @@ export namespace CompletionCreateResponse {
   }
 }
 
-export interface CompletionCreateParams {
+export type CompletionCreateParams = CompletionCreateParamsNonStreaming | CompletionCreateParamsStreaming;
+
+export interface CompletionCreateParamsBase {
   /**
    * Maximum number of tokens to generate.
    */
@@ -198,11 +217,30 @@ export namespace CompletionCreateParams {
       }
     }
   }
+
+  export type CompletionCreateParamsNonStreaming = CompletionsAPI.CompletionCreateParamsNonStreaming;
+  export type CompletionCreateParamsStreaming = CompletionsAPI.CompletionCreateParamsStreaming;
+}
+
+export interface CompletionCreateParamsNonStreaming extends CompletionCreateParamsBase {
+  /**
+   * If set, partial message deltas will be sent.
+   */
+  stream?: false;
+}
+
+export interface CompletionCreateParamsStreaming extends CompletionCreateParamsBase {
+  /**
+   * If set, partial message deltas will be sent.
+   */
+  stream: true;
 }
 
 export declare namespace Completions {
   export {
     type CompletionCreateResponse as CompletionCreateResponse,
     type CompletionCreateParams as CompletionCreateParams,
+    type CompletionCreateParamsNonStreaming as CompletionCreateParamsNonStreaming,
+    type CompletionCreateParamsStreaming as CompletionCreateParamsStreaming,
   };
 }
