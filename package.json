@@ -1,8 +1,8 @@
 {
   "name": "sambanova",
   "version": "0.0.1-alpha.0",
-  "description": "The official TypeScript library for the Petstore API",
-  "author": "Petstore <example@example.com>",
+  "description": "The official TypeScript library for the Sambanova API",
+  "author": "Sambanova <info@sambanova.ai>",
   "types": "dist/index.d.ts",
   "main": "dist/index.js",
   "type": "commonjs",
