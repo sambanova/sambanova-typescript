@@ -28,7 +28,7 @@ describe('resource chatCompletions', () => {
       messages: [{ content: 'string', role: 'system' }],
       model: 'string',
       frequency_penalty: -2,
-      logit_bias: {},
+      logit_bias: { foo: 0 },
       logprobs: true,
       max_completion_tokens: 2048,
       max_tokens: 2048,

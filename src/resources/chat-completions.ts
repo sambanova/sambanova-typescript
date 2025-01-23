@@ -537,7 +537,7 @@ export interface ChatCompletionCreateParamsBase {
    * This is not yet supported by our models. Modify the likelihood of specified
    * tokens appearing in the completion.
    */
-  logit_bias?: unknown | null;
+  logit_bias?: Record<string, number> | null;
 
   /**
    * This is not yet supported by our models. Whether to return log probabilities of
