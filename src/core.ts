@@ -1,6 +1,7 @@
 import { VERSION } from './version';
+import { Stream } from './streaming';
 import {
-  SambanovaError,
+  SambaNovaError,
   APIError,
   APIConnectionError,
   APIConnectionTimeoutError,
@@ -38,6 +39,19 @@ type APIResponseProps = {
 
 async function defaultParseResponse<T>(props: APIResponseProps): Promise<T> {
   const { response } = props;
+  if (props.options.stream) {
+    debug('response', response.status, response.url, response.headers, response.body);
+
+    // Note: there is an invariant here that isn't represented in the type system
+    // that if you set `stream: true` the response type must also be `Stream<T>`
+
+    if (props.options.__streamClass) {
+      return props.options.__streamClass.fromSSEResponse(response, props.controller) as any;
+    }
+
+    return Stream.fromSSEResponse(response, props.controller) as any;
+  }
+
   // fetch refuses to read the body when the status code is 204.
   if (response.status === 204) {
     return null as T;
@@ -99,9 +113,9 @@ export class APIPromise<T> extends Promise<T> {
    *
    * 👋 Getting the wrong TypeScript type for `Response`?
    * Try setting `"moduleResolution": "NodeNext"` if you can,
-   * or add one of these imports before your first `import … from 'sambanova'`:
-   * - `import 'sambanova/shims/node'` (if you're running on Node)
-   * - `import 'sambanova/shims/web'` (otherwise)
+   * or add one of these imports before your first `import … from 'SambaNova'`:
+   * - `import 'SambaNova/shims/node'` (if you're running on Node)
+   * - `import 'SambaNova/shims/web'` (otherwise)
    */
   asResponse(): Promise<Response> {
     return this.responsePromise.then((p) => p.response);
@@ -115,9 +129,9 @@ export class APIPromise<T> extends Promise<T> {
    *
    * 👋 Getting the wrong TypeScript type for `Response`?
    * Try setting `"moduleResolution": "NodeNext"` if you can,
-   * or add one of these imports before your first `import … from 'sambanova'`:
-   * - `import 'sambanova/shims/node'` (if you're running on Node)
-   * - `import 'sambanova/shims/web'` (otherwise)
+   * or add one of these imports before your first `import … from 'SambaNova'`:
+   * - `import 'SambaNova/shims/node'` (if you're running on Node)
+   * - `import 'SambaNova/shims/web'` (otherwise)
    */
   async withResponse(): Promise<{ data: T; response: Response }> {
     const [data, response] = await Promise.all([this.parse(), this.asResponse()]);
@@ -504,7 +518,7 @@ export abstract class APIClient {
         if (value === null) {
           return `${encodeURIComponent(key)}=`;
         }
-        throw new SambanovaError(
+        throw new SambaNovaError(
           `Cannot stringify type ${typeof value}; Expected string, number, boolean, or null. If you need to pass nested query parameters, you can manually encode them, e.g. { query: { 'foo[key1]': value1, 'foo[key2]': value2 } }, and please open a GitHub issue requesting better support for your use case.`,
         );
       })
@@ -654,7 +668,7 @@ export abstract class AbstractPage<Item> implements AsyncIterable<Item> {
   async getNextPage(): Promise<this> {
     const nextInfo = this.nextPageInfo();
     if (!nextInfo) {
-      throw new SambanovaError(
+      throw new SambaNovaError(
         'No next page expected; please check `.hasNextPage()` before calling `.getNextPage()`.',
       );
     }
@@ -775,6 +789,7 @@ export type RequestOptions<
 
   __binaryRequest?: boolean | undefined;
   __binaryResponse?: boolean | undefined;
+  __streamClass?: typeof Stream;
 };
 
 // This is required so that we can determine if a given object matches the RequestOptions
@@ -796,6 +811,7 @@ const requestOptionsKeys: KeysEnum<RequestOptions> = {
 
   __binaryRequest: true,
   __binaryResponse: true,
+  __streamClass: true,
 };
 
 export const isRequestOptions = (obj: unknown): obj is RequestOptions => {
@@ -990,10 +1006,10 @@ export const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve
 
 const validatePositiveInteger = (name: string, n: unknown): number => {
   if (typeof n !== 'number' || !Number.isInteger(n)) {
-    throw new SambanovaError(`${name} must be an integer`);
+    throw new SambaNovaError(`${name} must be an integer`);
   }
   if (n < 0) {
-    throw new SambanovaError(`${name} must be a positive integer`);
+    throw new SambaNovaError(`${name} must be a positive integer`);
   }
   return n;
 };
@@ -1009,7 +1025,7 @@ export const castToError = (err: any): Error => {
 };
 
 export const ensurePresent = <T>(value: T | null | undefined): T => {
-  if (value == null) throw new SambanovaError(`Expected a value to be given but received ${value} instead.`);
+  if (value == null) throw new SambaNovaError(`Expected a value to be given but received ${value} instead.`);
   return value;
 };
 
@@ -1034,14 +1050,14 @@ export const coerceInteger = (value: unknown): number => {
   if (typeof value === 'number') return Math.round(value);
   if (typeof value === 'string') return parseInt(value, 10);
 
-  throw new SambanovaError(`Could not coerce ${value} (type: ${typeof value}) into a number`);
+  throw new SambaNovaError(`Could not coerce ${value} (type: ${typeof value}) into a number`);
 };
 
 export const coerceFloat = (value: unknown): number => {
   if (typeof value === 'number') return value;
   if (typeof value === 'string') return parseFloat(value);
 
-  throw new SambanovaError(`Could not coerce ${value} (type: ${typeof value}) into a number`);
+  throw new SambaNovaError(`Could not coerce ${value} (type: ${typeof value}) into a number`);
 };
 
 export const coerceBoolean = (value: unknown): boolean => {
@@ -1107,7 +1123,7 @@ function applyHeadersMut(targetHeaders: Headers, newHeaders: Headers): void {
 
 export function debug(action: string, ...args: any[]) {
   if (typeof process !== 'undefined' && process?.env?.['DEBUG'] === 'true') {
-    console.log(`Sambanova:DEBUG:${action}`, ...args);
+    console.log(`SambaNova:DEBUG:${action}`, ...args);
   }
 }
 
@@ -1192,7 +1208,7 @@ export const toBase64 = (str: string | null | undefined): string => {
     return btoa(str);
   }
 
-  throw new SambanovaError('Cannot generate b64 string; Expected `Buffer` or `btoa` to be defined');
+  throw new SambaNovaError('Cannot generate b64 string; Expected `Buffer` or `btoa` to be defined');
 };
 
 export function isObj(obj: unknown): obj is Record<string, unknown> {

@@ -4,8 +4,8 @@
 /**
  * Types will get added to this namespace when you import one of the following:
  *
- *   import 'sambanova/shims/node'
- *   import 'sambanova/shims/web'
+ *   import 'SambaNova/shims/node'
+ *   import 'SambaNova/shims/web'
  *
  * Importing more than one will cause type and runtime errors.
  */

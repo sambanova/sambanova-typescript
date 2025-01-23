@@ -1,17 +1,34 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../resource';
+import { APIPromise } from '../core';
 import * as Core from '../core';
+import * as ChatCompletionsAPI from './chat-completions';
+import { Stream } from '../streaming';
 
 export class ChatCompletions extends APIResource {
   /**
    * Create chat-based completion
    */
   create(
+    body: ChatCompletionCreateParamsNonStreaming,
+    options?: Core.RequestOptions,
+  ): APIPromise<ChatCompletionCreateResponse>;
+  create(
+    body: ChatCompletionCreateParamsStreaming,
+    options?: Core.RequestOptions,
+  ): APIPromise<Stream<ChatCompletionCreateResponse>>;
+  create(
+    body: ChatCompletionCreateParamsBase,
+    options?: Core.RequestOptions,
+  ): APIPromise<Stream<ChatCompletionCreateResponse> | ChatCompletionCreateResponse>;
+  create(
     body: ChatCompletionCreateParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<ChatCompletionCreateResponse> {
-    return this._client.post('/v1/chat/completions', { body, ...options });
+  ): APIPromise<ChatCompletionCreateResponse> | APIPromise<Stream<ChatCompletionCreateResponse>> {
+    return this._client.post('/v1/chat/completions', { body, ...options, stream: body.stream ?? false }) as
+      | APIPromise<ChatCompletionCreateResponse>
+      | APIPromise<Stream<ChatCompletionCreateResponse>>;
   }
 }
 
@@ -475,7 +492,11 @@ export type ChatCompletionCreateResponse =
   | ModelOutputError
   | GeneralError;
 
-export interface ChatCompletionCreateParams {
+export type ChatCompletionCreateParams =
+  | ChatCompletionCreateParamsNonStreaming
+  | ChatCompletionCreateParamsStreaming;
+
+export interface ChatCompletionCreateParamsBase {
   /**
    * A list of messages comprising the conversation so far.
    */
@@ -824,6 +845,30 @@ export namespace ChatCompletionCreateParams {
       [k: string]: unknown;
     }
   }
+
+  export type ChatCompletionCreateParamsNonStreaming =
+    ChatCompletionsAPI.ChatCompletionCreateParamsNonStreaming;
+  export type ChatCompletionCreateParamsStreaming = ChatCompletionsAPI.ChatCompletionCreateParamsStreaming;
+}
+
+export interface ChatCompletionCreateParamsNonStreaming extends ChatCompletionCreateParamsBase {
+  /**
+   * If set, partial message deltas will be sent. Tokens will be sent as data-only
+   * [server-sent events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events#Event_stream_format)
+   * as they become available, with the stream terminated by a `data: [DONE]`
+   * message.
+   */
+  stream?: false | null;
+}
+
+export interface ChatCompletionCreateParamsStreaming extends ChatCompletionCreateParamsBase {
+  /**
+   * If set, partial message deltas will be sent. Tokens will be sent as data-only
+   * [server-sent events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events#Event_stream_format)
+   * as they become available, with the stream terminated by a `data: [DONE]`
+   * message.
+   */
+  stream: true;
 }
 
 export declare namespace ChatCompletions {
@@ -834,5 +879,7 @@ export declare namespace ChatCompletions {
     type ModelOutputError as ModelOutputError,
     type ChatCompletionCreateResponse as ChatCompletionCreateResponse,
     type ChatCompletionCreateParams as ChatCompletionCreateParams,
+    type ChatCompletionCreateParamsNonStreaming as ChatCompletionCreateParamsNonStreaming,
+    type ChatCompletionCreateParamsStreaming as ChatCompletionCreateParamsStreaming,
   };
 }

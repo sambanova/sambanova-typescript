@@ -7,9 +7,9 @@ const config: JestConfigWithTsJest = {
     '^.+\\.(t|j)sx?$': ['@swc/jest', { sourceMaps: 'inline' }],
   },
   moduleNameMapper: {
-    '^sambanova$': '<rootDir>/src/index.ts',
-    '^sambanova/_shims/auto/(.*)$': '<rootDir>/src/_shims/auto/$1-node',
-    '^sambanova/(.*)$': '<rootDir>/src/$1',
+    '^SambaNova$': '<rootDir>/src/index.ts',
+    '^SambaNova/_shims/auto/(.*)$': '<rootDir>/src/_shims/auto/$1-node',
+    '^SambaNova/(.*)$': '<rootDir>/src/$1',
   },
   modulePathIgnorePatterns: [
     '<rootDir>/ecosystem-tests/',

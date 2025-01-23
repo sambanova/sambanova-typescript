@@ -1,8 +1,8 @@
-# Sambanova Node API Library
+# Samba Nova Node API Library
 
-[![NPM version](https://img.shields.io/npm/v/sambanova.svg)](https://npmjs.org/package/sambanova) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/sambanova)
+[![NPM version](https://img.shields.io/npm/v/SambaNova.svg)](https://npmjs.org/package/SambaNova) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/SambaNova)
 
-This library provides convenient access to the Sambanova REST API from server-side TypeScript or JavaScript.
+This library provides convenient access to the Samba Nova REST API from server-side TypeScript or JavaScript.
 
 The REST API documentation can be found on [community.sambanova.ai](https://community.sambanova.ai/c/docs/11). The full API of this library can be found in [api.md](api.md).
 
@@ -15,7 +15,7 @@ npm install git+ssh://git@github.com:stainless-sdks/sambanova-node.git
 ```
 
 > [!NOTE]
-> Once this package is [published to npm](https://app.stainlessapi.com/docs/guides/publish), this will become: `npm install sambanova`
+> Once this package is [published to npm](https://app.stainlessapi.com/docs/guides/publish), this will become: `npm install SambaNova`
 
 ## Usage
 
@@ -23,9 +23,9 @@ The full API of this library can be found in [api.md](api.md).
 
 <!-- prettier-ignore -->
 ```js
-import Sambanova from 'sambanova';
+import SambaNova from 'SambaNova';
 
-const client = new Sambanova();
+const client = new SambaNova();
 
 async function main() {
   const chatCompletion = await client.chatCompletions.create({
@@ -37,22 +37,44 @@ async function main() {
 main();
 ```
 
+## Streaming responses
+
+We provide support for streaming responses using Server Sent Events (SSE).
+
+```ts
+import SambaNova from 'SambaNova';
+
+const client = new SambaNova();
+
+const stream = await client.chatCompletions.create({
+  messages: [{ content: 'string', role: 'system' }],
+  model: 'string',
+  stream: true,
+});
+for await (const chatCompletionCreateResponse of stream) {
+  console.log(chatCompletionCreateResponse);
+}
+```
+
+If you need to cancel a stream, you can `break` from the loop
+or call `stream.controller.abort()`.
+
 ### Request & Response types
 
 This library includes TypeScript definitions for all request params and response fields. You may import and use them like so:
 
 <!-- prettier-ignore -->
 ```ts
-import Sambanova from 'sambanova';
+import SambaNova from 'SambaNova';
 
-const client = new Sambanova();
+const client = new SambaNova();
 
 async function main() {
-  const params: Sambanova.ChatCompletionCreateParams = {
+  const params: SambaNova.ChatCompletionCreateParams = {
     messages: [{ content: 'string', role: 'system' }],
     model: 'string',
   };
-  const chatCompletion: Sambanova.ChatCompletionCreateResponse = await client.chatCompletions.create(params);
+  const chatCompletion: SambaNova.ChatCompletionCreateResponse = await client.chatCompletions.create(params);
 }
 
 main();
@@ -72,7 +94,7 @@ async function main() {
   const chatCompletion = await client.chatCompletions
     .create({ messages: [{ content: 'string', role: 'system' }], model: 'string' })
     .catch(async (err) => {
-      if (err instanceof Sambanova.APIError) {
+      if (err instanceof SambaNova.APIError) {
         console.log(err.status); // 400
         console.log(err.name); // BadRequestError
         console.log(err.headers); // {server: 'nginx', ...}
@@ -109,7 +131,7 @@ You can use the `maxRetries` option to configure or disable this:
 <!-- prettier-ignore -->
 ```js
 // Configure the default for all requests:
-const client = new Sambanova({
+const client = new SambaNova({
   maxRetries: 0, // default is 2
   apiKey: 'My API Key',
 });
@@ -127,7 +149,7 @@ Requests time out after 1 minute by default. You can configure this with a `time
 <!-- prettier-ignore -->
 ```ts
 // Configure the default for all requests:
-const client = new Sambanova({
+const client = new SambaNova({
   timeout: 20 * 1000, // 20 seconds (default is 1 minute)
   apiKey: 'My API Key',
 });
@@ -152,7 +174,7 @@ You can also use the `.withResponse()` method to get the raw `Response` along wi
 
 <!-- prettier-ignore -->
 ```ts
-const client = new Sambanova();
+const client = new SambaNova();
 
 const response = await client.chatCompletions
   .create({ messages: [{ content: 'string', role: 'system' }], model: 'string' })
@@ -217,16 +239,16 @@ By default, this library uses `node-fetch` in Node, and expects a global `fetch`
 
 If you would prefer to use a global, web-standards-compliant `fetch` function even in a Node environment,
 (for example, if you are running Node with `--experimental-fetch` or using NextJS which polyfills with `undici`),
-add the following import before your first import `from "Sambanova"`:
+add the following import before your first import `from "SambaNova"`:
 
 ```ts
 // Tell TypeScript and the package to use the global web fetch instead of node-fetch.
 // Note, despite the name, this does not add any polyfills, but expects them to be provided if needed.
-import 'sambanova/shims/web';
-import Sambanova from 'sambanova';
+import 'SambaNova/shims/web';
+import SambaNova from 'SambaNova';
 ```
 
-To do the inverse, add `import "sambanova/shims/node"` (which does import polyfills).
+To do the inverse, add `import "SambaNova/shims/node"` (which does import polyfills).
 This can also be useful if you are getting the wrong TypeScript types for `Response` ([more details](https://github.com/stainless-sdks/sambanova-node/tree/main/src/_shims#readme)).
 
 ### Logging and middleware
@@ -236,9 +258,9 @@ which can be used to inspect or alter the `Request` or `Response` before/after e
 
 ```ts
 import { fetch } from 'undici'; // as one example
-import Sambanova from 'sambanova';
+import SambaNova from 'SambaNova';
 
-const client = new Sambanova({
+const client = new SambaNova({
   fetch: async (url: RequestInfo, init?: RequestInit): Promise<Response> => {
     console.log('About to make a request', url, init);
     const response = await fetch(url, init);
@@ -263,7 +285,7 @@ import http from 'http';
 import { HttpsProxyAgent } from 'https-proxy-agent';
 
 // Configure the default for all requests:
-const client = new Sambanova({
+const client = new SambaNova({
   httpAgent: new HttpsProxyAgent(process.env.PROXY_URL),
   apiKey: 'My API Key',
 });

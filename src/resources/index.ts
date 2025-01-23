@@ -8,4 +8,6 @@ export {
   type ModelOutputError,
   type ChatCompletionCreateResponse,
   type ChatCompletionCreateParams,
+  type ChatCompletionCreateParamsNonStreaming,
+  type ChatCompletionCreateParamsStreaming,
 } from './chat-completions';

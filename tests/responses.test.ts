@@ -1,5 +1,5 @@
-import { createResponseHeaders } from 'sambanova/core';
-import { Headers } from 'sambanova/_shims/index';
+import { createResponseHeaders } from 'SambaNova/core';
+import { Headers } from 'SambaNova/_shims/index';
 
 describe('response parsing', () => {
   // TODO: test unicode characters

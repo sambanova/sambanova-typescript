@@ -9,9 +9,9 @@
     "esModuleInterop": true,
     "baseUrl": "./",
     "paths": {
-      "sambanova/_shims/auto/*": ["src/_shims/auto/*-node"],
-      "sambanova/*": ["src/*"],
-      "sambanova": ["src/index.ts"]
+      "SambaNova/_shims/auto/*": ["src/_shims/auto/*-node"],
+      "SambaNova/*": ["src/*"],
+      "SambaNova": ["src/index.ts"]
     },
     "noEmit": true,
 
