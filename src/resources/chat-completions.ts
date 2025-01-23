@@ -841,7 +841,7 @@ export namespace ChatCompletionCreateParams {
     /**
      * The contents of the assistant message.
      */
-    content: string | Array<AssistantMessage.UnionMember1> | null;
+    content: string | Array<AssistantMessage.TextContentPartArray> | null;
 
     /**
      * The role of the messages author, in this case `assistant`.
@@ -856,7 +856,7 @@ export namespace ChatCompletionCreateParams {
   }
 
   export namespace AssistantMessage {
-    export interface UnionMember1 {
+    export interface TextContentPartArray {
       /**
        * string content of the message
        */
