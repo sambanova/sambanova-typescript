@@ -913,7 +913,7 @@ export namespace ChatCompletionCreateParams {
     /**
      * The contents of the tool message.
      */
-    content: string | Array<ToolMessage.UnionMember1>;
+    content: string | Array<ToolMessage.TextContentPartArray>;
 
     /**
      * The role of the messages author, in this case `tool`.
@@ -923,7 +923,7 @@ export namespace ChatCompletionCreateParams {
   }
 
   export namespace ToolMessage {
-    export interface UnionMember1 {
+    export interface TextContentPartArray {
       /**
        * string content of the message
        */
