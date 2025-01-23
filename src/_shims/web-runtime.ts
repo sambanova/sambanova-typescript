@@ -9,9 +9,9 @@ export function getRuntime({ manuallyImported }: { manuallyImported?: boolean } 
   const recommendation =
     manuallyImported ?
       `You may need to use polyfills`
-    : `Add one of these imports before your first \`import … from 'sambanova'\`:
-- \`import 'sambanova/shims/node'\` (if you're running on Node)
-- \`import 'sambanova/shims/web'\` (otherwise)
+    : `Add one of these imports before your first \`import … from 'SambaNova'\`:
+- \`import 'SambaNova/shims/node'\` (if you're running on Node)
+- \`import 'SambaNova/shims/web'\` (otherwise)
 `;
 
   let _fetch, _Request, _Response, _Headers;

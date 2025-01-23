@@ -55,12 +55,12 @@ $ cd sambanova-node
 # With yarn
 $ yarn link
 $ cd ../my-package
-$ yarn link sambanova
+$ yarn link SambaNova
 
 # With pnpm
 $ pnpm link --global
 $ cd ../my-package
-$ pnpm link -—global sambanova
+$ pnpm link -—global SambaNova
 ```
 
 ## Running tests

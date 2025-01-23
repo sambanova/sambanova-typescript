@@ -1,8 +1,8 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { Sambanova } from 'sambanova';
+import { SambaNova } from 'SambaNova';
 
-const { stringifyQuery } = Sambanova.prototype as any;
+const { stringifyQuery } = SambaNova.prototype as any;
 
 describe(stringifyQuery, () => {
   for (const [input, expected] of [

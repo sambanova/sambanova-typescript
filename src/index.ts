@@ -7,6 +7,8 @@ import * as Uploads from './uploads';
 import * as API from './resources/index';
 import {
   ChatCompletionCreateParams,
+  ChatCompletionCreateParamsNonStreaming,
+  ChatCompletionCreateParamsStreaming,
   ChatCompletionCreateResponse,
   ChatCompletionResponse,
   ChatCompletionStreamResponse,
@@ -24,7 +26,7 @@ export interface ClientOptions {
   /**
    * Override the default base URL for the API, e.g., "https://api.example.com/v2/"
    *
-   * Defaults to process.env['SAMBANOVA_BASE_URL'].
+   * Defaults to process.env['SAMBA_NOVA_BASE_URL'].
    */
   baseURL?: string | null | undefined;
 
@@ -79,18 +81,18 @@ export interface ClientOptions {
 }
 
 /**
- * API Client for interfacing with the Sambanova API.
+ * API Client for interfacing with the Samba Nova API.
  */
-export class Sambanova extends Core.APIClient {
+export class SambaNova extends Core.APIClient {
   apiKey: string;
 
   private _options: ClientOptions;
 
   /**
-   * API Client for interfacing with the Sambanova API.
+   * API Client for interfacing with the Samba Nova API.
    *
-   * @param {string | undefined} [opts.apiKey=process.env['API_KEY'] ?? undefined]
-   * @param {string} [opts.baseURL=process.env['SAMBANOVA_BASE_URL'] ?? https://api.sambanova.ai] - Override the default base URL for the API.
+   * @param {string | undefined} [opts.apiKey=process.env['SAMBANOVA_API_KEY'] ?? undefined]
+   * @param {string} [opts.baseURL=process.env['SAMBA_NOVA_BASE_URL'] ?? https://api.sambanova.ai] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {number} [opts.httpAgent] - An HTTP agent used to manage HTTP(s) connections.
    * @param {Core.Fetch} [opts.fetch] - Specify a custom `fetch` function implementation.
@@ -99,13 +101,13 @@ export class Sambanova extends Core.APIClient {
    * @param {Core.DefaultQuery} opts.defaultQuery - Default query parameters to include with every request to the API.
    */
   constructor({
-    baseURL = Core.readEnv('SAMBANOVA_BASE_URL'),
-    apiKey = Core.readEnv('API_KEY'),
+    baseURL = Core.readEnv('SAMBA_NOVA_BASE_URL'),
+    apiKey = Core.readEnv('SAMBANOVA_API_KEY'),
     ...opts
   }: ClientOptions = {}) {
     if (apiKey === undefined) {
-      throw new Errors.SambanovaError(
-        "The API_KEY environment variable is missing or empty; either provide it, or instantiate the Sambanova client with an apiKey option, like new Sambanova({ apiKey: 'My API Key' }).",
+      throw new Errors.SambaNovaError(
+        "The SAMBANOVA_API_KEY environment variable is missing or empty; either provide it, or instantiate the SambaNova client with an apiKey option, like new SambaNova({ apiKey: 'My API Key' }).",
       );
     }
 
@@ -141,10 +143,10 @@ export class Sambanova extends Core.APIClient {
     };
   }
 
-  static Sambanova = this;
+  static SambaNova = this;
   static DEFAULT_TIMEOUT = 60000; // 1 minute
 
-  static SambanovaError = Errors.SambanovaError;
+  static SambaNovaError = Errors.SambaNovaError;
   static APIError = Errors.APIError;
   static APIConnectionError = Errors.APIConnectionError;
   static APIConnectionTimeoutError = Errors.APIConnectionTimeoutError;
@@ -162,8 +164,8 @@ export class Sambanova extends Core.APIClient {
   static fileFromPath = Uploads.fileFromPath;
 }
 
-Sambanova.ChatCompletions = ChatCompletions;
-export declare namespace Sambanova {
+SambaNova.ChatCompletions = ChatCompletions;
+export declare namespace SambaNova {
   export type RequestOptions = Core.RequestOptions;
 
   export {
@@ -174,12 +176,14 @@ export declare namespace Sambanova {
     type ModelOutputError as ModelOutputError,
     type ChatCompletionCreateResponse as ChatCompletionCreateResponse,
     type ChatCompletionCreateParams as ChatCompletionCreateParams,
+    type ChatCompletionCreateParamsNonStreaming as ChatCompletionCreateParamsNonStreaming,
+    type ChatCompletionCreateParamsStreaming as ChatCompletionCreateParamsStreaming,
   };
 }
 
 export { toFile, fileFromPath } from './uploads';
 export {
-  SambanovaError,
+  SambaNovaError,
   APIError,
   APIConnectionError,
   APIConnectionTimeoutError,
@@ -194,4 +198,4 @@ export {
   UnprocessableEntityError,
 } from './error';
 
-export default Sambanova;
+export default SambaNova;

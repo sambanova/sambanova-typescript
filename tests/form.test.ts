@@ -1,6 +1,6 @@
-import { multipartFormRequestOptions, createForm } from 'sambanova/core';
-import { Blob } from 'sambanova/_shims/index';
-import { toFile } from 'sambanova';
+import { multipartFormRequestOptions, createForm } from 'SambaNova/core';
+import { Blob } from 'SambaNova/_shims/index';
+import { toFile } from 'SambaNova';
 
 describe('form data validation', () => {
   test('valid values do not error', async () => {
