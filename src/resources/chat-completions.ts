@@ -743,7 +743,7 @@ export namespace ChatCompletionCreateParams {
     /**
      * The contents of the system message.
      */
-    content: string | Array<SystemMessage.UnionMember1> | null;
+    content: string | Array<SystemMessage.TextContentPartArray> | null;
 
     /**
      * The role of the messages author, in this case `system`.
@@ -753,7 +753,7 @@ export namespace ChatCompletionCreateParams {
   }
 
   export namespace SystemMessage {
-    export interface UnionMember1 {
+    export interface TextContentPartArray {
       /**
        * string content of the message
        */
