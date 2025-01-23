@@ -9,8 +9,11 @@ const client = new Sambanova({
 });
 
 describe('resource chatCompletions', () => {
-  test('create', async () => {
-    const responsePromise = client.chatCompletions.create({});
+  test('create: only required params', async () => {
+    const responsePromise = client.chatCompletions.create({
+      messages: [{ content: 'string', role: 'system' }],
+      model: 'string',
+    });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -18,5 +21,33 @@ describe('resource chatCompletions', () => {
     const dataAndResponse = await responsePromise.withResponse();
     expect(dataAndResponse.data).toBe(response);
     expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  test('create: required and optional params', async () => {
+    const response = await client.chatCompletions.create({
+      messages: [{ content: 'string', role: 'system' }],
+      model: 'string',
+      frequency_penalty: -2,
+      logit_bias: {},
+      logprobs: true,
+      max_completion_tokens: 2048,
+      max_tokens: 2048,
+      n: 1,
+      parallel_tool_calls: true,
+      presence_penalty: -2,
+      response_format: { type: 'json_object' },
+      seed: 0,
+      stop: '\n',
+      stream: false,
+      stream_options: { include_usage: true },
+      temperature: 0.7,
+      tool_choice: 'none',
+      tools: [
+        { function: { name: 'name', description: 'description', parameters: { foo: 'bar' } }, type: 'type' },
+      ],
+      top_k: 5,
+      top_logprobs: 0,
+      top_p: 1,
+    });
   });
 });
