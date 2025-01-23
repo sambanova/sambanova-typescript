@@ -5,17 +5,7 @@ import * as Core from './core';
 import * as Errors from './error';
 import * as Uploads from './uploads';
 import * as API from './resources/index';
-import {
-  ChatCompletionCreateParams,
-  ChatCompletionCreateParamsNonStreaming,
-  ChatCompletionCreateParamsStreaming,
-  ChatCompletionCreateResponse,
-  ChatCompletionResponse,
-  ChatCompletionStreamResponse,
-  ChatCompletions,
-  GeneralError,
-  ModelOutputError,
-} from './resources/chat-completions';
+import { Chat } from './resources/chat/chat';
 
 export interface ClientOptions {
   /**
@@ -130,7 +120,7 @@ export class SambaNova extends Core.APIClient {
     this.apiKey = apiKey;
   }
 
-  chatCompletions: API.ChatCompletions = new API.ChatCompletions(this);
+  chat: API.Chat = new API.Chat(this);
 
   protected override defaultQuery(): Core.DefaultQuery | undefined {
     return this._options.defaultQuery;
@@ -168,21 +158,11 @@ export class SambaNova extends Core.APIClient {
   static fileFromPath = Uploads.fileFromPath;
 }
 
-SambaNova.ChatCompletions = ChatCompletions;
+SambaNova.Chat = Chat;
 export declare namespace SambaNova {
   export type RequestOptions = Core.RequestOptions;
 
-  export {
-    ChatCompletions as ChatCompletions,
-    type ChatCompletionResponse as ChatCompletionResponse,
-    type ChatCompletionStreamResponse as ChatCompletionStreamResponse,
-    type GeneralError as GeneralError,
-    type ModelOutputError as ModelOutputError,
-    type ChatCompletionCreateResponse as ChatCompletionCreateResponse,
-    type ChatCompletionCreateParams as ChatCompletionCreateParams,
-    type ChatCompletionCreateParamsNonStreaming as ChatCompletionCreateParamsNonStreaming,
-    type ChatCompletionCreateParamsStreaming as ChatCompletionCreateParamsStreaming,
-  };
+  export { Chat as Chat };
 }
 
 export { toFile, fileFromPath } from './uploads';

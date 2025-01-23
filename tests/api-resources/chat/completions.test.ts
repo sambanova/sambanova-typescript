@@ -8,9 +8,9 @@ const client = new SambaNova({
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
-describe('resource chatCompletions', () => {
+describe('resource completions', () => {
   test('create: only required params', async () => {
-    const responsePromise = client.chatCompletions.create({
+    const responsePromise = client.chat.completions.create({
       messages: [{ content: 'string', role: 'system' }],
       model: 'string',
     });
@@ -24,7 +24,7 @@ describe('resource chatCompletions', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await client.chatCompletions.create({
+    const response = await client.chat.completions.create({
       messages: [{ content: 'string', role: 'system' }],
       model: 'string',
       frequency_penalty: -2,

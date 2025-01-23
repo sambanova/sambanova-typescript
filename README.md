@@ -30,7 +30,7 @@ const client = new SambaNova({
 });
 
 async function main() {
-  const chatCompletion = await client.chatCompletions.create({
+  const completion = await client.chat.completions.create({
     messages: [{ content: 'string', role: 'system' }],
     model: 'string',
   });
@@ -48,13 +48,13 @@ import SambaNova from 'sambanova';
 
 const client = new SambaNova();
 
-const stream = await client.chatCompletions.create({
+const stream = await client.chat.completions.create({
   messages: [{ content: 'string', role: 'system' }],
   model: 'string',
   stream: true,
 });
-for await (const chatCompletionCreateResponse of stream) {
-  console.log(chatCompletionCreateResponse);
+for await (const completionCreateResponse of stream) {
+  console.log(completionCreateResponse);
 }
 ```
 
@@ -74,11 +74,11 @@ const client = new SambaNova({
 });
 
 async function main() {
-  const params: SambaNova.ChatCompletionCreateParams = {
+  const params: SambaNova.Chat.CompletionCreateParams = {
     messages: [{ content: 'string', role: 'system' }],
     model: 'string',
   };
-  const chatCompletion: SambaNova.ChatCompletionCreateResponse = await client.chatCompletions.create(params);
+  const completion: SambaNova.Chat.CompletionCreateResponse = await client.chat.completions.create(params);
 }
 
 main();
@@ -95,7 +95,7 @@ a subclass of `APIError` will be thrown:
 <!-- prettier-ignore -->
 ```ts
 async function main() {
-  const chatCompletion = await client.chatCompletions
+  const completion = await client.chat.completions
     .create({ messages: [{ content: 'string', role: 'system' }], model: 'string' })
     .catch(async (err) => {
       if (err instanceof SambaNova.APIError) {
@@ -140,7 +140,7 @@ const client = new SambaNova({
 });
 
 // Or, configure per-request:
-await client.chatCompletions.create({ messages: [{ content: 'string', role: 'system' }], model: 'string' }, {
+await client.chat.completions.create({ messages: [{ content: 'string', role: 'system' }], model: 'string' }, {
   maxRetries: 5,
 });
 ```
@@ -157,7 +157,7 @@ const client = new SambaNova({
 });
 
 // Override per-request:
-await client.chatCompletions.create({ messages: [{ content: 'string', role: 'system' }], model: 'string' }, {
+await client.chat.completions.create({ messages: [{ content: 'string', role: 'system' }], model: 'string' }, {
   timeout: 5 * 1000,
 });
 ```
@@ -178,17 +178,17 @@ You can also use the `.withResponse()` method to get the raw `Response` along wi
 ```ts
 const client = new SambaNova();
 
-const response = await client.chatCompletions
+const response = await client.chat.completions
   .create({ messages: [{ content: 'string', role: 'system' }], model: 'string' })
   .asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
-const { data: chatCompletion, response: raw } = await client.chatCompletions
+const { data: completion, response: raw } = await client.chat.completions
   .create({ messages: [{ content: 'string', role: 'system' }], model: 'string' })
   .withResponse();
 console.log(raw.headers.get('X-My-Header'));
-console.log(chatCompletion);
+console.log(completion);
 ```
 
 ### Making custom/undocumented requests
@@ -292,7 +292,7 @@ const client = new SambaNova({
 });
 
 // Override per-request:
-await client.chatCompletions.create(
+await client.chat.completions.create(
   { messages: [{ content: 'string', role: 'system' }], model: 'string' },
   {
     httpAgent: new http.Agent({ keepAlive: false }),
