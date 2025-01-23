@@ -1,6 +1,6 @@
 # Samba Nova Node API Library
 
-[![NPM version](https://img.shields.io/npm/v/SambaNova.svg)](https://npmjs.org/package/SambaNova) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/SambaNova)
+[![NPM version](https://img.shields.io/npm/v/sambanova.svg)](https://npmjs.org/package/sambanova) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/sambanova)
 
 This library provides convenient access to the Samba Nova REST API from server-side TypeScript or JavaScript.
 
@@ -15,7 +15,7 @@ npm install git+ssh://git@github.com:stainless-sdks/sambanova-node.git
 ```
 
 > [!NOTE]
-> Once this package is [published to npm](https://app.stainlessapi.com/docs/guides/publish), this will become: `npm install SambaNova`
+> Once this package is [published to npm](https://app.stainlessapi.com/docs/guides/publish), this will become: `npm install sambanova`
 
 ## Usage
 
@@ -23,7 +23,7 @@ The full API of this library can be found in [api.md](api.md).
 
 <!-- prettier-ignore -->
 ```js
-import SambaNova from 'SambaNova';
+import SambaNova from 'sambanova';
 
 const client = new SambaNova({
   apiKey: process.env['SAMBANOVA_API_KEY'], // This is the default and can be omitted
@@ -44,7 +44,7 @@ main();
 We provide support for streaming responses using Server Sent Events (SSE).
 
 ```ts
-import SambaNova from 'SambaNova';
+import SambaNova from 'sambanova';
 
 const client = new SambaNova();
 
@@ -67,7 +67,7 @@ This library includes TypeScript definitions for all request params and response
 
 <!-- prettier-ignore -->
 ```ts
-import SambaNova from 'SambaNova';
+import SambaNova from 'sambanova';
 
 const client = new SambaNova({
   apiKey: process.env['SAMBANOVA_API_KEY'], // This is the default and can be omitted
@@ -246,11 +246,11 @@ add the following import before your first import `from "SambaNova"`:
 ```ts
 // Tell TypeScript and the package to use the global web fetch instead of node-fetch.
 // Note, despite the name, this does not add any polyfills, but expects them to be provided if needed.
-import 'SambaNova/shims/web';
-import SambaNova from 'SambaNova';
+import 'sambanova/shims/web';
+import SambaNova from 'sambanova';
 ```
 
-To do the inverse, add `import "SambaNova/shims/node"` (which does import polyfills).
+To do the inverse, add `import "sambanova/shims/node"` (which does import polyfills).
 This can also be useful if you are getting the wrong TypeScript types for `Response` ([more details](https://github.com/stainless-sdks/sambanova-node/tree/main/src/_shims#readme)).
 
 ### Logging and middleware
@@ -260,7 +260,7 @@ which can be used to inspect or alter the `Request` or `Response` before/after e
 
 ```ts
 import { fetch } from 'undici'; // as one example
-import SambaNova from 'SambaNova';
+import SambaNova from 'sambanova';
 
 const client = new SambaNova({
   fetch: async (url: RequestInfo, init?: RequestInit): Promise<Response> => {
