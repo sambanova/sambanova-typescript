@@ -743,7 +743,7 @@ export namespace ChatCompletionCreateParams {
     /**
      * The contents of the system message.
      */
-    content: string | Array<SystemMessage.TextContentPartArray> | null;
+    content: string | Array<SystemMessage.UnionMember1> | null;
 
     /**
      * The role of the messages author, in this case `system`.
@@ -753,7 +753,7 @@ export namespace ChatCompletionCreateParams {
   }
 
   export namespace SystemMessage {
-    export interface TextContentPartArray {
+    export interface UnionMember1 {
       /**
        * string content of the message
        */
@@ -841,7 +841,7 @@ export namespace ChatCompletionCreateParams {
     /**
      * The contents of the assistant message.
      */
-    content: string | Array<AssistantMessage.TextContentPartArray> | null;
+    content: string | Array<AssistantMessage.UnionMember1> | null;
 
     /**
      * The role of the messages author, in this case `assistant`.
@@ -856,7 +856,7 @@ export namespace ChatCompletionCreateParams {
   }
 
   export namespace AssistantMessage {
-    export interface TextContentPartArray {
+    export interface UnionMember1 {
       /**
        * string content of the message
        */
@@ -913,7 +913,7 @@ export namespace ChatCompletionCreateParams {
     /**
      * The contents of the tool message.
      */
-    content: string | Array<ToolMessage.TextContentPartArray>;
+    content: string | Array<ToolMessage.UnionMember1>;
 
     /**
      * The role of the messages author, in this case `tool`.
@@ -923,7 +923,7 @@ export namespace ChatCompletionCreateParams {
   }
 
   export namespace ToolMessage {
-    export interface TextContentPartArray {
+    export interface UnionMember1 {
       /**
        * string content of the message
        */
