@@ -143,6 +143,10 @@ export class SambaNova extends Core.APIClient {
     };
   }
 
+  protected override authHeaders(opts: Core.FinalRequestOptions): Core.Headers {
+    return { Authorization: `Bearer ${this.apiKey}` };
+  }
+
   static SambaNova = this;
   static DEFAULT_TIMEOUT = 60000; // 1 minute
 
