@@ -5,8 +5,8 @@
   "compilerOptions": {
     "rootDir": "./dist/src",
     "paths": {
-      "SambaNova/*": ["dist/src/*"],
-      "SambaNova": ["dist/src/index.ts"],
+      "sambanova/*": ["dist/src/*"],
+      "sambanova": ["dist/src/index.ts"],
     },
     "noEmit": false,
     "declaration": true,

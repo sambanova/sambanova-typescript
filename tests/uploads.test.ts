@@ -1,6 +1,6 @@
 import fs from 'fs';
-import { toFile, type ResponseLike } from 'SambaNova/uploads';
-import { File } from 'SambaNova/_shims/index';
+import { toFile, type ResponseLike } from 'sambanova/uploads';
+import { File } from 'sambanova/_shims/index';
 
 class MyClass {
   name: string = 'foo';

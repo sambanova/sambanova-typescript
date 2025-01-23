@@ -1,8 +1,8 @@
 import { Response } from 'node-fetch';
 import { PassThrough } from 'stream';
 import assert from 'assert';
-import { Stream, _iterSSEMessages, _decodeChunks as decodeChunks } from 'SambaNova/streaming';
-import { APIConnectionError } from 'SambaNova/error';
+import { Stream, _iterSSEMessages, _decodeChunks as decodeChunks } from 'sambanova/streaming';
+import { APIConnectionError } from 'sambanova/error';
 
 describe('line decoder', () => {
   test('basic', () => {

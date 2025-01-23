@@ -1,5 +1,5 @@
 {
-  "name": "SambaNova",
+  "name": "sambanova",
   "version": "0.0.1-alpha.0",
   "description": "The official TypeScript library for the Samba Nova API",
   "author": "Samba Nova <info@sambanova.ai>",
@@ -59,8 +59,8 @@
     "./shims/web.mjs"
   ],
   "imports": {
-    "SambaNova": ".",
-    "SambaNova/*": "./src/*"
+    "sambanova": ".",
+    "sambanova/*": "./src/*"
   },
   "exports": {
     "./_shims/auto/*": {

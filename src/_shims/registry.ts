@@ -42,12 +42,12 @@ export let isFsReadStream: Shims['isFsReadStream'] | undefined = undefined;
 export function setShims(shims: Shims, options: { auto: boolean } = { auto: false }) {
   if (auto) {
     throw new Error(
-      `you must \`import 'SambaNova/shims/${shims.kind}'\` before importing anything else from SambaNova`,
+      `you must \`import 'sambanova/shims/${shims.kind}'\` before importing anything else from sambanova`,
     );
   }
   if (kind) {
     throw new Error(
-      `can't \`import 'SambaNova/shims/${shims.kind}'\` after \`import 'SambaNova/shims/${kind}'\``,
+      `can't \`import 'sambanova/shims/${shims.kind}'\` after \`import 'sambanova/shims/${kind}'\``,
     );
   }
   auto = options.auto;
