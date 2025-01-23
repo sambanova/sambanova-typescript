@@ -498,9 +498,7 @@ export namespace ChatCompletionStreamResponse {
  * other kind of errors
  */
 export interface GeneralError {
-  error?: GeneralError.Error;
-
-  required?: unknown;
+  error: GeneralError.Error;
 }
 
 export namespace GeneralError {
@@ -531,9 +529,7 @@ export namespace GeneralError {
  * error in model output generation
  */
 export interface ModelOutputError {
-  error?: ModelOutputError.Error;
-
-  required?: unknown;
+  error: ModelOutputError.Error;
 }
 
 export namespace ModelOutputError {
@@ -775,13 +771,28 @@ export namespace ChatCompletionCreateParams {
     /**
      * The contents of the user message.
      */
-    content: string | Array<unknown> | null;
+    content: string | Array<UserMessage.TextContent | unknown | unknown> | null;
 
     /**
      * The role of the messages author, in this case `user`.
      */
     role: 'user';
     [k: string]: unknown;
+  }
+
+  export namespace UserMessage {
+    export interface TextContent {
+      /**
+       * string content of the message
+       */
+      text: string;
+
+      /**
+       * type of content to send. in this case `text`.
+       */
+      type: 'text';
+      [k: string]: unknown;
+    }
   }
 
   export interface AssistantMessage {
