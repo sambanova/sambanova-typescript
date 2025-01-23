@@ -771,7 +771,10 @@ export namespace ChatCompletionCreateParams {
     /**
      * The contents of the user message.
      */
-    content: string | Array<UserMessage.TextContent | unknown | unknown> | null;
+    content:
+      | string
+      | Array<UserMessage.TextContent | UserMessage.ImageContent | UserMessage.AudioContent>
+      | null;
 
     /**
      * The role of the messages author, in this case `user`.
@@ -792,6 +795,45 @@ export namespace ChatCompletionCreateParams {
        */
       type: 'text';
       [k: string]: unknown;
+    }
+
+    export interface ImageContent {
+      image_url: ImageContent.ImageURL;
+
+      /**
+       * type of content to send. in this case `image_url`.
+       */
+      type: 'image_url';
+      [k: string]: unknown;
+    }
+
+    export namespace ImageContent {
+      export interface ImageURL {
+        /**
+         * Either a URL of the image or the base64 encoded image data. currently only
+         * base64 encoded image supported
+         */
+        url?: string;
+      }
+    }
+
+    export interface AudioContent {
+      audio_content: AudioContent.AudioContent;
+
+      /**
+       * type of content to send. in this case `audio_content`.
+       */
+      type: 'audio_content';
+      [k: string]: unknown;
+    }
+
+    export namespace AudioContent {
+      export interface AudioContent {
+        /**
+         * the base64 encoded audio data.
+         */
+        content?: string;
+      }
     }
   }
 
