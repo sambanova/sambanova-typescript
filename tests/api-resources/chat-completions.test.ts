@@ -4,7 +4,7 @@ import Sambanova from 'sambanova';
 import { Response } from 'node-fetch';
 
 const client = new Sambanova({
-  bearerToken: 'My Bearer Token',
+  apiKey: 'My API Key',
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
@@ -38,7 +38,7 @@ describe('resource chatCompletions', () => {
       response_format: { type: 'json_object' },
       seed: 0,
       stop: '\n',
-      stream: false,
+      stream: true,
       stream_options: { include_usage: true },
       temperature: 0.7,
       tool_choice: 'none',
