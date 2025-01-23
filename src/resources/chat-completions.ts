@@ -747,13 +747,28 @@ export namespace ChatCompletionCreateParams {
     /**
      * The contents of the system message.
      */
-    content: string | Array<unknown> | null;
+    content: string | Array<SystemMessage.UnionMember1> | null;
 
     /**
      * The role of the messages author, in this case `system`.
      */
     role: 'system';
     [k: string]: unknown;
+  }
+
+  export namespace SystemMessage {
+    export interface UnionMember1 {
+      /**
+       * string content of the message
+       */
+      text: string;
+
+      /**
+       * type of content to send. in this case `text`.
+       */
+      type: 'text';
+      [k: string]: unknown;
+    }
   }
 
   export interface UserMessage {
@@ -773,7 +788,7 @@ export namespace ChatCompletionCreateParams {
     /**
      * The contents of the assistant message.
      */
-    content: string | Array<unknown> | null;
+    content: string | Array<AssistantMessage.UnionMember1> | null;
 
     /**
      * The role of the messages author, in this case `assistant`.
@@ -788,6 +803,19 @@ export namespace ChatCompletionCreateParams {
   }
 
   export namespace AssistantMessage {
+    export interface UnionMember1 {
+      /**
+       * string content of the message
+       */
+      text: string;
+
+      /**
+       * type of content to send. in this case `text`.
+       */
+      type: 'text';
+      [k: string]: unknown;
+    }
+
     export interface ToolCall {
       /**
        * ID of the tool call.
@@ -832,13 +860,28 @@ export namespace ChatCompletionCreateParams {
     /**
      * The contents of the tool message.
      */
-    content: string | Array<unknown>;
+    content: string | Array<ToolMessage.UnionMember1>;
 
     /**
      * The role of the messages author, in this case `tool`.
      */
     role: 'tool';
     [k: string]: unknown;
+  }
+
+  export namespace ToolMessage {
+    export interface UnionMember1 {
+      /**
+       * string content of the message
+       */
+      text: string;
+
+      /**
+       * type of content to send. in this case `text`.
+       */
+      type: 'text';
+      [k: string]: unknown;
+    }
   }
 
   /**
