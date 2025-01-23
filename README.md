@@ -25,14 +25,13 @@ The full API of this library can be found in [api.md](api.md).
 ```js
 import Sambanova from 'sambanova';
 
-const client = new Sambanova({
-  bearerToken: process.env['BEARER_TOKEN'], // This is the default and can be omitted
-});
+const client = new Sambanova();
 
 async function main() {
-  const chatCompletion = await client.chatCompletions.create();
-
-  console.log(chatCompletion.id);
+  const chatCompletion = await client.chatCompletions.create({
+    messages: [{ content: 'string', role: 'system' }],
+    model: 'string',
+  });
 }
 
 main();
@@ -47,9 +46,13 @@ import Sambanova from 'sambanova';
 
 const client = new Sambanova();
 
-const stream = await client.chatCompletions.create({ stream: true });
+const stream = await client.chatCompletions.create({
+  messages: [{ content: 'string', role: 'system' }],
+  model: 'string',
+  stream: true,
+});
 for await (const chatCompletionCreateResponse of stream) {
-  console.log(chatCompletionCreateResponse.id);
+  console.log(chatCompletionCreateResponse);
 }
 ```
 
@@ -64,12 +67,14 @@ This library includes TypeScript definitions for all request params and response
 ```ts
 import Sambanova from 'sambanova';
 
-const client = new Sambanova({
-  bearerToken: process.env['BEARER_TOKEN'], // This is the default and can be omitted
-});
+const client = new Sambanova();
 
 async function main() {
-  const chatCompletion: Sambanova.ChatCompletionCreateResponse = await client.chatCompletions.create();
+  const params: Sambanova.ChatCompletionCreateParams = {
+    messages: [{ content: 'string', role: 'system' }],
+    model: 'string',
+  };
+  const chatCompletion: Sambanova.ChatCompletionCreateResponse = await client.chatCompletions.create(params);
 }
 
 main();
@@ -86,15 +91,17 @@ a subclass of `APIError` will be thrown:
 <!-- prettier-ignore -->
 ```ts
 async function main() {
-  const chatCompletion = await client.chatCompletions.create().catch(async (err) => {
-    if (err instanceof Sambanova.APIError) {
-      console.log(err.status); // 400
-      console.log(err.name); // BadRequestError
-      console.log(err.headers); // {server: 'nginx', ...}
-    } else {
-      throw err;
-    }
-  });
+  const chatCompletion = await client.chatCompletions
+    .create({ messages: [{ content: 'string', role: 'system' }], model: 'string' })
+    .catch(async (err) => {
+      if (err instanceof Sambanova.APIError) {
+        console.log(err.status); // 400
+        console.log(err.name); // BadRequestError
+        console.log(err.headers); // {server: 'nginx', ...}
+      } else {
+        throw err;
+      }
+    });
 }
 
 main();
@@ -126,10 +133,11 @@ You can use the `maxRetries` option to configure or disable this:
 // Configure the default for all requests:
 const client = new Sambanova({
   maxRetries: 0, // default is 2
+  bearerToken: 'My Bearer Token',
 });
 
 // Or, configure per-request:
-await client.chatCompletions.create({
+await client.chatCompletions.create({ messages: [{ content: 'string', role: 'system' }], model: 'string' }, {
   maxRetries: 5,
 });
 ```
@@ -143,10 +151,11 @@ Requests time out after 1 minute by default. You can configure this with a `time
 // Configure the default for all requests:
 const client = new Sambanova({
   timeout: 20 * 1000, // 20 seconds (default is 1 minute)
+  bearerToken: 'My Bearer Token',
 });
 
 // Override per-request:
-await client.chatCompletions.create({
+await client.chatCompletions.create({ messages: [{ content: 'string', role: 'system' }], model: 'string' }, {
   timeout: 5 * 1000,
 });
 ```
@@ -167,13 +176,17 @@ You can also use the `.withResponse()` method to get the raw `Response` along wi
 ```ts
 const client = new Sambanova();
 
-const response = await client.chatCompletions.create().asResponse();
+const response = await client.chatCompletions
+  .create({ messages: [{ content: 'string', role: 'system' }], model: 'string' })
+  .asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
-const { data: chatCompletion, response: raw } = await client.chatCompletions.create().withResponse();
+const { data: chatCompletion, response: raw } = await client.chatCompletions
+  .create({ messages: [{ content: 'string', role: 'system' }], model: 'string' })
+  .withResponse();
 console.log(raw.headers.get('X-My-Header'));
-console.log(chatCompletion.id);
+console.log(chatCompletion);
 ```
 
 ### Making custom/undocumented requests
@@ -274,12 +287,16 @@ import { HttpsProxyAgent } from 'https-proxy-agent';
 // Configure the default for all requests:
 const client = new Sambanova({
   httpAgent: new HttpsProxyAgent(process.env.PROXY_URL),
+  bearerToken: 'My Bearer Token',
 });
 
 // Override per-request:
-await client.chatCompletions.create({
-  httpAgent: new http.Agent({ keepAlive: false }),
-});
+await client.chatCompletions.create(
+  { messages: [{ content: 'string', role: 'system' }], model: 'string' },
+  {
+    httpAgent: new http.Agent({ keepAlive: false }),
+  },
+);
 ```
 
 ## Semantic versioning
