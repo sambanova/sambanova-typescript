@@ -671,6 +671,8 @@ export namespace ChatCompletionCreateParams {
      * The role of the messages author, in this case `system`.
      */
     role: 'system';
+
+    examples?: unknown;
     [k: string]: unknown;
   }
 
