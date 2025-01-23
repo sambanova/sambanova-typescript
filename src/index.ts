@@ -7,17 +7,19 @@ import * as Uploads from './uploads';
 import * as API from './resources/index';
 import {
   ChatCompletionCreateParams,
-  ChatCompletionCreateParamsNonStreaming,
-  ChatCompletionCreateParamsStreaming,
   ChatCompletionCreateResponse,
+  ChatCompletionResponse,
+  ChatCompletionStreamResponse,
   ChatCompletions,
+  GeneralError,
+  ModelOutputError,
 } from './resources/chat-completions';
 
 export interface ClientOptions {
   /**
-   * Bearer token for authentication
+   * API Key for authentication
    */
-  bearerToken?: string | undefined;
+  apiKey?: string | undefined;
 
   /**
    * Override the default base URL for the API, e.g., "https://api.example.com/v2/"
@@ -80,14 +82,14 @@ export interface ClientOptions {
  * API Client for interfacing with the Sambanova API.
  */
 export class Sambanova extends Core.APIClient {
-  bearerToken: string;
+  apiKey: string;
 
   private _options: ClientOptions;
 
   /**
    * API Client for interfacing with the Sambanova API.
    *
-   * @param {string | undefined} [opts.bearerToken=process.env['BEARER_TOKEN'] ?? undefined]
+   * @param {string | undefined} [opts.apiKey=process.env['API_KEY'] ?? undefined]
    * @param {string} [opts.baseURL=process.env['SAMBANOVA_BASE_URL'] ?? https://api.sambanova.ai] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {number} [opts.httpAgent] - An HTTP agent used to manage HTTP(s) connections.
@@ -98,17 +100,17 @@ export class Sambanova extends Core.APIClient {
    */
   constructor({
     baseURL = Core.readEnv('SAMBANOVA_BASE_URL'),
-    bearerToken = Core.readEnv('BEARER_TOKEN'),
+    apiKey = Core.readEnv('API_KEY'),
     ...opts
   }: ClientOptions = {}) {
-    if (bearerToken === undefined) {
+    if (apiKey === undefined) {
       throw new Errors.SambanovaError(
-        "The BEARER_TOKEN environment variable is missing or empty; either provide it, or instantiate the Sambanova client with an bearerToken option, like new Sambanova({ bearerToken: 'My Bearer Token' }).",
+        "The API_KEY environment variable is missing or empty; either provide it, or instantiate the Sambanova client with an apiKey option, like new Sambanova({ apiKey: 'My API Key' }).",
       );
     }
 
     const options: ClientOptions = {
-      bearerToken,
+      apiKey,
       ...opts,
       baseURL: baseURL || `https://api.sambanova.ai`,
     };
@@ -123,7 +125,7 @@ export class Sambanova extends Core.APIClient {
 
     this._options = options;
 
-    this.bearerToken = bearerToken;
+    this.apiKey = apiKey;
   }
 
   chatCompletions: API.ChatCompletions = new API.ChatCompletions(this);
@@ -166,10 +168,12 @@ export declare namespace Sambanova {
 
   export {
     ChatCompletions as ChatCompletions,
+    type ChatCompletionResponse as ChatCompletionResponse,
+    type ChatCompletionStreamResponse as ChatCompletionStreamResponse,
+    type GeneralError as GeneralError,
+    type ModelOutputError as ModelOutputError,
     type ChatCompletionCreateResponse as ChatCompletionCreateResponse,
     type ChatCompletionCreateParams as ChatCompletionCreateParams,
-    type ChatCompletionCreateParamsNonStreaming as ChatCompletionCreateParamsNonStreaming,
-    type ChatCompletionCreateParamsStreaming as ChatCompletionCreateParamsStreaming,
   };
 }
 

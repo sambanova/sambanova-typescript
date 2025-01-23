@@ -37,28 +37,6 @@ async function main() {
 main();
 ```
 
-## Streaming responses
-
-We provide support for streaming responses using Server Sent Events (SSE).
-
-```ts
-import Sambanova from 'sambanova';
-
-const client = new Sambanova();
-
-const stream = await client.chatCompletions.create({
-  messages: [{ content: 'string', role: 'system' }],
-  model: 'string',
-  stream: true,
-});
-for await (const chatCompletionCreateResponse of stream) {
-  console.log(chatCompletionCreateResponse);
-}
-```
-
-If you need to cancel a stream, you can `break` from the loop
-or call `stream.controller.abort()`.
-
 ### Request & Response types
 
 This library includes TypeScript definitions for all request params and response fields. You may import and use them like so:
@@ -133,7 +111,7 @@ You can use the `maxRetries` option to configure or disable this:
 // Configure the default for all requests:
 const client = new Sambanova({
   maxRetries: 0, // default is 2
-  bearerToken: 'My Bearer Token',
+  apiKey: 'My API Key',
 });
 
 // Or, configure per-request:
@@ -151,7 +129,7 @@ Requests time out after 1 minute by default. You can configure this with a `time
 // Configure the default for all requests:
 const client = new Sambanova({
   timeout: 20 * 1000, // 20 seconds (default is 1 minute)
-  bearerToken: 'My Bearer Token',
+  apiKey: 'My API Key',
 });
 
 // Override per-request:
@@ -287,7 +265,7 @@ import { HttpsProxyAgent } from 'https-proxy-agent';
 // Configure the default for all requests:
 const client = new Sambanova({
   httpAgent: new HttpsProxyAgent(process.env.PROXY_URL),
-  bearerToken: 'My Bearer Token',
+  apiKey: 'My API Key',
 });
 
 // Override per-request:
