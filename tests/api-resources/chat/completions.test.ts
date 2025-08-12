@@ -11,8 +11,8 @@ const client = new SambaNova({
 describe('resource completions', () => {
   test('create: only required params', async () => {
     const responsePromise = client.chat.completions.create({
-      messages: [{ content: 'string', role: 'system' }],
-      model: 'model',
+      messages: [{ content: 'create a poem using palindromes', role: 'user' }],
+      model: 'string',
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -25,24 +25,32 @@ describe('resource completions', () => {
 
   test('create: required and optional params', async () => {
     const response = await client.chat.completions.create({
-      messages: [{ content: 'string', role: 'system' }],
-      model: 'model',
-      max_tokens: 0,
-      response_format: { type: 'json_object', json_schema: { foo: 'bar' } },
-      stop: 'string',
+      messages: [{ content: 'create a poem using palindromes', role: 'user' }],
+      model: 'string',
+      frequency_penalty: -2,
+      logit_bias: { foo: 0 },
+      logprobs: true,
+      max_completion_tokens: 2048,
+      max_tokens: 2048,
+      n: 1,
+      parallel_tool_calls: true,
+      presence_penalty: -2,
+      response_format: {
+        json_schema: { name: 'name', schema: {}, strict: true, title: 'title' },
+        type: 'json_object',
+      },
+      seed: 0,
+      stop: '\n',
       stream: false,
       stream_options: { include_usage: true },
-      temperature: 0,
-      tool_choice: 'auto',
+      temperature: 0.7,
+      tool_choice: 'none',
       tools: [
-        {
-          description: 'description',
-          name: 'name',
-          parameters: { properties: { foo: 'bar' }, type: 'object', required: ['string'] },
-        },
+        { function: { name: 'name', description: 'description', parameters: { foo: 'bar' } }, type: 'type' },
       ],
-      top_k: 0,
-      top_p: 0,
+      top_k: 5,
+      top_logprobs: 0,
+      top_p: 1,
     });
   });
 });
