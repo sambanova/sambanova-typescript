@@ -25,14 +25,14 @@ The full API of this library can be found in [api.md](api.md).
 ```js
 import SambaNova from 'sambanova';
 
-const client = new SambaNova();
-
-const chatCompletionResponse = await client.chat.completions.create({
-  messages: [{ content: 'string', role: 'system' }],
-  model: 'model',
+const client = new SambaNova({
+  apiKey: process.env['SAMBANOVA_API_KEY'], // This is the default and can be omitted
 });
 
-console.log(chatCompletionResponse.id);
+const completion = await client.chat.completions.create({
+  messages: [{ content: 'create a poem using palindromes', role: 'user' }],
+  model: 'string',
+});
 ```
 
 ## Streaming responses
@@ -45,12 +45,12 @@ import SambaNova from 'sambanova';
 const client = new SambaNova();
 
 const stream = await client.chat.completions.create({
-  messages: [{ content: 'string', role: 'system' }],
-  model: 'model',
+  messages: [{ content: 'create a poem using palindromes', role: 'user' }],
+  model: 'string',
   stream: true,
 });
-for await (const chatCompletionResponse of stream) {
-  console.log(chatCompletionResponse.id);
+for await (const completionCreateResponse of stream) {
+  console.log(completionCreateResponse);
 }
 ```
 
@@ -65,15 +65,15 @@ This library includes TypeScript definitions for all request params and response
 ```ts
 import SambaNova from 'sambanova';
 
-const client = new SambaNova();
+const client = new SambaNova({
+  apiKey: process.env['SAMBANOVA_API_KEY'], // This is the default and can be omitted
+});
 
 const params: SambaNova.Chat.CompletionCreateParams = {
-  messages: [{ content: 'string', role: 'system' }],
-  model: 'model',
+  messages: [{ content: 'create a poem using palindromes', role: 'user' }],
+  model: 'string',
 };
-const chatCompletionResponse: SambaNova.Chat.ChatCompletionResponse = await client.chat.completions.create(
-  params,
-);
+const completion: SambaNova.Chat.CompletionCreateResponse = await client.chat.completions.create(params);
 ```
 
 Documentation for each method, request param, and response field are available in docstrings and will appear on hover in most modern editors.
@@ -86,8 +86,8 @@ a subclass of `APIError` will be thrown:
 
 <!-- prettier-ignore -->
 ```ts
-const chatCompletionResponse = await client.chat.completions
-  .create({ messages: [{ content: 'string', role: 'system' }], model: 'model' })
+const completion = await client.chat.completions
+  .create({ messages: [{ content: 'create a poem using palindromes', role: 'user' }], model: 'string' })
   .catch(async (err) => {
     if (err instanceof SambaNova.APIError) {
       console.log(err.status); // 400
@@ -124,12 +124,11 @@ You can use the `maxRetries` option to configure or disable this:
 ```js
 // Configure the default for all requests:
 const client = new SambaNova({
-  apiKey: 'My API Key',
   maxRetries: 0, // default is 2
 });
 
 // Or, configure per-request:
-await client.chat.completions.create({ messages: [{ content: 'string', role: 'system' }], model: 'model' }, {
+await client.chat.completions.create({ messages: [{ content: 'create a poem using palindromes', role: 'user' }], model: 'string' }, {
   maxRetries: 5,
 });
 ```
@@ -142,12 +141,11 @@ Requests time out after 1 minute by default. You can configure this with a `time
 ```ts
 // Configure the default for all requests:
 const client = new SambaNova({
-  apiKey: 'My API Key',
   timeout: 20 * 1000, // 20 seconds (default is 1 minute)
 });
 
 // Override per-request:
-await client.chat.completions.create({ messages: [{ content: 'string', role: 'system' }], model: 'model' }, {
+await client.chat.completions.create({ messages: [{ content: 'create a poem using palindromes', role: 'user' }], model: 'string' }, {
   timeout: 5 * 1000,
 });
 ```
@@ -169,16 +167,16 @@ You can also use the `.withResponse()` method to get the raw `Response` along wi
 const client = new SambaNova();
 
 const response = await client.chat.completions
-  .create({ messages: [{ content: 'string', role: 'system' }], model: 'model' })
+  .create({ messages: [{ content: 'create a poem using palindromes', role: 'user' }], model: 'string' })
   .asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
-const { data: chatCompletionResponse, response: raw } = await client.chat.completions
-  .create({ messages: [{ content: 'string', role: 'system' }], model: 'model' })
+const { data: completion, response: raw } = await client.chat.completions
+  .create({ messages: [{ content: 'create a poem using palindromes', role: 'user' }], model: 'string' })
   .withResponse();
 console.log(raw.headers.get('X-My-Header'));
-console.log(chatCompletionResponse.id);
+console.log(completion);
 ```
 
 ### Making custom/undocumented requests
@@ -278,13 +276,12 @@ import { HttpsProxyAgent } from 'https-proxy-agent';
 
 // Configure the default for all requests:
 const client = new SambaNova({
-  apiKey: 'My API Key',
   httpAgent: new HttpsProxyAgent(process.env.PROXY_URL),
 });
 
 // Override per-request:
 await client.chat.completions.create(
-  { messages: [{ content: 'string', role: 'system' }], model: 'model' },
+  { messages: [{ content: 'create a poem using palindromes', role: 'user' }], model: 'string' },
   {
     httpAgent: new http.Agent({ keepAlive: false }),
   },
