@@ -4,10 +4,6 @@ export { Chat } from './chat';
 export {
   Completions,
   type ChatCompletionResponse,
-  type ChatCompletionStreamResponse,
-  type GeneralError,
-  type ModelOutputError,
-  type CompletionCreateResponse,
   type CompletionCreateParams,
   type CompletionCreateParamsNonStreaming,
   type CompletionCreateParamsStreaming,

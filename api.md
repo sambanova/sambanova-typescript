@@ -5,11 +5,7 @@
 Types:
 
 - <code><a href="./src/resources/chat/completions.ts">ChatCompletionResponse</a></code>
-- <code><a href="./src/resources/chat/completions.ts">ChatCompletionStreamResponse</a></code>
-- <code><a href="./src/resources/chat/completions.ts">GeneralError</a></code>
-- <code><a href="./src/resources/chat/completions.ts">ModelOutputError</a></code>
-- <code><a href="./src/resources/chat/completions.ts">CompletionCreateResponse</a></code>
 
 Methods:
 
-- <code title="post /v1/chat/completions">client.chat.completions.<a href="./src/resources/chat/completions.ts">create</a>({ ...params }) -> CompletionCreateResponse</code>
+- <code title="post /v1/chat/completions">client.chat.completions.<a href="./src/resources/chat/completions.ts">create</a>({ ...params }) -> ChatCompletionResponse</code>
