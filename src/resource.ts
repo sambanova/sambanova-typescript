@@ -2,7 +2,7 @@
 
 import type { SambaNova } from './index';
 
-export class APIResource {
+export abstract class APIResource {
   protected _client: SambaNova;
 
   constructor(client: SambaNova) {
