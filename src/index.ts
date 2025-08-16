@@ -169,6 +169,7 @@ export class SambaNova extends Core.APIClient {
 }
 
 SambaNova.Chat = Chat;
+
 export declare namespace SambaNova {
   export type RequestOptions = Core.RequestOptions;
 
