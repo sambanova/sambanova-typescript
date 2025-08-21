@@ -1,0 +1,104 @@
+// File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
+
+import { APIResource } from '../resource';
+import * as Core from '../core';
+
+export class Models extends APIResource {
+  /**
+   * Get environment's available model metadata
+   */
+  retrieve(modelId: string, options?: Core.RequestOptions): Core.APIPromise<ModelResponse> {
+    return this._client.get(`/v1/models/${modelId}`, options);
+  }
+
+  /**
+   * Get environment's available model list metadata
+   */
+  list(options?: Core.RequestOptions): Core.APIPromise<void> {
+    return this._client.get('/v1/models', { ...options, headers: { Accept: '*/*', ...options?.headers } });
+  }
+}
+
+/**
+ * model metadata
+ */
+export interface ModelResponse {
+  /**
+   * model id
+   */
+  id: string;
+
+  /**
+   * model context length
+   */
+  context_length?: number;
+
+  /**
+   * model max completion tokens
+   */
+  max_completion_tokens?: number;
+
+  /**
+   * type
+   */
+  object?: 'model';
+
+  /**
+   * model owner
+   */
+  owned_by?: string;
+
+  /**
+   * pricing details
+   */
+  pricing?: ModelResponse.Pricing;
+
+  /**
+   * additional sn metadata
+   */
+  sn_metadata?: unknown;
+
+  [k: string]: unknown;
+}
+
+export namespace ModelResponse {
+  /**
+   * pricing details
+   */
+  export interface Pricing {
+    /**
+     * price per completion token in USD
+     */
+    completion?: number;
+
+    /**
+     * price per input hour
+     */
+    duration_per_hour?: number | null;
+
+    /**
+     * price per prompt token in USD
+     */
+    prompt?: number;
+
+    [k: string]: unknown;
+  }
+}
+
+/**
+ * object containing available models and metadata
+ */
+export interface ModelsResponse {
+  /**
+   * array of model metadata list
+   */
+  data: Array<ModelResponse>;
+
+  object?: 'list';
+
+  [k: string]: unknown;
+}
+
+export declare namespace Models {
+  export { type ModelResponse as ModelResponse, type ModelsResponse as ModelsResponse };
+}
