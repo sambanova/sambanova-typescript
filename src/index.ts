@@ -5,6 +5,9 @@ import * as Core from './core';
 import * as Errors from './error';
 import * as Uploads from './uploads';
 import * as API from './resources/index';
+import { EmbeddingCreateParams, Embeddings, EmbeddingsResponse } from './resources/embeddings';
+import { ModelResponse, Models, ModelsResponse } from './resources/models';
+import { Audio } from './resources/audio/audio';
 import { Chat } from './resources/chat/chat';
 
 export interface ClientOptions {
@@ -124,6 +127,9 @@ export class SambaNova extends Core.APIClient {
   }
 
   chat: API.Chat = new API.Chat(this);
+  embeddings: API.Embeddings = new API.Embeddings(this);
+  audio: API.Audio = new API.Audio(this);
+  models: API.Models = new API.Models(this);
 
   /**
    * Check whether the base URL is set to its default.
@@ -169,11 +175,24 @@ export class SambaNova extends Core.APIClient {
 }
 
 SambaNova.Chat = Chat;
+SambaNova.Embeddings = Embeddings;
+SambaNova.Audio = Audio;
+SambaNova.Models = Models;
 
 export declare namespace SambaNova {
   export type RequestOptions = Core.RequestOptions;
 
   export { Chat as Chat };
+
+  export {
+    Embeddings as Embeddings,
+    type EmbeddingsResponse as EmbeddingsResponse,
+    type EmbeddingCreateParams as EmbeddingCreateParams,
+  };
+
+  export { Audio as Audio };
+
+  export { Models as Models, type ModelResponse as ModelResponse, type ModelsResponse as ModelsResponse };
 }
 
 export { toFile, fileFromPath } from './uploads';
