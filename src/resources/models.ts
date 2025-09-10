@@ -14,8 +14,8 @@ export class Models extends APIResource {
   /**
    * Get environment's available model list metadata
    */
-  list(options?: Core.RequestOptions): Core.APIPromise<void> {
-    return this._client.get('/v1/models', { ...options, headers: { Accept: '*/*', ...options?.headers } });
+  list(options?: Core.RequestOptions): Core.APIPromise<ModelsResponse> {
+    return this._client.get('/v1/models', options);
   }
 }
 
