@@ -763,9 +763,9 @@ export interface CompletionCreateParamsBase {
    * object of type <your_schema>.
    */
   response_format?:
-    | CompletionCreateParams.Text
-    | CompletionCreateParams.JsonObject
-    | CompletionCreateParams.JsonSchema
+    | CompletionCreateParams.ResponseFormatText
+    | CompletionCreateParams.ResponseFormatJsonObject
+    | CompletionCreateParams.ResponseFormatJsonSchema
     | null;
 
   /**
@@ -1063,7 +1063,7 @@ export namespace CompletionCreateParams {
   /**
    * Specifies that the model should produce output as plain text.
    */
-  export interface Text {
+  export interface ResponseFormatText {
     type: 'text';
 
     [k: string]: unknown;
@@ -1072,7 +1072,7 @@ export namespace CompletionCreateParams {
   /**
    * Specifies that the model should produce output as a raw JSON object.
    */
-  export interface JsonObject {
+  export interface ResponseFormatJsonObject {
     type: 'json_object';
 
     [k: string]: unknown;
@@ -1082,19 +1082,19 @@ export namespace CompletionCreateParams {
    * Specifies that the model should produce output conforming to a given JSON
    * schema.
    */
-  export interface JsonSchema {
+  export interface ResponseFormatJsonSchema {
     /**
      * A JSON Schema definition the model's structured output. Follows standard JSON
      * Schema syntax.
      */
-    json_schema: JsonSchema.JsonSchema;
+    json_schema: ResponseFormatJsonSchema.JsonSchema;
 
     type: 'json_schema';
 
     [k: string]: unknown;
   }
 
-  export namespace JsonSchema {
+  export namespace ResponseFormatJsonSchema {
     /**
      * A JSON Schema definition the model's structured output. Follows standard JSON
      * Schema syntax.
