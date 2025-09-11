@@ -1,0 +1,11 @@
+// File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
+
+import type { SambaNova } from '../client';
+
+export abstract class APIResource {
+  protected _client: SambaNova;
+
+  constructor(client: SambaNova) {
+    this._client = client;
+  }
+}

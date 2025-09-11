@@ -59,5 +59,5 @@ Types:
 
 Methods:
 
-- <code title="get /v1/models/{model_id}">client.models.<a href="./src/resources/models.ts">retrieve</a>(modelId) -> ModelResponse</code>
+- <code title="get /v1/models/{model_id}">client.models.<a href="./src/resources/models.ts">retrieve</a>(modelID) -> ModelResponse</code>
 - <code title="get /v1/models">client.models.<a href="./src/resources/models.ts">list</a>() -> ModelsResponse</code>
