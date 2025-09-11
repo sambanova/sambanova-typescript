@@ -1,10 +1,12 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../../resource';
-import { APIPromise } from '../../core';
-import * as Core from '../../core';
+import { APIResource } from '../../core/resource';
 import * as TranscriptionsAPI from './transcriptions';
-import { Stream } from '../../streaming';
+import { APIPromise } from '../../core/api-promise';
+import { Stream } from '../../core/streaming';
+import { type Uploadable } from '../../core/uploads';
+import { RequestOptions } from '../../internal/request-options';
+import { multipartFormRequestOptions } from '../../internal/uploads';
 
 export class Transcriptions extends APIResource {
   /**
@@ -21,23 +23,23 @@ export class Transcriptions extends APIResource {
    */
   create(
     body: TranscriptionCreateParamsNonStreaming,
-    options?: Core.RequestOptions,
+    options?: RequestOptions,
   ): APIPromise<TranscriptionCreateResponse>;
   create(
     body: TranscriptionCreateParamsStreaming,
-    options?: Core.RequestOptions,
+    options?: RequestOptions,
   ): APIPromise<Stream<TranscriptionCreateResponse>>;
   create(
     body: TranscriptionCreateParamsBase,
-    options?: Core.RequestOptions,
+    options?: RequestOptions,
   ): APIPromise<Stream<TranscriptionCreateResponse> | TranscriptionCreateResponse>;
   create(
     body: TranscriptionCreateParams,
-    options?: Core.RequestOptions,
+    options?: RequestOptions,
   ): APIPromise<TranscriptionCreateResponse> | APIPromise<Stream<TranscriptionCreateResponse>> {
     return this._client.post(
       '/v1/audio/transcriptions',
-      Core.multipartFormRequestOptions({ body, ...options, stream: body.stream ?? false }),
+      multipartFormRequestOptions({ body, ...options, stream: body.stream ?? false }, this._client),
     ) as APIPromise<TranscriptionCreateResponse> | APIPromise<Stream<TranscriptionCreateResponse>>;
   }
 }
@@ -293,7 +295,7 @@ export interface TranscriptionCreateParamsBase {
    * The audio file object to transcribe or translate, in one of these formats: FLAC,
    * MP3, MP4, MPEG, MPGA, M4A, Ogg, WAV, or WebM format. File size limit is 25MB.
    */
-  file: Core.Uploadable;
+  file: Uploadable;
 
   /**
    * The model ID to use See available
