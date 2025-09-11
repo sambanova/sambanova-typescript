@@ -26,6 +26,7 @@ describe('resource completions', () => {
     const response = await client.chat.completions.create({
       messages: [{ content: 'create a poem using palindromes', role: 'user' }],
       model: 'string',
+      do_sample: true,
       frequency_penalty: -2,
       logit_bias: { foo: 0 },
       logprobs: true,
@@ -34,6 +35,7 @@ describe('resource completions', () => {
       n: 1,
       parallel_tool_calls: true,
       presence_penalty: -2,
+      reasoning_effort: 'low',
       response_format: { type: 'text' },
       seed: 0,
       stop: '\n',
