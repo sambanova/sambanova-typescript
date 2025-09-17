@@ -1,7 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import SambaNova from 'sambanova';
-import { Response } from 'node-fetch';
 
 const client = new SambaNova({
   apiKey: 'My API Key',
@@ -27,6 +26,7 @@ describe('resource completions', () => {
     const response = await client.chat.completions.create({
       messages: [{ content: 'create a poem using palindromes', role: 'user' }],
       model: 'string',
+      do_sample: true,
       frequency_penalty: -2,
       logit_bias: { foo: 0 },
       logprobs: true,
@@ -35,10 +35,8 @@ describe('resource completions', () => {
       n: 1,
       parallel_tool_calls: true,
       presence_penalty: -2,
-      response_format: {
-        json_schema: { name: 'name', schema: {}, strict: true, title: 'title' },
-        type: 'json_object',
-      },
+      reasoning_effort: 'low',
+      response_format: { type: 'text' },
       seed: 0,
       stop: '\n',
       stream: false,

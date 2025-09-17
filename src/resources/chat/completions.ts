@@ -1,10 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../../resource';
-import { APIPromise } from '../../core';
-import * as Core from '../../core';
+import { APIResource } from '../../core/resource';
 import * as CompletionsAPI from './completions';
-import { Stream } from '../../streaming';
+import { APIPromise } from '../../core/api-promise';
+import { Stream } from '../../core/streaming';
+import { RequestOptions } from '../../internal/request-options';
 
 export class Completions extends APIResource {
   /**
@@ -25,19 +25,19 @@ export class Completions extends APIResource {
    */
   create(
     body: CompletionCreateParamsNonStreaming,
-    options?: Core.RequestOptions,
+    options?: RequestOptions,
   ): APIPromise<CompletionCreateResponse>;
   create(
     body: CompletionCreateParamsStreaming,
-    options?: Core.RequestOptions,
+    options?: RequestOptions,
   ): APIPromise<Stream<CompletionCreateResponse>>;
   create(
     body: CompletionCreateParamsBase,
-    options?: Core.RequestOptions,
+    options?: RequestOptions,
   ): APIPromise<Stream<CompletionCreateResponse> | CompletionCreateResponse>;
   create(
     body: CompletionCreateParams,
-    options?: Core.RequestOptions,
+    options?: RequestOptions,
   ): APIPromise<CompletionCreateResponse> | APIPromise<Stream<CompletionCreateResponse>> {
     return this._client.post('/v1/chat/completions', { body, ...options, stream: body.stream ?? false }) as
       | APIPromise<CompletionCreateResponse>
@@ -77,7 +77,8 @@ export interface ChatCompletionResponse {
   system_fingerprint: string;
 
   /**
-   * Usage metrics for the completion request
+   * Usage metrics for the completion, embeddings,transcription or translation
+   * request
    */
   usage: ChatCompletionResponse.Usage | null;
 }
@@ -144,6 +145,11 @@ export namespace ChatCompletionResponse {
          */
         type: 'function';
 
+        /**
+         * index of tool call chunk only used when using streaming
+         */
+        index?: number | null;
+
         [k: string]: unknown;
       }
 
@@ -207,7 +213,8 @@ export namespace ChatCompletionResponse {
   }
 
   /**
-   * Usage metrics for the completion request
+   * Usage metrics for the completion, embeddings,transcription or translation
+   * request
    */
   export interface Usage {
     /**
@@ -231,6 +238,11 @@ export namespace ChatCompletionResponse {
     completion_tokens_after_first_per_sec_first_ten?: number;
 
     /**
+     * completion tokens per second after first token generation
+     */
+    completion_tokens_after_first_per_sec_graph?: number;
+
+    /**
      * completion tokens per second
      */
     completion_tokens_per_sec?: number;
@@ -249,6 +261,11 @@ export namespace ChatCompletionResponse {
      * number of tokens used in the prompt sent
      */
     prompt_tokens?: number;
+
+    /**
+     * Extra tokens details
+     */
+    prompt_tokens_details?: Usage.PromptTokensDetails;
 
     /**
      * The Unix timestamp (in seconds) of when the generation started.
@@ -277,6 +294,20 @@ export namespace ChatCompletionResponse {
 
     [k: string]: unknown;
   }
+
+  export namespace Usage {
+    /**
+     * Extra tokens details
+     */
+    export interface PromptTokensDetails {
+      /**
+       * amount of cached tokens
+       */
+      cached_tokens?: number;
+
+      [k: string]: unknown;
+    }
+  }
 }
 
 /**
@@ -304,9 +335,9 @@ export interface ChatCompletionStreamResponse {
   model: string;
 
   /**
-   * The object type, always `chat.completion`.
+   * The object type, always `chat.completion.chunk`.
    */
-  object: 'chat.completion';
+  object: 'chat.completion.chunk';
 
   /**
    * Backend configuration that the model runs with.
@@ -314,7 +345,8 @@ export interface ChatCompletionStreamResponse {
   system_fingerprint: string;
 
   /**
-   * Usage metrics for the completion request
+   * Usage metrics for the completion, embeddings,transcription or translation
+   * request
    */
   usage?: ChatCompletionStreamResponse.Usage | null;
 
@@ -329,17 +361,17 @@ export namespace ChatCompletionStreamResponse {
     delta: Choice.Delta;
 
     /**
+     * The index of the choice in the list of choices
+     */
+    index: number;
+
+    /**
      * The reason the model stopped generating tokens. Will be `stop` if the model hit
      * a natural stop point or a provided stop sequence, `length` if the maximum number
      * of tokens specified in the request was reached, `tool_calls` if the model called
      * a tool.
      */
-    finish_reason: 'stop' | 'length' | 'tool_calls';
-
-    /**
-     * The index of the choice in the list of choices
-     */
-    index: number;
+    finish_reason?: 'stop' | 'length' | 'tool_calls' | null;
 
     /**
      * Completion Log Probs object
@@ -389,6 +421,11 @@ export namespace ChatCompletionStreamResponse {
          */
         type: 'function';
 
+        /**
+         * index of tool call chunk only used when using streaming
+         */
+        index?: number | null;
+
         [k: string]: unknown;
       }
 
@@ -452,7 +489,8 @@ export namespace ChatCompletionStreamResponse {
   }
 
   /**
-   * Usage metrics for the completion request
+   * Usage metrics for the completion, embeddings,transcription or translation
+   * request
    */
   export interface Usage {
     /**
@@ -476,6 +514,11 @@ export namespace ChatCompletionStreamResponse {
     completion_tokens_after_first_per_sec_first_ten?: number;
 
     /**
+     * completion tokens per second after first token generation
+     */
+    completion_tokens_after_first_per_sec_graph?: number;
+
+    /**
      * completion tokens per second
      */
     completion_tokens_per_sec?: number;
@@ -494,6 +537,11 @@ export namespace ChatCompletionStreamResponse {
      * number of tokens used in the prompt sent
      */
     prompt_tokens?: number;
+
+    /**
+     * Extra tokens details
+     */
+    prompt_tokens_details?: Usage.PromptTokensDetails;
 
     /**
      * The Unix timestamp (in seconds) of when the generation started.
@@ -521,6 +569,20 @@ export namespace ChatCompletionStreamResponse {
     total_tokens_per_sec?: number;
 
     [k: string]: unknown;
+  }
+
+  export namespace Usage {
+    /**
+     * Extra tokens details
+     */
+    export interface PromptTokensDetails {
+      /**
+       * amount of cached tokens
+       */
+      cached_tokens?: number;
+
+      [k: string]: unknown;
+    }
   }
 }
 
@@ -633,11 +695,19 @@ export interface CompletionCreateParamsBase {
     | 'Meta-Llama-Guard-3-8B'
     | 'DeepSeek-R1'
     | 'DeepSeek-V3-0324'
+    | 'DeepSeek-V3.1'
     | 'DeepSeek-R1-Distill-Llama-70B'
     | 'Llama-4-Maverick-17B-128E-Instruct'
     | 'Llama-4-Scout-17B-16E-Instruct'
     | 'Qwen3-32B'
-    | 'Llama-3.3-Swallow-70B-Instruct-v0.4';
+    | 'Llama-3.3-Swallow-70B-Instruct-v0.4'
+    | 'gpt-oss-120b';
+
+  /**
+   * If true, sampling is enabled during output generation. If false, deterministic
+   * decoding is used.
+   */
+  do_sample?: boolean | null;
 
   /**
    * Number between -2.0 and 2.0. Positive values penalize new tokens based on their
@@ -692,6 +762,14 @@ export interface CompletionCreateParamsBase {
   presence_penalty?: number | null;
 
   /**
+   * Value specifying the amount of reasoning the model is allowed to do, increasing
+   * it will increase the number of output reasoning tokens generated by the model,
+   * but will improve quality of the responses. allowed values are 'low', 'medium',
+   * 'high'
+   */
+  reasoning_effort?: 'low' | 'medium' | 'high' | null;
+
+  /**
    * An object specifying the format that the model must output. Setting to
    * `{ "type": "json_object"}` enables JSON mode, which will check the message the
    * model generates is valid JSON. **Important:** when using JSON mode, you **must**
@@ -700,7 +778,11 @@ export interface CompletionCreateParamsBase {
    * JSON schema mode, which will check the message the model generates is valid
    * object of type <your_schema>.
    */
-  response_format?: CompletionCreateParams.ResponseFormat | null;
+  response_format?:
+    | CompletionCreateParams.ResponseFormatText
+    | CompletionCreateParams.ResponseFormatJsonObject
+    | CompletionCreateParams.ResponseFormatJsonSchema
+    | null;
 
   /**
    * This is not yet supported by our models.
@@ -774,6 +856,8 @@ export interface CompletionCreateParamsBase {
    * or temperature but not more than one of these.
    */
   top_p?: number | null;
+
+  [k: string]: unknown;
 }
 
 export namespace CompletionCreateParams {
@@ -893,6 +977,11 @@ export namespace CompletionCreateParams {
     role: 'assistant';
 
     /**
+     * Reasoning (returned by reasoning models like gpt oss)
+     */
+    reasoning?: string | null;
+
+    /**
      * The tool calls generated by the model.
      */
     tool_calls?: Array<AssistantMessage.ToolCall> | null;
@@ -930,6 +1019,11 @@ export namespace CompletionCreateParams {
        * type of the tool cal. only `function` is supported.
        */
       type: 'function';
+
+      /**
+       * index of tool call chunk only used when using streaming
+       */
+      index?: number | null;
 
       [k: string]: unknown;
     }
@@ -988,50 +1082,64 @@ export namespace CompletionCreateParams {
   }
 
   /**
-   * An object specifying the format that the model must output. Setting to
-   * `{ "type": "json_object"}` enables JSON mode, which will check the message the
-   * model generates is valid JSON. **Important:** when using JSON mode, you **must**
-   * also instruct the model to produce JSON yourself via a system or user message.
-   * Setting to `{ "type": "json_schema", "json_schema": {<your_schema>}"}` enables
-   * JSON schema mode, which will check the message the model generates is valid
-   * object of type <your_schema>.
+   * Specifies that the model should produce output as plain text.
    */
-  export interface ResponseFormat {
-    /**
-     * the schema the model should generate.
-     */
-    json_schema?: ResponseFormat.JsonSchema | null;
+  export interface ResponseFormatText {
+    type: 'text';
 
-    /**
-     * type of structured output both `json_object` and `json_schema` are allowed.
-     */
-    type?: 'json_object' | 'json_schema';
+    [k: string]: unknown;
   }
 
-  export namespace ResponseFormat {
+  /**
+   * Specifies that the model should produce output as a raw JSON object.
+   */
+  export interface ResponseFormatJsonObject {
+    type: 'json_object';
+
+    [k: string]: unknown;
+  }
+
+  /**
+   * Specifies that the model should produce output conforming to a given JSON
+   * schema.
+   */
+  export interface ResponseFormatJsonSchema {
     /**
-     * the schema the model should generate.
+     * A JSON Schema definition the model's structured output. Follows standard JSON
+     * Schema syntax.
+     */
+    json_schema: ResponseFormatJsonSchema.JsonSchema;
+
+    type: 'json_schema';
+
+    [k: string]: unknown;
+  }
+
+  export namespace ResponseFormatJsonSchema {
+    /**
+     * A JSON Schema definition the model's structured output. Follows standard JSON
+     * Schema syntax.
      */
     export interface JsonSchema {
       /**
-       * the name of the object schema
+       * name of the object schema
        */
       name: string;
 
       /**
-       * json object schema
+       * description the json schema
+       */
+      description?: string | null;
+
+      /**
+       * Actual json schema object
        */
       schema?: unknown | null;
 
       /**
-       * whether to do strict checking of the schema, currently only false is supported
+       * whether or not to do an strict validation of the schema
        */
       strict?: boolean | null;
-
-      /**
-       * the title of the object schema
-       */
-      title?: string | null;
 
       [k: string]: unknown;
     }
@@ -1128,6 +1236,8 @@ export interface CompletionCreateParamsNonStreaming extends CompletionCreatePara
    * message.
    */
   stream?: false | null;
+
+  [k: string]: unknown;
 }
 
 export interface CompletionCreateParamsStreaming extends CompletionCreateParamsBase {
@@ -1138,6 +1248,8 @@ export interface CompletionCreateParamsStreaming extends CompletionCreateParamsB
    * message.
    */
   stream: true;
+
+  [k: string]: unknown;
 }
 
 export declare namespace Completions {
