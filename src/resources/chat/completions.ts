@@ -392,6 +392,16 @@ export namespace ChatCompletionStreamResponse {
       content: string | null;
 
       /**
+       * Channel (returned by reasoning models like gpt oss)
+       */
+      channel?: string | null;
+
+      /**
+       * Reasoning (returned by reasoning models like gpt oss)
+       */
+      reasoning?: string | null;
+
+      /**
        * The role of the messages author
        */
       role?: 'assistant' | 'user' | 'system' | 'tool';
@@ -975,6 +985,11 @@ export namespace CompletionCreateParams {
      * The role of the messages author, in this case `assistant`.
      */
     role: 'assistant';
+
+    /**
+     * Channel (returned by reasoning models like gpt oss)
+     */
+    channel?: string | null;
 
     /**
      * Reasoning (returned by reasoning models like gpt oss)
