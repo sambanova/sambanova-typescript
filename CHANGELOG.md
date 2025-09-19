@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.1.0-alpha.2 (2025-09-19)
+
+Full Changelog: [v0.1.0-alpha.1...v0.1.0-alpha.2](https://github.com/sambanova/sambanova-typescript/compare/v0.1.0-alpha.1...v0.1.0-alpha.2)
+
+### Features
+
+* **api:** add reasoning and channel param to messages delta ([74b38f6](https://github.com/sambanova/sambanova-typescript/commit/74b38f6450f82d75763ac519e31c80394a8302ca))
+* **api:** manual updates ([ea47138](https://github.com/sambanova/sambanova-typescript/commit/ea47138d1e2f721eade16f26bd2ca883451368c5))
+
+
+### Chores
+
+* do not install brew dependencies in ./scripts/bootstrap by default ([23d7e93](https://github.com/sambanova/sambanova-typescript/commit/23d7e930073e91cc27e590d78ca7c0fb587f609f))
+
 ## 0.1.0-alpha.1 (2025-09-17)
 
 Full Changelog: [v0.0.1-alpha.0...v0.1.0-alpha.1](https://github.com/sambanova/sambanova-typescript/compare/v0.0.1-alpha.0...v0.1.0-alpha.1)
