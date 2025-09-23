@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.1.0 (2025-09-22)
+
+Full Changelog: [v0.1.0-alpha.2...v1.1.0](https://github.com/sambanova/sambanova-typescript/compare/v0.1.0-alpha.2...v1.1.0)
+
+### Chores
+
+* **internal:** trigger CI ([a56b6d8](https://github.com/sambanova/sambanova-typescript/commit/a56b6d80c336553c50b7dbde0365e24c11e84340))
+
 ## 0.1.0-alpha.2 (2025-09-19)
 
 Full Changelog: [v0.1.0-alpha.1...v0.1.0-alpha.2](https://github.com/sambanova/sambanova-typescript/compare/v0.1.0-alpha.1...v0.1.0-alpha.2)
