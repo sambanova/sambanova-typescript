@@ -349,8 +349,6 @@ export interface ChatCompletionStreamResponse {
    * request
    */
   usage?: ChatCompletionStreamResponse.Usage | null;
-
-  [k: string]: unknown;
 }
 
 export namespace ChatCompletionStreamResponse {
@@ -377,8 +375,6 @@ export namespace ChatCompletionStreamResponse {
      * Completion Log Probs object
      */
     logprobs?: Choice.Logprobs | null;
-
-    [k: string]: unknown;
   }
 
   export namespace Choice {
