@@ -20,7 +20,7 @@ export class Embeddings extends APIResource {
    * ```
    */
   create(body: EmbeddingCreateParams, options?: RequestOptions): APIPromise<EmbeddingsResponse> {
-    return this._client.post('/v1/embeddings', { body, ...options });
+    return this._client.post('/embeddings', { body, ...options });
   }
 }
 
