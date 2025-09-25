@@ -130,7 +130,7 @@ export class SambaNova {
    * API Client for interfacing with the Samba Nova API.
    *
    * @param {string | undefined} [opts.apiKey=process.env['SAMBANOVA_API_KEY'] ?? undefined]
-   * @param {string} [opts.baseURL=process.env['SAMBA_NOVA_BASE_URL'] ?? https://api.sambanova.ai] - Override the default base URL for the API.
+   * @param {string} [opts.baseURL=process.env['SAMBA_NOVA_BASE_URL'] ?? https://api.sambanova.ai/v1] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {MergedRequestInit} [opts.fetchOptions] - Additional `RequestInit` options to be passed to `fetch` calls.
    * @param {Fetch} [opts.fetch] - Specify a custom `fetch` function implementation.
@@ -152,7 +152,7 @@ export class SambaNova {
     const options: ClientOptions = {
       apiKey,
       ...opts,
-      baseURL: baseURL || `https://api.sambanova.ai`,
+      baseURL: baseURL || `https://api.sambanova.ai/v1`,
     };
 
     this.baseURL = options.baseURL!;
@@ -198,7 +198,7 @@ export class SambaNova {
    * Check whether the base URL is set to its default.
    */
   #baseURLOverridden(): boolean {
-    return this.baseURL !== 'https://api.sambanova.ai';
+    return this.baseURL !== 'https://api.sambanova.ai/v1';
   }
 
   protected defaultQuery(): Record<string, string | undefined> | undefined {

@@ -10,14 +10,14 @@ export class Models extends APIResource {
    * Get environment's available model metadata
    */
   retrieve(modelID: string, options?: RequestOptions): APIPromise<ModelResponse> {
-    return this._client.get(path`/v1/models/${modelID}`, options);
+    return this._client.get(path`/models/${modelID}`, options);
   }
 
   /**
    * Get environment's available model list metadata
    */
   list(options?: RequestOptions): APIPromise<ModelsResponse> {
-    return this._client.get('/v1/models', options);
+    return this._client.get('/models', options);
   }
 }
 
@@ -82,8 +82,6 @@ export namespace ModelResponse {
      * price per prompt token in USD
      */
     prompt?: number;
-
-    [k: string]: unknown;
   }
 }
 

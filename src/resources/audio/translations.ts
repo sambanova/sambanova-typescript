@@ -37,7 +37,7 @@ export class Translations extends APIResource {
     options?: RequestOptions,
   ): APIPromise<TranslationCreateResponse> | APIPromise<Stream<TranslationCreateResponse>> {
     return this._client.post(
-      '/v1/audio/translations',
+      '/audio/translations',
       multipartFormRequestOptions({ body, ...options, stream: body.stream ?? false }, this._client),
     ) as APIPromise<TranslationCreateResponse> | APIPromise<Stream<TranslationCreateResponse>>;
   }
