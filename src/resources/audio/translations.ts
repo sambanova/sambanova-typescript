@@ -27,19 +27,19 @@ export class Translations extends APIResource {
   create(
     body: TranslationCreateParamsStreaming,
     options?: RequestOptions,
-  ): APIPromise<Stream<TranslationCreateResponse>>;
+  ): APIPromise<Stream<TranslationStreamResponse>>;
   create(
     body: TranslationCreateParamsBase,
     options?: RequestOptions,
-  ): APIPromise<Stream<TranslationCreateResponse> | TranslationCreateResponse>;
+  ): APIPromise<Stream<TranslationStreamResponse> | TranslationCreateResponse>;
   create(
     body: TranslationCreateParams,
     options?: RequestOptions,
-  ): APIPromise<TranslationCreateResponse> | APIPromise<Stream<TranslationCreateResponse>> {
+  ): APIPromise<TranslationCreateResponse> | APIPromise<Stream<TranslationStreamResponse>> {
     return this._client.post(
       '/audio/translations',
       multipartFormRequestOptions({ body, ...options, stream: body.stream ?? false }, this._client),
-    ) as APIPromise<TranslationCreateResponse> | APIPromise<Stream<TranslationCreateResponse>>;
+    ) as APIPromise<TranslationCreateResponse> | APIPromise<Stream<TranslationStreamResponse>>;
   }
 }
 
