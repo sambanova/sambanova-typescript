@@ -30,18 +30,18 @@ export class Completions extends APIResource {
   create(
     body: CompletionCreateParamsStreaming,
     options?: RequestOptions,
-  ): APIPromise<Stream<CompletionCreateResponse>>;
+  ): APIPromise<Stream<ChatCompletionStreamResponse>>;
   create(
     body: CompletionCreateParamsBase,
     options?: RequestOptions,
-  ): APIPromise<Stream<CompletionCreateResponse> | CompletionCreateResponse>;
+  ): APIPromise<Stream<ChatCompletionStreamResponse> | CompletionCreateResponse>;
   create(
     body: CompletionCreateParams,
     options?: RequestOptions,
-  ): APIPromise<CompletionCreateResponse> | APIPromise<Stream<CompletionCreateResponse>> {
-    return this._client.post('/v1/chat/completions', { body, ...options, stream: body.stream ?? false }) as
+  ): APIPromise<CompletionCreateResponse> | APIPromise<Stream<ChatCompletionStreamResponse>> {
+    return this._client.post('/chat/completions', { body, ...options, stream: body.stream ?? false }) as
       | APIPromise<CompletionCreateResponse>
-      | APIPromise<Stream<CompletionCreateResponse>>;
+      | APIPromise<Stream<ChatCompletionStreamResponse>>;
   }
 }
 
@@ -387,14 +387,14 @@ export namespace ChatCompletionStreamResponse {
      */
     export interface Delta {
       /**
-       * The contents of the assistant message.
-       */
-      content: string | null;
-
-      /**
        * Channel (returned by reasoning models like gpt oss)
        */
       channel?: string | null;
+
+      /**
+       * The contents of the assistant message.
+       */
+      content?: string | null;
 
       /**
        * Reasoning (returned by reasoning models like gpt oss)

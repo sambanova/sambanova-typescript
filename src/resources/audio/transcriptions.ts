@@ -28,19 +28,19 @@ export class Transcriptions extends APIResource {
   create(
     body: TranscriptionCreateParamsStreaming,
     options?: RequestOptions,
-  ): APIPromise<Stream<TranscriptionCreateResponse>>;
+  ): APIPromise<Stream<TranscriptionStreamResponse>>;
   create(
     body: TranscriptionCreateParamsBase,
     options?: RequestOptions,
-  ): APIPromise<Stream<TranscriptionCreateResponse> | TranscriptionCreateResponse>;
+  ): APIPromise<Stream<TranscriptionStreamResponse> | TranscriptionCreateResponse>;
   create(
     body: TranscriptionCreateParams,
     options?: RequestOptions,
-  ): APIPromise<TranscriptionCreateResponse> | APIPromise<Stream<TranscriptionCreateResponse>> {
+  ): APIPromise<TranscriptionCreateResponse> | APIPromise<Stream<TranscriptionStreamResponse>> {
     return this._client.post(
-      '/v1/audio/transcriptions',
+      '/audio/transcriptions',
       multipartFormRequestOptions({ body, ...options, stream: body.stream ?? false }, this._client),
-    ) as APIPromise<TranscriptionCreateResponse> | APIPromise<Stream<TranscriptionCreateResponse>>;
+    ) as APIPromise<TranscriptionCreateResponse> | APIPromise<Stream<TranscriptionStreamResponse>>;
   }
 }
 

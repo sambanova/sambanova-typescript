@@ -7,10 +7,9 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "esModuleInterop": true,
-    "baseUrl": "./",
     "paths": {
-      "sambanova/*": ["src/*"],
-      "sambanova": ["src/index.ts"]
+      "sambanova/*": ["./src/*"],
+      "sambanova": ["./src/index.ts"]
     },
     "noEmit": true,
 

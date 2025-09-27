@@ -12,7 +12,7 @@ Types:
 
 Methods:
 
-- <code title="post /v1/chat/completions">client.chat.completions.<a href="./src/resources/chat/completions.ts">create</a>({ ...params }) -> CompletionCreateResponse</code>
+- <code title="post /chat/completions">client.chat.completions.<a href="./src/resources/chat/completions.ts">create</a>({ ...params }) -> CompletionCreateResponse</code>
 
 # Embeddings
 
@@ -22,7 +22,7 @@ Types:
 
 Methods:
 
-- <code title="post /v1/embeddings">client.embeddings.<a href="./src/resources/embeddings.ts">create</a>({ ...params }) -> EmbeddingsResponse</code>
+- <code title="post /embeddings">client.embeddings.<a href="./src/resources/embeddings.ts">create</a>({ ...params }) -> EmbeddingsResponse</code>
 
 # Audio
 
@@ -36,7 +36,7 @@ Types:
 
 Methods:
 
-- <code title="post /v1/audio/transcriptions">client.audio.transcriptions.<a href="./src/resources/audio/transcriptions.ts">create</a>({ ...params }) -> TranscriptionCreateResponse</code>
+- <code title="post /audio/transcriptions">client.audio.transcriptions.<a href="./src/resources/audio/transcriptions.ts">create</a>({ ...params }) -> TranscriptionCreateResponse</code>
 
 ## Translations
 
@@ -48,7 +48,7 @@ Types:
 
 Methods:
 
-- <code title="post /v1/audio/translations">client.audio.translations.<a href="./src/resources/audio/translations.ts">create</a>({ ...params }) -> TranslationCreateResponse</code>
+- <code title="post /audio/translations">client.audio.translations.<a href="./src/resources/audio/translations.ts">create</a>({ ...params }) -> TranslationCreateResponse</code>
 
 # Models
 
@@ -59,5 +59,5 @@ Types:
 
 Methods:
 
-- <code title="get /v1/models/{model_id}">client.models.<a href="./src/resources/models.ts">retrieve</a>(modelID) -> ModelResponse</code>
-- <code title="get /v1/models">client.models.<a href="./src/resources/models.ts">list</a>() -> ModelsResponse</code>
+- <code title="get /models/{model_id}">client.models.<a href="./src/resources/models.ts">retrieve</a>(modelID) -> ModelResponse</code>
+- <code title="get /models">client.models.<a href="./src/resources/models.ts">list</a>() -> ModelsResponse</code>
