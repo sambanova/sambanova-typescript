@@ -30,18 +30,18 @@ export class Completions extends APIResource {
   create(
     body: CompletionCreateParamsStreaming,
     options?: RequestOptions,
-  ): APIPromise<Stream<CompletionCreateResponse>>;
+  ): APIPromise<Stream<ChatCompletionStreamResponse>>;
   create(
     body: CompletionCreateParamsBase,
     options?: RequestOptions,
-  ): APIPromise<Stream<CompletionCreateResponse> | CompletionCreateResponse>;
+  ): APIPromise<Stream<ChatCompletionStreamResponse> | CompletionCreateResponse>;
   create(
     body: CompletionCreateParams,
     options?: RequestOptions,
-  ): APIPromise<CompletionCreateResponse> | APIPromise<Stream<CompletionCreateResponse>> {
+  ): APIPromise<CompletionCreateResponse> | APIPromise<Stream<ChatCompletionStreamResponse>> {
     return this._client.post('/chat/completions', { body, ...options, stream: body.stream ?? false }) as
       | APIPromise<CompletionCreateResponse>
-      | APIPromise<Stream<CompletionCreateResponse>>;
+      | APIPromise<Stream<ChatCompletionStreamResponse>>;
   }
 }
 
