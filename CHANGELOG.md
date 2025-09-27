@@ -1,5 +1,30 @@
 # Changelog
 
+## 1.1.1 (2025-09-27)
+
+Full Changelog: [v1.1.0...v1.1.1](https://github.com/sambanova/sambanova-typescript/compare/v1.1.0...v1.1.1)
+
+### Features
+
+* **api:** fix delta dict structure ([a39d4ec](https://github.com/sambanova/sambanova-typescript/commit/a39d4ec9360b700b0a4904cb67b3b724380e189f))
+* **api:** fix delta object type for chat completions ([8b60409](https://github.com/sambanova/sambanova-typescript/commit/8b604096a9ef9c8bf4dab5504424c10a665d7f88))
+* **api:** fix streaming event models ([7aef6f9](https://github.com/sambanova/sambanova-typescript/commit/7aef6f926b0ed463a7552bb6da6ca37177c2965e))
+* **api:** keep additional properties for streaming and pricing object ([e5aa28f](https://github.com/sambanova/sambanova-typescript/commit/e5aa28fb6be7ffced0925d2c95179dc2b7ef6b48))
+* **api:** update prod-url ([0bb9a5e](https://github.com/sambanova/sambanova-typescript/commit/0bb9a5e0fb4c4f92ace61d84e99cfbfb3a2ff8f8))
+
+
+### Performance Improvements
+
+* faster formatting ([e858ef4](https://github.com/sambanova/sambanova-typescript/commit/e858ef48c1eda6f928f6306a57cc0e2913d07e12))
+
+
+### Chores
+
+* **internal:** codegen related update ([01c92c9](https://github.com/sambanova/sambanova-typescript/commit/01c92c976c691f368bedb431d18efec795fe4acc))
+* **internal:** fix incremental formatting in some cases ([013c24d](https://github.com/sambanova/sambanova-typescript/commit/013c24da0bea091eb1ff8045c56a590e39ee8067))
+* **internal:** ignore .eslintcache ([b815a91](https://github.com/sambanova/sambanova-typescript/commit/b815a9108e49c259f8ba26cc2f860353f25e9001))
+* **internal:** remove deprecated `compilerOptions.baseUrl` from tsconfig.json ([4f1e4e0](https://github.com/sambanova/sambanova-typescript/commit/4f1e4e0df77817161202d4bfc6e918cb8846ea6d))
+
 ## 1.1.0 (2025-09-22)
 
 Full Changelog: [v0.1.0-alpha.2...v1.1.0](https://github.com/sambanova/sambanova-typescript/compare/v0.1.0-alpha.2...v1.1.0)
