@@ -82,6 +82,8 @@ export namespace ModelResponse {
      * price per prompt token in USD
      */
     prompt?: number;
+
+    [k: string]: unknown;
   }
 }
 
