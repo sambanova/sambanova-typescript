@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.1.2 (2025-10-02)
+
+Full Changelog: [v1.1.1...v1.1.2](https://github.com/sambanova/sambanova-typescript/compare/v1.1.1...v1.1.2)
+
+### Chores
+
+* **internal:** remove .eslintcache ([ff13f78](https://github.com/sambanova/sambanova-typescript/commit/ff13f78891917f1df1089d35bc5f706166d74583))
+
 ## 1.1.1 (2025-09-27)
 
 Full Changelog: [v1.1.0...v1.1.1](https://github.com/sambanova/sambanova-typescript/compare/v1.1.0...v1.1.1)
