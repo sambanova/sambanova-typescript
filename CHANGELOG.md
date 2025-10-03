@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.1.3 (2025-10-03)
+
+Full Changelog: [v1.1.2...v1.1.3](https://github.com/sambanova/sambanova-typescript/compare/v1.1.2...v1.1.3)
+
+### Chores
+
+* **jsdoc:** fix [@link](https://github.com/link) annotations to refer only to parts of the package‘s public interface ([6aea350](https://github.com/sambanova/sambanova-typescript/commit/6aea3504f92483caed38f1dfbc50cf83c25784c0))
+
 ## 1.1.2 (2025-10-02)
 
 Full Changelog: [v1.1.1...v1.1.2](https://github.com/sambanova/sambanova-typescript/compare/v1.1.1...v1.1.2)
