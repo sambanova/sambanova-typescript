@@ -6,7 +6,7 @@ import { RequestOptions } from '../internal/request-options';
 
 export class Embeddings extends APIResource {
   /**
-   * Create chat-based completion
+   * Create embeddings
    *
    * @example
    * ```ts
