@@ -1,6 +1,6 @@
 {
   "name": "sambanova",
-  "version": "1.1.3",
+  "version": "1.1.4",
   "description": "The official TypeScript library for the Samba Nova API",
   "author": "Samba Nova <info@sambanova.ai>",
   "types": "dist/index.d.ts",
