@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.1.4 (2025-10-09)
+
+Full Changelog: [v1.1.3...v1.1.4](https://github.com/sambanova/sambanova-typescript/compare/v1.1.3...v1.1.4)
+
+### Bug Fixes
+
+* **api:** embeddings summary ([5bada3c](https://github.com/sambanova/sambanova-typescript/commit/5bada3c711e4250b054417e67877d62aedb36412))
+
 ## 1.1.3 (2025-10-06)
 
 Full Changelog: [v1.1.2...v1.1.3](https://github.com/sambanova/sambanova-typescript/compare/v1.1.2...v1.1.3)
