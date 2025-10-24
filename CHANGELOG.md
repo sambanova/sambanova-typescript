@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.1.5 (2025-10-24)
+
+Full Changelog: [v1.1.4...v1.1.5](https://github.com/sambanova/sambanova-typescript/compare/v1.1.4...v1.1.5)
+
+### Bug Fixes
+
+* **api:** increase default timeouts ([5c4867e](https://github.com/sambanova/sambanova-typescript/commit/5c4867ebbb046c84161bc6520c9eeb72174be23f))
+
 ## 1.1.4 (2025-10-09)
 
 Full Changelog: [v1.1.3...v1.1.4](https://github.com/sambanova/sambanova-typescript/compare/v1.1.3...v1.1.4)
