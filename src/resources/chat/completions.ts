@@ -717,6 +717,13 @@ export interface CompletionCreateParamsBase {
     | 'ALLaM-7B-Instruct-preview';
 
   /**
+   * A dictionary of additional keyword arguments to pass into the chat template. Use
+   * this to provide extra context or parameters that the model's chat template can
+   * process. Keys must be strings; values may be any valid JSON type.
+   */
+  chat_template_kwargs?: CompletionCreateParams.ChatTemplateKwargs | null;
+
+  /**
    * If true, sampling is enabled during output generation. If false, deterministic
    * decoding is used.
    */
@@ -1097,6 +1104,21 @@ export namespace CompletionCreateParams {
 
       [k: string]: unknown;
     }
+  }
+
+  /**
+   * A dictionary of additional keyword arguments to pass into the chat template. Use
+   * this to provide extra context or parameters that the model's chat template can
+   * process. Keys must be strings; values may be any valid JSON type.
+   */
+  export interface ChatTemplateKwargs {
+    /**
+     * Enables the model's internal reasoning or "thinking" mode, if supported by the
+     * chat template (deepseek models).
+     */
+    enable_thinking?: boolean;
+
+    [k: string]: unknown;
   }
 
   /**
