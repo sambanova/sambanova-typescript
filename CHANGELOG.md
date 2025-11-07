@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.1.6 (2025-11-07)
+
+Full Changelog: [v1.1.5...v1.1.6](https://github.com/sambanova/sambanova-typescript/compare/v1.1.5...v1.1.6)
+
+### Bug Fixes
+
+* **api:** add missing chat_template_kwargs chat completions argument ([b60a15e](https://github.com/sambanova/sambanova-typescript/commit/b60a15eb86108dc73356406d458d92b2136b659a))
+* **api:** update deafault models ([0575914](https://github.com/sambanova/sambanova-typescript/commit/05759142c73b04499e2dbcbff71160cc3408a4d2))
+
 ## 1.1.5 (2025-10-24)
 
 Full Changelog: [v1.1.4...v1.1.5](https://github.com/sambanova/sambanova-typescript/compare/v1.1.4...v1.1.5)
