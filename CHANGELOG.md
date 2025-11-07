@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.2.0 (2025-11-07)
+
+Full Changelog: [v1.1.6...v1.2.0](https://github.com/sambanova/sambanova-typescript/compare/v1.1.6...v1.2.0)
+
+### Features
+
+* **api:** add completions support ([cc1fdda](https://github.com/sambanova/sambanova-typescript/commit/cc1fddaa6a23ea576473dec36557462fee196108))
+
 ## 1.1.6 (2025-11-07)
 
 Full Changelog: [v1.1.5...v1.1.6](https://github.com/sambanova/sambanova-typescript/compare/v1.1.5...v1.1.6)
