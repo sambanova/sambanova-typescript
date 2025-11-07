@@ -16,6 +16,15 @@ import * as Errors from './core/error';
 import * as Uploads from './core/uploads';
 import * as API from './resources/index';
 import { APIPromise } from './core/api-promise';
+import {
+  CompletionCreateParams,
+  CompletionCreateParamsNonStreaming,
+  CompletionCreateParamsStreaming,
+  CompletionCreateResponse,
+  CompletionResponse,
+  CompletionStreamResponse,
+  Completions,
+} from './resources/completions';
 import { EmbeddingCreateParams, Embeddings, EmbeddingsResponse } from './resources/embeddings';
 import { ModelResponse, Models, ModelsResponse } from './resources/models';
 import { Audio } from './resources/audio/audio';
@@ -718,12 +727,14 @@ export class SambaNova {
   static toFile = Uploads.toFile;
 
   chat: API.Chat = new API.Chat(this);
+  completions: API.Completions = new API.Completions(this);
   embeddings: API.Embeddings = new API.Embeddings(this);
   audio: API.Audio = new API.Audio(this);
   models: API.Models = new API.Models(this);
 }
 
 SambaNova.Chat = Chat;
+SambaNova.Completions = Completions;
 SambaNova.Embeddings = Embeddings;
 SambaNova.Audio = Audio;
 SambaNova.Models = Models;
@@ -732,6 +743,16 @@ export declare namespace SambaNova {
   export type RequestOptions = Opts.RequestOptions;
 
   export { Chat as Chat };
+
+  export {
+    Completions as Completions,
+    type CompletionResponse as CompletionResponse,
+    type CompletionStreamResponse as CompletionStreamResponse,
+    type CompletionCreateResponse as CompletionCreateResponse,
+    type CompletionCreateParams as CompletionCreateParams,
+    type CompletionCreateParamsNonStreaming as CompletionCreateParamsNonStreaming,
+    type CompletionCreateParamsStreaming as CompletionCreateParamsStreaming,
+  };
 
   export {
     Embeddings as Embeddings,

@@ -14,6 +14,18 @@ Methods:
 
 - <code title="post /chat/completions">client.chat.completions.<a href="./src/resources/chat/completions.ts">create</a>({ ...params }) -> CompletionCreateResponse</code>
 
+# Completions
+
+Types:
+
+- <code><a href="./src/resources/completions.ts">CompletionResponse</a></code>
+- <code><a href="./src/resources/completions.ts">CompletionStreamResponse</a></code>
+- <code><a href="./src/resources/completions.ts">CompletionCreateResponse</a></code>
+
+Methods:
+
+- <code title="post /completions">client.completions.<a href="./src/resources/completions.ts">create</a>({ ...params }) -> CompletionCreateResponse</code>
+
 # Embeddings
 
 Types:
