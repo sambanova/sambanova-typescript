@@ -45,7 +45,14 @@ describe('resource completions', () => {
       temperature: 0.7,
       tool_choice: 'none',
       tools: [
-        { function: { name: 'name', description: 'description', parameters: { foo: 'bar' } }, type: 'type' },
+        {
+          function: {
+            name: 'name',
+            description: 'description',
+            parameters: { foo: 'bar' },
+          },
+          type: 'type',
+        },
       ],
       top_k: 5,
       top_logprobs: 0,
