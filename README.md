@@ -70,7 +70,9 @@ const params: SambaNova.Chat.CompletionCreateParams = {
   messages: [{ content: 'create a poem using palindromes', role: 'user' }],
   model: 'string',
 };
-const completion: SambaNova.Chat.CompletionCreateResponse = await client.chat.completions.create(params);
+const completion: SambaNova.Chat.CompletionCreateResponse = await client.chat.completions.create(
+  params,
+);
 ```
 
 Documentation for each method, request param, and response field are available in docstrings and will appear on hover in most modern editors.
@@ -97,7 +99,10 @@ await client.audio.transcriptions.create({
 });
 
 // Or if you have the web `File` API you can pass a `File` instance:
-await client.audio.transcriptions.create({ file: new File(['my bytes'], 'file'), model: 'Whisper-Large-v3' });
+await client.audio.transcriptions.create({
+  file: new File(['my bytes'], 'file'),
+  model: 'Whisper-Large-v3',
+});
 
 // You can also pass a `fetch` `Response`:
 await client.audio.transcriptions.create({
@@ -125,7 +130,10 @@ a subclass of `APIError` will be thrown:
 <!-- prettier-ignore -->
 ```ts
 const completion = await client.chat.completions
-  .create({ messages: [{ content: 'create a poem using palindromes', role: 'user' }], model: 'string' })
+  .create({
+    messages: [{ content: 'create a poem using palindromes', role: 'user' }],
+    model: 'string',
+  })
   .catch(async (err) => {
     if (err instanceof SambaNova.APIError) {
       console.log(err.status); // 400
@@ -207,13 +215,19 @@ Unlike `.asResponse()` this method consumes the body, returning once it is parse
 const client = new SambaNova();
 
 const response = await client.chat.completions
-  .create({ messages: [{ content: 'create a poem using palindromes', role: 'user' }], model: 'string' })
+  .create({
+    messages: [{ content: 'create a poem using palindromes', role: 'user' }],
+    model: 'string',
+  })
   .asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
 const { data: completion, response: raw } = await client.chat.completions
-  .create({ messages: [{ content: 'create a poem using palindromes', role: 'user' }], model: 'string' })
+  .create({
+    messages: [{ content: 'create a poem using palindromes', role: 'user' }],
+    model: 'string',
+  })
   .withResponse();
 console.log(raw.headers.get('X-My-Header'));
 console.log(completion);
