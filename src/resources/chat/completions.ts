@@ -98,6 +98,9 @@ export namespace ChatCompletionResponse {
      */
     index: number;
 
+    /**
+     * completion response message object
+     */
     message: Choice.Message;
 
     /**
@@ -109,6 +112,9 @@ export namespace ChatCompletionResponse {
   }
 
   export namespace Choice {
+    /**
+     * completion response message object
+     */
     export interface Message {
       /**
        * The contents of the assistant message.
@@ -770,7 +776,8 @@ export interface CompletionCreateParamsBase {
   n?: number | null;
 
   /**
-   * Whether to enable parallel function calling during tool use.
+   * Whether to enable parallel function calling during tool use, This is not yet
+   * supported by our models.
    */
   parallel_tool_calls?: boolean | null;
 
@@ -799,9 +806,9 @@ export interface CompletionCreateParamsBase {
    * object of type <your_schema>.
    */
   response_format?:
-    | CompletionCreateParams.ResponseFormatText
-    | CompletionCreateParams.ResponseFormatJsonObject
     | CompletionCreateParams.ResponseFormatJsonSchema
+    | CompletionCreateParams.ResponseFormatJsonObject
+    | CompletionCreateParams.ResponseFormatText
     | null;
 
   /**
@@ -1122,24 +1129,6 @@ export namespace CompletionCreateParams {
   }
 
   /**
-   * Specifies that the model should produce output as plain text.
-   */
-  export interface ResponseFormatText {
-    type: 'text';
-
-    [k: string]: unknown;
-  }
-
-  /**
-   * Specifies that the model should produce output as a raw JSON object.
-   */
-  export interface ResponseFormatJsonObject {
-    type: 'json_object';
-
-    [k: string]: unknown;
-  }
-
-  /**
    * Specifies that the model should produce output conforming to a given JSON
    * schema.
    */
@@ -1183,6 +1172,26 @@ export namespace CompletionCreateParams {
 
       [k: string]: unknown;
     }
+  }
+
+  /**
+   * Specifies that the model should produce output as a raw JSON object.
+   */
+  export interface ResponseFormatJsonObject {
+    type: 'json_object';
+
+    [k: string]: unknown;
+  }
+
+  /**
+   * Specifies that the model should produce output as plain text. This value is not
+   * supported yet in the chat compeltions api, if this behavior is desired do not
+   * set response format.
+   */
+  export interface ResponseFormatText {
+    type: 'text';
+
+    [k: string]: unknown;
   }
 
   /**
