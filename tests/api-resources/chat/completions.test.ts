@@ -37,7 +37,22 @@ describe('resource completions', () => {
       parallel_tool_calls: true,
       presence_penalty: -2,
       reasoning_effort: 'low',
-      response_format: { type: 'text' },
+      response_format: {
+        json_schema: {
+          name: 'User',
+          description: 'JSON schema for a simple user object',
+          schema: {
+            type: 'object',
+            properties: {
+              id: { type: 'string', description: 'Unique identifier for the user' },
+              name: { type: 'string', description: 'Full name of the user' },
+            },
+            required: ['id', 'name'],
+          },
+          strict: false,
+        },
+        type: 'json_schema',
+      },
       seed: 0,
       stop: '\n',
       stream: false,
