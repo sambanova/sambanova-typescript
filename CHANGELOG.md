@@ -1,5 +1,28 @@
 # Changelog
 
+## 1.2.1 (2026-01-23)
+
+Full Changelog: [v1.2.0...v1.2.1](https://github.com/sambanova/sambanova-typescript/compare/v1.2.0...v1.2.1)
+
+### Bug Fixes
+
+* **api:** minor openAPI spec fixes ([f0cd95a](https://github.com/sambanova/sambanova-typescript/commit/f0cd95a412c65d7214ceffa293bbcf46af3d084c))
+* **mcp:** correct code tool API endpoint ([ec3c235](https://github.com/sambanova/sambanova-typescript/commit/ec3c2354b5865a6063bfde263d3552b20067b0e6))
+* **mcp:** return correct lines on typescript errors ([3c63226](https://github.com/sambanova/sambanova-typescript/commit/3c63226132ccac760aac473c9960c89ce5bea582))
+
+
+### Chores
+
+* break long lines in snippets into multiline ([fb8eee0](https://github.com/sambanova/sambanova-typescript/commit/fb8eee09cdb1d363cfaf123f3a7e46937cfb4186))
+* **ci:** upgrade `actions/github-script` ([287fc2f](https://github.com/sambanova/sambanova-typescript/commit/287fc2f1947a99c2557c6ce3f5660461a803830f))
+* **client:** fix logger property type ([ac1902a](https://github.com/sambanova/sambanova-typescript/commit/ac1902a4f84c354a939b148de86523b30ecc9844))
+* **internal:** codegen related update ([c29a736](https://github.com/sambanova/sambanova-typescript/commit/c29a7365c3959b421897a2f730937f5a55443926))
+* **internal:** codegen related update ([85fa237](https://github.com/sambanova/sambanova-typescript/commit/85fa2379ce40d54ed08658e34e5c2407837501af))
+* **internal:** codegen related update ([fefbc68](https://github.com/sambanova/sambanova-typescript/commit/fefbc68f0c4ee2d32e6d35d99bfc5594c1897762))
+* **internal:** update `actions/checkout` version ([b1c5fa8](https://github.com/sambanova/sambanova-typescript/commit/b1c5fa8ed4215f5ec1462bc57146f1424ebc9fc7))
+* **internal:** upgrade babel, qs, js-yaml ([8e04100](https://github.com/sambanova/sambanova-typescript/commit/8e04100700641ec6374b18687522cf53be260bed))
+* **internal:** upgrade eslint ([403a277](https://github.com/sambanova/sambanova-typescript/commit/403a277b9a65a49373b174144c730356f259a728))
+
 ## 1.2.0 (2025-11-07)
 
 Full Changelog: [v1.1.6...v1.2.0](https://github.com/sambanova/sambanova-typescript/compare/v1.1.6...v1.2.0)
