@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.2.2 (2026-01-29)
+
+Full Changelog: [v1.2.1...v1.2.2](https://github.com/sambanova/sambanova-typescript/compare/v1.2.1...v1.2.2)
+
+### Chores
+
+* update SDK settings ([a473a4b](https://github.com/sambanova/sambanova-typescript/commit/a473a4bd3e7d9f1c5e1b040f6fc36111d1604494))
+
 ## 1.2.1 (2026-01-23)
 
 Full Changelog: [v1.2.0...v1.2.1](https://github.com/sambanova/sambanova-typescript/compare/v1.2.0...v1.2.1)
