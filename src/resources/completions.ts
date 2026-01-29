@@ -104,6 +104,9 @@ export namespace CompletionResponse {
      */
     logprobs?: Choice.Logprobs | null;
 
+    /**
+     * completion response message object
+     */
     message?: Choice.Message;
 
     [k: string]: unknown;
@@ -145,6 +148,9 @@ export namespace CompletionResponse {
       }
     }
 
+    /**
+     * completion response message object
+     */
     export interface Message {
       /**
        * The contents of the assistant message.
