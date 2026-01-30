@@ -49,6 +49,11 @@ export interface ClientOptions {
   apiKey?: string | undefined;
 
   /**
+   * Integration name for usage attribution (e.g., crew-ai, litellm, langchain)
+   */
+  integrationSource?: string | null | undefined;
+
+  /**
    * Override the default base URL for the API, e.g., "https://api.example.com/v2/"
    *
    * Defaults to process.env['SAMBA_NOVA_BASE_URL'].
@@ -122,6 +127,7 @@ export interface ClientOptions {
  */
 export class SambaNova {
   apiKey: string;
+  integrationSource: string | null;
 
   baseURL: string;
   maxRetries: number;
@@ -139,6 +145,7 @@ export class SambaNova {
    * API Client for interfacing with the Samba Nova API.
    *
    * @param {string | undefined} [opts.apiKey=process.env['SAMBANOVA_API_KEY'] ?? undefined]
+   * @param {string | null | undefined} [opts.integrationSource=process.env['SAMBANOVA_INTEGRATION_SOURCE'] ?? null]
    * @param {string} [opts.baseURL=process.env['SAMBA_NOVA_BASE_URL'] ?? https://api.sambanova.ai/v1] - Override the default base URL for the API.
    * @param {number} [opts.timeout=10 minutes] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {MergedRequestInit} [opts.fetchOptions] - Additional `RequestInit` options to be passed to `fetch` calls.
@@ -150,6 +157,7 @@ export class SambaNova {
   constructor({
     baseURL = readEnv('SAMBA_NOVA_BASE_URL'),
     apiKey = readEnv('SAMBANOVA_API_KEY'),
+    integrationSource = readEnv('SAMBANOVA_INTEGRATION_SOURCE') ?? null,
     ...opts
   }: ClientOptions = {}) {
     if (apiKey === undefined) {
@@ -160,6 +168,7 @@ export class SambaNova {
 
     const options: ClientOptions = {
       apiKey,
+      integrationSource,
       ...opts,
       baseURL: baseURL || `https://api.sambanova.ai/v1`,
     };
@@ -182,6 +191,7 @@ export class SambaNova {
     this._options = options;
 
     this.apiKey = apiKey;
+    this.integrationSource = integrationSource;
   }
 
   /**
@@ -198,6 +208,7 @@ export class SambaNova {
       fetch: this.fetch,
       fetchOptions: this.fetchOptions,
       apiKey: this.apiKey,
+      integrationSource: this.integrationSource,
       ...options,
     });
     return client;
@@ -658,6 +669,7 @@ export class SambaNova {
         'X-Stainless-Retry-Count': String(retryCount),
         ...(options.timeout ? { 'X-Stainless-Timeout': String(Math.trunc(options.timeout / 1000)) } : {}),
         ...getPlatformHeaders(),
+        'X-Integration-Source': this.integrationSource,
       },
       await this.authHeaders(options),
       this._options.defaultHeaders,
