@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.3.0 (2026-01-30)
+
+Full Changelog: [v1.2.2...v1.3.0](https://github.com/sambanova/sambanova-typescript/compare/v1.2.2...v1.3.0)
+
+### Features
+
+* **api:** add optional custom integration_source param ([ef8a5a7](https://github.com/sambanova/sambanova-typescript/commit/ef8a5a7593edfacfadf6e5f82c7c704b50f2c54a))
+
 ## 1.2.2 (2026-01-29)
 
 Full Changelog: [v1.2.1...v1.2.2](https://github.com/sambanova/sambanova-typescript/compare/v1.2.1...v1.2.2)
