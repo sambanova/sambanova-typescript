@@ -1,5 +1,23 @@
 # Changelog
 
+## 1.3.0 (2026-02-02)
+
+Full Changelog: [v1.2.2...v1.3.0](https://github.com/sambanova/sambanova-typescript/compare/v1.2.2...v1.3.0)
+
+### Features
+
+* **api:** add optional custom integration_source param ([ef8a5a7](https://github.com/sambanova/sambanova-typescript/commit/ef8a5a7593edfacfadf6e5f82c7c704b50f2c54a))
+
+
+### Bug Fixes
+
+* **client:** avoid memory leak with abort signals ([3ec2e1e](https://github.com/sambanova/sambanova-typescript/commit/3ec2e1e6fe4d9adf01bc40b1a0283dc9cf6e55c9))
+
+
+### Chores
+
+* **client:** do not parse responses with empty content-length ([4f26fc2](https://github.com/sambanova/sambanova-typescript/commit/4f26fc2672d97e4cbfa64d61a82647c28576420e))
+
 ## 1.2.2 (2026-01-29)
 
 Full Changelog: [v1.2.1...v1.2.2](https://github.com/sambanova/sambanova-typescript/compare/v1.2.1...v1.2.2)
