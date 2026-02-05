@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.3.1 (2026-02-05)
+
+Full Changelog: [v1.3.0...v1.3.1](https://github.com/sambanova/sambanova-typescript/compare/v1.3.0...v1.3.1)
+
+### Bug Fixes
+
+* **client:** avoid removing abort listener too early ([7bffbe6](https://github.com/sambanova/sambanova-typescript/commit/7bffbe6060700f175c5c60ed035f81adf568c926))
+
+
+### Chores
+
+* **client:** restructure abort controller binding ([e9c0a93](https://github.com/sambanova/sambanova-typescript/commit/e9c0a93bc186d6423e7fd09cb7bf31ec5a594447))
+
 ## 1.3.0 (2026-02-02)
 
 Full Changelog: [v1.2.2...v1.3.0](https://github.com/sambanova/sambanova-typescript/compare/v1.2.2...v1.3.0)
