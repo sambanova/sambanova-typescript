@@ -471,7 +471,7 @@ export class SambaNova {
       loggerFor(this).info(`${responseInfo} - ${retryMessage}`);
 
       const errText = await response.text().catch((err: any) => castToError(err).message);
-      const errJSON = safeJSON(errText);
+      const errJSON = safeJSON(errText) as any;
       const errMessage = errJSON ? undefined : errText;
 
       loggerFor(this).debug(
@@ -512,7 +512,7 @@ export class SambaNova {
     controller: AbortController,
   ): Promise<Response> {
     const { signal, method, ...options } = init || {};
-    const abort = controller.abort.bind(controller);
+    const abort = this._makeAbort(controller);
     if (signal) signal.addEventListener('abort', abort, { once: true });
 
     const timeout = setTimeout(abort, ms);
@@ -681,6 +681,12 @@ export class SambaNova {
     this.validateHeaders(headers);
 
     return headers.values;
+  }
+
+  private _makeAbort(controller: AbortController) {
+    // note: we can't just inline this method inside `fetchWithTimeout()` because then the closure
+    //       would capture all request options, and cause a memory leak.
+    return () => controller.abort();
   }
 
   private buildBody({ options: { body, headers: rawHeaders } }: { options: FinalRequestOptions }): {

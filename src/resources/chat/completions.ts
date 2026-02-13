@@ -803,7 +803,8 @@ export interface CompletionCreateParamsBase {
    * also instruct the model to produce JSON yourself via a system or user message.
    * Setting to `{ "type": "json_schema", "json_schema": {<your_schema>}"}` enables
    * JSON schema mode, which will check the message the model generates is valid
-   * object of type <your_schema>.
+   * object of type <your_schema>. Setting to `{ "type": "text"}` is equivalent to
+   * the default plain text generation
    */
   response_format?:
     | CompletionCreateParams.ResponseFormatJsonSchema
