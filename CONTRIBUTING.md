@@ -60,7 +60,7 @@ $ yarn link sambanova
 # With pnpm
 $ pnpm link --global
 $ cd ../my-package
-$ pnpm link -—global sambanova
+$ pnpm link --global sambanova
 ```
 
 ## Running tests
