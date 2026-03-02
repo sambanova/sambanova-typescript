@@ -587,9 +587,9 @@ export interface CompletionCreateParamsBase {
   logit_bias?: { [key: string]: number } | null;
 
   /**
-   * This is not yet supported by our models. Whether to return log probabilities of
-   * the output tokens or not. If true, returns the log probabilities of each output
-   * token returned in the `content` of `message`.
+   * This is not yet supported by our models in completions API. Whether to return
+   * log probabilities of the output tokens or not. If true, returns the log
+   * probabilities of each output token returned in the `content` of `message`.
    */
   logprobs?: boolean | null;
 
@@ -661,10 +661,10 @@ export interface CompletionCreateParamsBase {
   top_k?: number | null;
 
   /**
-   * This is not yet supported by our models. An integer between 0 and 20 specifying
-   * the number of most likely tokens to return at each token position, each with an
-   * associated log probability. `logprobs` must be set to `true` if this parameter
-   * is used.
+   * This is not yet supported by our models in completions API. An integer between 0
+   * and 20 specifying the number of most likely tokens to return at each token
+   * position, each with an associated log probability. `logprobs` must be set to
+   * `true` if this parameter is used.
    */
   top_logprobs?: number | null;
 
