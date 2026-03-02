@@ -1,5 +1,25 @@
 # Changelog
 
+## 1.4.0 (2026-03-02)
+
+Full Changelog: [v1.3.1...v1.4.0](https://github.com/sambanova/sambanova-typescript/compare/v1.3.1...v1.4.0)
+
+### Features
+
+* **api:** logprobs and top_logprobs in chat completions API ([e88ecb1](https://github.com/sambanova/sambanova-typescript/commit/e88ecb149a2ebc3a71530d023e6fc7b7c88ec5cc))
+
+
+### Bug Fixes
+
+* **docs/contributing:** correct pnpm link command ([5ea8cad](https://github.com/sambanova/sambanova-typescript/commit/5ea8caddc2fecdd5b29b668835beff69b698d73d))
+
+
+### Chores
+
+* **internal/client:** fix form-urlencoded requests ([7eefd3d](https://github.com/sambanova/sambanova-typescript/commit/7eefd3d00c87fba6d3bbd5dca751062bb07be12e))
+* **internal:** move stringifyQuery implementation to internal function ([96ab516](https://github.com/sambanova/sambanova-typescript/commit/96ab5160e57fa6ce276f7904f396245df8372254))
+* update mock server docs ([bdab678](https://github.com/sambanova/sambanova-typescript/commit/bdab678dfe05fc60fe7764450520b7f75243b0d5))
+
 ## 1.3.1 (2026-02-13)
 
 Full Changelog: [v1.3.0...v1.3.1](https://github.com/sambanova/sambanova-typescript/compare/v1.3.0...v1.3.1)
