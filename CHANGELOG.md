@@ -1,5 +1,29 @@
 # Changelog
 
+## 1.4.1 (2026-03-19)
+
+Full Changelog: [v1.4.0...v1.4.1](https://github.com/sambanova/sambanova-typescript/compare/v1.4.0...v1.4.1)
+
+### Bug Fixes
+
+* **api:** metadata manual updates ([3366a44](https://github.com/sambanova/sambanova-typescript/commit/3366a44f965e7ede739401fe04087c0a28048d62))
+* **client:** preserve URL params already embedded in path ([1482c21](https://github.com/sambanova/sambanova-typescript/commit/1482c214535b5b7c56638a34125a6894c45c94f5))
+* fix request delays for retrying to be more respectful of high requested delays ([7e17ca2](https://github.com/sambanova/sambanova-typescript/commit/7e17ca298a845e9478a91fbb98a20c9460d5ef19))
+
+
+### Chores
+
+* **ci:** skip uploading artifacts on stainless-internal branches ([64ac8e7](https://github.com/sambanova/sambanova-typescript/commit/64ac8e7dc899e63b09196f86d37e2a7fa380695d))
+* **internal:** tweak CI branches ([ff3ec8f](https://github.com/sambanova/sambanova-typescript/commit/ff3ec8f43032ce017775e8fac5d4eb0b4b93c521))
+* **internal:** update dependencies to address dependabot vulnerabilities ([77e3ab9](https://github.com/sambanova/sambanova-typescript/commit/77e3ab90292a478140fb0c58d5dc05c94f95123c))
+* **test:** do not count install time for mock server timeout ([e631a1b](https://github.com/sambanova/sambanova-typescript/commit/e631a1b69ef9ae98be65a1f0371bb0c426a47e13))
+* update placeholder string ([21cc1d5](https://github.com/sambanova/sambanova-typescript/commit/21cc1d56c81e068e60be3027af4644c74fba9e90))
+
+
+### Refactors
+
+* **tests:** switch from prism to steady ([1a685d6](https://github.com/sambanova/sambanova-typescript/commit/1a685d6938a9e905428ff940885b4cc629ae4b8f))
+
 ## 1.4.0 (2026-03-02)
 
 Full Changelog: [v1.3.1...v1.4.0](https://github.com/sambanova/sambanova-typescript/compare/v1.3.1...v1.4.0)
