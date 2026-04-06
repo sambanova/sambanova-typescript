@@ -419,9 +419,6 @@ export interface TranslationCreateParamsBase {
    */
   response_format?: 'json' | 'text';
 
-  /**
-   * Enables streaming responses.
-   */
   stream?: boolean;
 
   /**
@@ -437,11 +434,7 @@ export namespace TranslationCreateParams {
    * Optional settings that apply when `stream` is true.
    */
   export interface StreamOptions {
-    /**
-     * If true and `stream` is enabled, optional usage metadata will be included in the
-     * last streamed response event.
-     */
-    include_usage?: boolean | null;
+    include_usage?: boolean;
   }
 
   export type TranslationCreateParamsNonStreaming = TranslationsAPI.TranslationCreateParamsNonStreaming;
@@ -449,18 +442,12 @@ export namespace TranslationCreateParams {
 }
 
 export interface TranslationCreateParamsNonStreaming extends TranslationCreateParamsBase {
-  /**
-   * Enables streaming responses.
-   */
   stream?: false;
 
   [k: string]: unknown;
 }
 
 export interface TranslationCreateParamsStreaming extends TranslationCreateParamsBase {
-  /**
-   * Enables streaming responses.
-   */
   stream: true;
 
   [k: string]: unknown;
