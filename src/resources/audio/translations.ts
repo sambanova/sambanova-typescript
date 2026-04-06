@@ -443,7 +443,7 @@ export namespace TranslationCreateParams {
      * If true and `stream` is enabled, optional usage metadata will be included in the
      * last streamed response event.
      */
-    include_usage?: boolean | string | null;
+    include_usage?: boolean | null | string | null;
   }
 
   export type TranslationCreateParamsNonStreaming = TranslationsAPI.TranslationCreateParamsNonStreaming;
