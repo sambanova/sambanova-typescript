@@ -1,5 +1,32 @@
 # Changelog
 
+## 1.4.2 (2026-04-06)
+
+Full Changelog: [v1.4.1...v1.4.2](https://github.com/sambanova/sambanova-typescript/compare/v1.4.1...v1.4.2)
+
+### Bug Fixes
+
+* **api:** audio usage schema ([4aa4a83](https://github.com/sambanova/sambanova-typescript/commit/4aa4a839b22c48f9276b2e6bd20518cf27f48ccf))
+* **api:** audio usage schema ([795f1bd](https://github.com/sambanova/sambanova-typescript/commit/795f1bd5b94b5352cc6b85a931a82d6f540f2939))
+* **api:** audio usage spec ([c8960d4](https://github.com/sambanova/sambanova-typescript/commit/c8960d43a648aaced1dc57d358f9720b6e17da93))
+* **api:** audio usage types ([8202832](https://github.com/sambanova/sambanova-typescript/commit/8202832e4c9101432c968b9d90bbd5d27ee1b85a))
+* **api:** update error response schemas ([5acc901](https://github.com/sambanova/sambanova-typescript/commit/5acc901a45b3b83a0646d0dba0c6f3b7ebe86e31))
+* **internal:** gitignore generated `oidc` dir ([8e535ca](https://github.com/sambanova/sambanova-typescript/commit/8e535caed977f55766aa6100d2220d8352f821e2))
+
+
+### Chores
+
+* **ci:** skip lint on metadata-only changes ([94d4c5c](https://github.com/sambanova/sambanova-typescript/commit/94d4c5c3e70ca9cc29ee5b9cabf9fa046982f46b))
+* **internal:** codegen related update ([0b2e0fb](https://github.com/sambanova/sambanova-typescript/commit/0b2e0fb3135f8980e952b39b6ed38f00a0e06154))
+* **internal:** update gitignore ([09d6146](https://github.com/sambanova/sambanova-typescript/commit/09d6146ce3d382477b464c5c65c84a029cf6383b))
+* **internal:** update multipart form array serialization ([f5e425c](https://github.com/sambanova/sambanova-typescript/commit/f5e425c0146b3f8d615a816364593b98acddb9b8))
+* **tests:** bump steady to v0.19.4 ([d57ca48](https://github.com/sambanova/sambanova-typescript/commit/d57ca48c84d0d2060002332655e030406b6174be))
+* **tests:** bump steady to v0.19.5 ([4f052aa](https://github.com/sambanova/sambanova-typescript/commit/4f052aa882f640ad8f93983e70db0e7079076e8e))
+* **tests:** bump steady to v0.19.6 ([c8a0704](https://github.com/sambanova/sambanova-typescript/commit/c8a0704144e094e2dce3877a344df435c25552b8))
+* **tests:** bump steady to v0.19.7 ([3103e60](https://github.com/sambanova/sambanova-typescript/commit/3103e60732f56f32c5074767f3d65d206497be56))
+* **tests:** bump steady to v0.20.1 ([521f872](https://github.com/sambanova/sambanova-typescript/commit/521f8721f27da0d474ee3336acd5ed42518e0e77))
+* **tests:** bump steady to v0.20.2 ([cf92e23](https://github.com/sambanova/sambanova-typescript/commit/cf92e238da8f7628addd98301b4bc2f23000952c))
+
 ## 1.4.1 (2026-03-19)
 
 Full Changelog: [v1.4.0...v1.4.1](https://github.com/sambanova/sambanova-typescript/compare/v1.4.0...v1.4.1)
