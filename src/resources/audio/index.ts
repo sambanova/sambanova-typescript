@@ -8,6 +8,7 @@ export {
   type TranscriptionCreateResponse,
   type TranscriptionCreateParams,
   type TranscriptionCreateParamsNonStreaming,
+  type TranscriptionCreateParamsStreaming,
 } from './transcriptions';
 export {
   Translations,
@@ -16,4 +17,5 @@ export {
   type TranslationCreateResponse,
   type TranslationCreateParams,
   type TranslationCreateParamsNonStreaming,
+  type TranslationCreateParamsStreaming,
 } from './translations';

@@ -25,9 +25,9 @@ export class Translations extends APIResource {
     options?: RequestOptions,
   ): APIPromise<TranslationCreateResponse>;
   create(
-    body: TranslationCreateParamsNonStreaming,
+    body: TranslationCreateParamsStreaming,
     options?: RequestOptions,
-  ): APIPromise<TranslationCreateResponse>;
+  ): APIPromise<Stream<TranslationStreamResponse>>;
   create(
     body: TranslationCreateParamsBase,
     options?: RequestOptions,
@@ -285,9 +285,7 @@ export namespace TranslationStreamResponse {
  */
 export type TranslationCreateResponse = TranslationResponse | TranslationStreamResponse;
 
-export type TranslationCreateParams =
-  | TranslationCreateParamsNonStreaming
-  | TranslationCreateParamsNonStreaming;
+export type TranslationCreateParams = TranslationCreateParamsNonStreaming | TranslationCreateParamsStreaming;
 
 export interface TranslationCreateParamsBase {
   /**
@@ -424,7 +422,7 @@ export interface TranslationCreateParamsBase {
   /**
    * Enables streaming responses.
    */
-  stream?: boolean | string;
+  stream?: boolean;
 
   /**
    * Optional settings that apply when `stream` is true.
@@ -443,27 +441,27 @@ export namespace TranslationCreateParams {
      * If true and `stream` is enabled, optional usage metadata will be included in the
      * last streamed response event.
      */
-    include_usage?: boolean | null | string | null;
+    include_usage?: boolean | null;
   }
 
   export type TranslationCreateParamsNonStreaming = TranslationsAPI.TranslationCreateParamsNonStreaming;
-  export type TranslationCreateParamsNonStreaming = TranslationsAPI.TranslationCreateParamsNonStreaming;
+  export type TranslationCreateParamsStreaming = TranslationsAPI.TranslationCreateParamsStreaming;
 }
 
 export interface TranslationCreateParamsNonStreaming extends TranslationCreateParamsBase {
   /**
    * Enables streaming responses.
    */
-  stream?: boolean | string;
+  stream?: false;
 
   [k: string]: unknown;
 }
 
-export interface TranslationCreateParamsNonStreaming extends TranslationCreateParamsBase {
+export interface TranslationCreateParamsStreaming extends TranslationCreateParamsBase {
   /**
    * Enables streaming responses.
    */
-  stream: boolean | string;
+  stream: true;
 
   [k: string]: unknown;
 }
@@ -475,5 +473,6 @@ export declare namespace Translations {
     type TranslationCreateResponse as TranslationCreateResponse,
     type TranslationCreateParams as TranslationCreateParams,
     type TranslationCreateParamsNonStreaming as TranslationCreateParamsNonStreaming,
+    type TranslationCreateParamsStreaming as TranslationCreateParamsStreaming,
   };
 }
