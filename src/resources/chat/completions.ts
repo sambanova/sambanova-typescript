@@ -607,6 +607,11 @@ export namespace ChatCompletionStreamResponse {
  */
 export interface GeneralError {
   error: GeneralError.Error;
+
+  /**
+   * unique request identifier for debugging
+   */
+  request_id?: string | null;
 }
 
 export namespace GeneralError {
@@ -713,14 +718,19 @@ export interface CompletionCreateParamsBase {
     | 'DeepSeek-R1-0528'
     | 'DeepSeek-V3-0324'
     | 'DeepSeek-V3.1'
+    | 'DeepSeek-V3.1-cb'
     | 'DeepSeek-V3.1-Terminus'
+    | 'DeepSeek-V3.2'
     | 'DeepSeek-R1-Distill-Llama-70B'
     | 'Llama-4-Maverick-17B-128E-Instruct'
     | 'Llama-4-Scout-17B-16E-Instruct'
     | 'Qwen3-32B'
+    | 'Qwen3-235B'
     | 'Llama-3.3-Swallow-70B-Instruct-v0.4'
     | 'gpt-oss-120b'
-    | 'ALLaM-7B-Instruct-preview';
+    | 'ALLaM-7B-Instruct-preview'
+    | 'MiniMax-M2.5M'
+    | 'gemma-3-12b-it';
 
   /**
    * A dictionary of additional keyword arguments to pass into the chat template. Use
