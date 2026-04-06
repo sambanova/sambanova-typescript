@@ -29,7 +29,7 @@ describe('resource translations', () => {
       language: 'es',
       prompt: 'Please translate carefully, including pauses and hesitations.',
       response_format: 'json',
-      stream: true,
+      stream: false,
       stream_options: { include_usage: true },
     });
   });
