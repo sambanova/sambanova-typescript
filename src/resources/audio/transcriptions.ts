@@ -26,9 +26,9 @@ export class Transcriptions extends APIResource {
     options?: RequestOptions,
   ): APIPromise<TranscriptionCreateResponse>;
   create(
-    body: TranscriptionCreateParamsStreaming,
+    body: TranscriptionCreateParamsNonStreaming,
     options?: RequestOptions,
-  ): APIPromise<Stream<TranscriptionStreamResponse>>;
+  ): APIPromise<TranscriptionCreateResponse>;
   create(
     body: TranscriptionCreateParamsBase,
     options?: RequestOptions,
@@ -288,7 +288,7 @@ export type TranscriptionCreateResponse = TranscriptionResponse | TranscriptionS
 
 export type TranscriptionCreateParams =
   | TranscriptionCreateParamsNonStreaming
-  | TranscriptionCreateParamsStreaming;
+  | TranscriptionCreateParamsNonStreaming;
 
 export interface TranscriptionCreateParamsBase {
   /**
@@ -425,7 +425,7 @@ export interface TranscriptionCreateParamsBase {
   /**
    * Enables streaming responses.
    */
-  stream?: boolean;
+  stream?: boolean | string;
 
   /**
    * Optional settings that apply when `stream` is true.
@@ -444,27 +444,27 @@ export namespace TranscriptionCreateParams {
      * If true and `stream` is enabled, optional usage metadata will be included in the
      * last streamed response event.
      */
-    include_usage?: boolean | null;
+    include_usage?: boolean | string | null;
   }
 
   export type TranscriptionCreateParamsNonStreaming = TranscriptionsAPI.TranscriptionCreateParamsNonStreaming;
-  export type TranscriptionCreateParamsStreaming = TranscriptionsAPI.TranscriptionCreateParamsStreaming;
+  export type TranscriptionCreateParamsNonStreaming = TranscriptionsAPI.TranscriptionCreateParamsNonStreaming;
 }
 
 export interface TranscriptionCreateParamsNonStreaming extends TranscriptionCreateParamsBase {
   /**
    * Enables streaming responses.
    */
-  stream?: false;
+  stream?: boolean | string;
 
   [k: string]: unknown;
 }
 
-export interface TranscriptionCreateParamsStreaming extends TranscriptionCreateParamsBase {
+export interface TranscriptionCreateParamsNonStreaming extends TranscriptionCreateParamsBase {
   /**
    * Enables streaming responses.
    */
-  stream: true;
+  stream: boolean | string;
 
   [k: string]: unknown;
 }
@@ -476,6 +476,5 @@ export declare namespace Transcriptions {
     type TranscriptionCreateResponse as TranscriptionCreateResponse,
     type TranscriptionCreateParams as TranscriptionCreateParams,
     type TranscriptionCreateParamsNonStreaming as TranscriptionCreateParamsNonStreaming,
-    type TranscriptionCreateParamsStreaming as TranscriptionCreateParamsStreaming,
   };
 }
