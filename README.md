@@ -28,7 +28,7 @@ const client = new SambaNova({
 
 const completion = await client.chat.completions.create({
   messages: [{ content: 'create a poem using palindromes', role: 'user' }],
-  model: 'string',
+  model: 'Meta-Llama-3.3-70B-Instruct',
 });
 ```
 
@@ -43,7 +43,7 @@ const client = new SambaNova();
 
 const stream = await client.chat.completions.create({
   messages: [{ content: 'create a poem using palindromes', role: 'user' }],
-  model: 'string',
+  model: 'Meta-Llama-3.3-70B-Instruct',
   stream: true,
 });
 for await (const chatCompletionStreamResponse of stream) {
@@ -68,7 +68,7 @@ const client = new SambaNova({
 
 const params: SambaNova.Chat.CompletionCreateParams = {
   messages: [{ content: 'create a poem using palindromes', role: 'user' }],
-  model: 'string',
+  model: 'Meta-Llama-3.3-70B-Instruct',
 };
 const completion: SambaNova.Chat.CompletionCreateResponse = await client.chat.completions.create(
   params,
@@ -132,7 +132,7 @@ a subclass of `APIError` will be thrown:
 const completion = await client.chat.completions
   .create({
     messages: [{ content: 'create a poem using palindromes', role: 'user' }],
-    model: 'string',
+    model: 'Meta-Llama-3.3-70B-Instruct',
   })
   .catch(async (err) => {
     if (err instanceof SambaNova.APIError) {
@@ -174,7 +174,7 @@ const client = new SambaNova({
 });
 
 // Or, configure per-request:
-await client.chat.completions.create({ messages: [{ content: 'create a poem using palindromes', role: 'user' }], model: 'string' }, {
+await client.chat.completions.create({ messages: [{ content: 'create a poem using palindromes', role: 'user' }], model: 'Meta-Llama-3.3-70B-Instruct' }, {
   maxRetries: 5,
 });
 ```
@@ -191,7 +191,7 @@ const client = new SambaNova({
 });
 
 // Override per-request:
-await client.chat.completions.create({ messages: [{ content: 'create a poem using palindromes', role: 'user' }], model: 'string' }, {
+await client.chat.completions.create({ messages: [{ content: 'create a poem using palindromes', role: 'user' }], model: 'Meta-Llama-3.3-70B-Instruct' }, {
   timeout: 5 * 1000,
 });
 ```
@@ -217,7 +217,7 @@ const client = new SambaNova();
 const response = await client.chat.completions
   .create({
     messages: [{ content: 'create a poem using palindromes', role: 'user' }],
-    model: 'string',
+    model: 'Meta-Llama-3.3-70B-Instruct',
   })
   .asResponse();
 console.log(response.headers.get('X-My-Header'));
@@ -226,7 +226,7 @@ console.log(response.statusText); // access the underlying Response object
 const { data: completion, response: raw } = await client.chat.completions
   .create({
     messages: [{ content: 'create a poem using palindromes', role: 'user' }],
-    model: 'string',
+    model: 'Meta-Llama-3.3-70B-Instruct',
   })
   .withResponse();
 console.log(raw.headers.get('X-My-Header'));
