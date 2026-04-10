@@ -19,7 +19,7 @@ export class Completions extends APIResource {
    *       role: 'user',
    *     },
    *   ],
-   *   model: 'string',
+   *   model: 'Meta-Llama-3.3-70B-Instruct',
    * });
    * ```
    */
