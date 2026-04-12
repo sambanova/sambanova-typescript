@@ -1,5 +1,20 @@
 # Changelog
 
+## 1.4.3 (2026-04-12)
+
+Full Changelog: [v1.4.2...v1.4.3](https://github.com/sambanova/sambanova-typescript/compare/v1.4.2...v1.4.3)
+
+### Chores
+
+* **internal:** codegen related update ([1f4b770](https://github.com/sambanova/sambanova-typescript/commit/1f4b770ef020629aae2f261fdda3afd7279fff88))
+* **internal:** codegen related update ([25a3f60](https://github.com/sambanova/sambanova-typescript/commit/25a3f60a040987ea29b961995c791de286c29275))
+
+
+### Documentation
+
+* improve examples ([2b20c15](https://github.com/sambanova/sambanova-typescript/commit/2b20c15eb56784d361cdd07be104b8542f22f5d3))
+* update examples ([1b5e675](https://github.com/sambanova/sambanova-typescript/commit/1b5e675252b44cc37fb020ec44f3da1858e498b4))
+
 ## 1.4.2 (2026-04-06)
 
 Full Changelog: [v1.4.1...v1.4.2](https://github.com/sambanova/sambanova-typescript/compare/v1.4.1...v1.4.2)
