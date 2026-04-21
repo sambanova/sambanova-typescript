@@ -844,8 +844,9 @@ export interface CompletionCreateParamsBase {
   max_tokens?: number | null;
 
   /**
-   * This is not yet supported by our models. How many chat completion choices to
-   * generate for each input message.
+   * How many completions to generate for each prompt. **Note:** Because this
+   * parameter generates many completions, it can quickly consume your token quota.
+   * Use carefully and ensure that you have reasonable settings for `max_tokens`.
    */
   n?: number | null;
 
@@ -887,7 +888,10 @@ export interface CompletionCreateParamsBase {
     | null;
 
   /**
-   * This is not yet supported by our models.
+   * If specified, our system will make a best effort to sample deterministically,
+   * such that repeated requests with the same `seed` and parameters should return
+   * the same result. Determinism is not guaranteed, and you should refer to the
+   * `system_fingerprint` response parameter to monitor changes in the backend.
    */
   seed?: number | null;
 
