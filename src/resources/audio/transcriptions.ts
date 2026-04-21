@@ -214,6 +214,11 @@ export namespace TranscriptionStreamResponse {
     completion_tokens_after_first_per_sec_graph?: number;
 
     /**
+     * Breakdown of completion token consumption.
+     */
+    completion_tokens_details?: Usage.CompletionTokensDetails | null;
+
+    /**
      * completion tokens per second
      */
     completion_tokens_per_sec?: number;
@@ -244,9 +249,21 @@ export namespace TranscriptionStreamResponse {
     start_time?: number;
 
     /**
+     * The reason generation stopped (e.g. "stop", "length"). Mirrors the choice-level
+     * finish_reason but reported at the usage level.
+     */
+    stop_reason?: string | null;
+
+    /**
      * also TTF, time (in seconds) taken to generate the first token
      */
     time_to_first_token?: number;
+
+    /**
+     * Time (in seconds) to first token, adjusted for graph rendering. May differ
+     * slightly from time_to_first_token.
+     */
+    time_to_first_token_graph?: number;
 
     /**
      * total time (in seconds) taken to generate the full generation
@@ -267,6 +284,19 @@ export namespace TranscriptionStreamResponse {
   }
 
   export namespace Usage {
+    /**
+     * Breakdown of completion token consumption.
+     */
+    export interface CompletionTokensDetails {
+      /**
+       * Number of tokens consumed by the model's internal reasoning process. Only
+       * present on reasoning-capable models.
+       */
+      reasoning_tokens?: number;
+
+      [k: string]: unknown;
+    }
+
     /**
      * Extra tokens details
      */
