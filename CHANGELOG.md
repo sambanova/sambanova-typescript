@@ -1,5 +1,27 @@
 # Changelog
 
+## 1.5.0 (2026-04-21)
+
+Full Changelog: [v1.4.2...v1.5.0](https://github.com/sambanova/sambanova-typescript/compare/v1.4.2...v1.5.0)
+
+### Features
+
+* **api:** add n and seed chat completions parameters ([1f33a27](https://github.com/sambanova/sambanova-typescript/commit/1f33a276d53f6996de961df87a0611ea840ecfa1))
+* **api:** Responses API Support ([67d6e15](https://github.com/sambanova/sambanova-typescript/commit/67d6e15eee4362321b688145da94e5fa7dc4691c))
+
+
+### Chores
+
+* **internal:** codegen related update ([1f4b770](https://github.com/sambanova/sambanova-typescript/commit/1f4b770ef020629aae2f261fdda3afd7279fff88))
+* **internal:** codegen related update ([25a3f60](https://github.com/sambanova/sambanova-typescript/commit/25a3f60a040987ea29b961995c791de286c29275))
+* **tests:** bump steady to v0.22.1 ([549b71f](https://github.com/sambanova/sambanova-typescript/commit/549b71fae9d5b6369e22eb5f6d614e864bbf4b40))
+
+
+### Documentation
+
+* improve examples ([2b20c15](https://github.com/sambanova/sambanova-typescript/commit/2b20c15eb56784d361cdd07be104b8542f22f5d3))
+* update examples ([1b5e675](https://github.com/sambanova/sambanova-typescript/commit/1b5e675252b44cc37fb020ec44f3da1858e498b4))
+
 ## 1.4.2 (2026-04-06)
 
 Full Changelog: [v1.4.1...v1.4.2](https://github.com/sambanova/sambanova-typescript/compare/v1.4.1...v1.4.2)
