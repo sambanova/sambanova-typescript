@@ -13,3 +13,12 @@ export {
 } from './completions';
 export { Embeddings, type EmbeddingsResponse, type EmbeddingCreateParams } from './embeddings';
 export { Models, type ModelResponse, type ModelsResponse } from './models';
+export {
+  Responses,
+  type ResponseResponse,
+  type ResponseStreamEvent,
+  type ResponseCreateResponse,
+  type ResponseCreateParams,
+  type ResponseCreateParamsNonStreaming,
+  type ResponseCreateParamsStreaming,
+} from './responses';

@@ -10,7 +10,7 @@ const client = new SambaNova({
 describe('resource completions', () => {
   test('create: only required params', async () => {
     const responsePromise = client.completions.create({
-      model: 'Meta-Llama-3.3-70B-Instruct',
+      model: 'gpt-oss-120b',
       prompt:
         '<|begin_of_text|><|start_header_id|>system<|end_header_id|> You are a helpful assistant.<|eot_id|><|start_header_id|>user<|end_header_id|> create a poem using palindromes<|eot_id|><|start_header_id|>assistant<|end_header_id|>',
     });
@@ -25,7 +25,7 @@ describe('resource completions', () => {
 
   test('create: required and optional params', async () => {
     const response = await client.completions.create({
-      model: 'Meta-Llama-3.3-70B-Instruct',
+      model: 'gpt-oss-120b',
       prompt:
         '<|begin_of_text|><|start_header_id|>system<|end_header_id|> You are a helpful assistant.<|eot_id|><|start_header_id|>user<|end_header_id|> create a poem using palindromes<|eot_id|><|start_header_id|>assistant<|end_header_id|>',
       do_sample: true,
