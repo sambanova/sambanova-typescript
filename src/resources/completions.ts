@@ -13,9 +13,9 @@ export class Completions extends APIResource {
    * @example
    * ```ts
    * const completion = await client.completions.create({
-   *   model: 'string',
+   *   model: 'gpt-oss-120b',
    *   prompt:
-   *     '<|begin_of_text|><|start_header_id|>system<|end_header_id|>\nYou are a helpful assistant.<|eot_id|><|start_header_id|>user<|end_header_id|>\ncreate a poem using palindromes<|eot_id|><|start_header_id|>assistant<|end_header_id|>\n',
+   *     '<|begin_of_text|><|start_header_id|>system<|end_header_id|> You are a helpful assistant.<|eot_id|><|start_header_id|>user<|end_header_id|> create a poem using palindromes<|eot_id|><|start_header_id|>assistant<|end_header_id|>',
    * });
    * ```
    */
@@ -250,6 +250,11 @@ export namespace CompletionResponse {
     completion_tokens_after_first_per_sec_graph?: number;
 
     /**
+     * Breakdown of completion token consumption.
+     */
+    completion_tokens_details?: Usage.CompletionTokensDetails | null;
+
+    /**
      * completion tokens per second
      */
     completion_tokens_per_sec?: number;
@@ -280,9 +285,21 @@ export namespace CompletionResponse {
     start_time?: number;
 
     /**
+     * The reason generation stopped (e.g. "stop", "length"). Mirrors the choice-level
+     * finish_reason but reported at the usage level.
+     */
+    stop_reason?: string | null;
+
+    /**
      * also TTF, time (in seconds) taken to generate the first token
      */
     time_to_first_token?: number;
+
+    /**
+     * Time (in seconds) to first token, adjusted for graph rendering. May differ
+     * slightly from time_to_first_token.
+     */
+    time_to_first_token_graph?: number;
 
     /**
      * total time (in seconds) taken to generate the full generation
@@ -303,6 +320,19 @@ export namespace CompletionResponse {
   }
 
   export namespace Usage {
+    /**
+     * Breakdown of completion token consumption.
+     */
+    export interface CompletionTokensDetails {
+      /**
+       * Number of tokens consumed by the model's internal reasoning process. Only
+       * present on reasoning-capable models.
+       */
+      reasoning_tokens?: number;
+
+      [k: string]: unknown;
+    }
+
     /**
      * Extra tokens details
      */
@@ -456,6 +486,11 @@ export namespace CompletionStreamResponse {
     completion_tokens_after_first_per_sec_graph?: number;
 
     /**
+     * Breakdown of completion token consumption.
+     */
+    completion_tokens_details?: Usage.CompletionTokensDetails | null;
+
+    /**
      * completion tokens per second
      */
     completion_tokens_per_sec?: number;
@@ -486,9 +521,21 @@ export namespace CompletionStreamResponse {
     start_time?: number;
 
     /**
+     * The reason generation stopped (e.g. "stop", "length"). Mirrors the choice-level
+     * finish_reason but reported at the usage level.
+     */
+    stop_reason?: string | null;
+
+    /**
      * also TTF, time (in seconds) taken to generate the first token
      */
     time_to_first_token?: number;
+
+    /**
+     * Time (in seconds) to first token, adjusted for graph rendering. May differ
+     * slightly from time_to_first_token.
+     */
+    time_to_first_token_graph?: number;
 
     /**
      * total time (in seconds) taken to generate the full generation
@@ -509,6 +556,19 @@ export namespace CompletionStreamResponse {
   }
 
   export namespace Usage {
+    /**
+     * Breakdown of completion token consumption.
+     */
+    export interface CompletionTokensDetails {
+      /**
+       * Number of tokens consumed by the model's internal reasoning process. Only
+       * present on reasoning-capable models.
+       */
+      reasoning_tokens?: number;
+
+      [k: string]: unknown;
+    }
+
     /**
      * Extra tokens details
      */
@@ -532,7 +592,7 @@ export type CompletionCreateParams = CompletionCreateParamsNonStreaming | Comple
 
 export interface CompletionCreateParamsBase {
   /**
-   * The model ID to use (e.g. Meta-Llama-3.3-70B-Instruct). See available
+   * The model ID to use (e.g. gpt-oss-120b). See available
    * [models](https://docs.sambanova.ai/cloud/docs/get-started/supported-models)
    */
   model:
@@ -581,7 +641,8 @@ export interface CompletionCreateParamsBase {
   /**
    * Number between -2.0 and 2.0. Positive values penalize new tokens based on their
    * existing frequency in the text so far, decreasing the model's likelihood to
-   * repeat the same line verbatim.
+   * repeat the same line verbatim. Not currently implemented; accepted for API
+   * compatibility
    */
   frequency_penalty?: number;
 
@@ -613,20 +674,24 @@ export interface CompletionCreateParamsBase {
   max_tokens?: number | null;
 
   /**
-   * This is not yet supported by our models. How many chat completion choices to
-   * generate for each input message.
+   * How many completions to generate for each prompt. **Note:** Because this
+   * parameter generates many completions, it can quickly consume your token quota.
+   * Use carefully and ensure that you have reasonable settings for `max_tokens`.
    */
   n?: number | null;
 
   /**
    * Number between -2.0 and 2.0. Positive values penalize new tokens based on
    * whether they appear in the text so far, increasing the model's likelihood to
-   * talk about new topics.
+   * talk about new topics. Not currently implemented; accepted for API compatibility
    */
   presence_penalty?: number | null;
 
   /**
-   * This is not yet supported by our models.
+   * If specified, our system will make a best effort to sample deterministically,
+   * such that repeated requests with the same `seed` and parameters should return
+   * the same result. Determinism is not guaranteed, and you should refer to the
+   * `system_fingerprint` response parameter to monitor changes in the backend.
    */
   seed?: number | null;
 

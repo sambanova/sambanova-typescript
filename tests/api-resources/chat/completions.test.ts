@@ -11,7 +11,7 @@ describe('resource completions', () => {
   test('create: only required params', async () => {
     const responsePromise = client.chat.completions.create({
       messages: [{ content: 'create a poem using palindromes', role: 'user' }],
-      model: 'string',
+      model: 'gpt-oss-120b',
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -25,7 +25,7 @@ describe('resource completions', () => {
   test('create: required and optional params', async () => {
     const response = await client.chat.completions.create({
       messages: [{ content: 'create a poem using palindromes', role: 'user' }],
-      model: 'string',
+      model: 'gpt-oss-120b',
       chat_template_kwargs: { enable_thinking: true },
       do_sample: true,
       frequency_penalty: -2,

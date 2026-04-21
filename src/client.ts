@@ -28,6 +28,15 @@ import {
 } from './resources/completions';
 import { EmbeddingCreateParams, Embeddings, EmbeddingsResponse } from './resources/embeddings';
 import { ModelResponse, Models, ModelsResponse } from './resources/models';
+import {
+  ResponseCreateParams,
+  ResponseCreateParamsNonStreaming,
+  ResponseCreateParamsStreaming,
+  ResponseCreateResponse,
+  ResponseResponse,
+  ResponseStreamEvent,
+  Responses,
+} from './resources/responses';
 import { Audio } from './resources/audio/audio';
 import { Chat } from './resources/chat/chat';
 import { type Fetch } from './internal/builtin-types';
@@ -746,6 +755,7 @@ export class SambaNova {
   completions: API.Completions = new API.Completions(this);
   embeddings: API.Embeddings = new API.Embeddings(this);
   audio: API.Audio = new API.Audio(this);
+  responses: API.Responses = new API.Responses(this);
   models: API.Models = new API.Models(this);
 }
 
@@ -753,6 +763,7 @@ SambaNova.Chat = Chat;
 SambaNova.Completions = Completions;
 SambaNova.Embeddings = Embeddings;
 SambaNova.Audio = Audio;
+SambaNova.Responses = Responses;
 SambaNova.Models = Models;
 
 export declare namespace SambaNova {
@@ -777,6 +788,16 @@ export declare namespace SambaNova {
   };
 
   export { Audio as Audio };
+
+  export {
+    Responses as Responses,
+    type ResponseResponse as ResponseResponse,
+    type ResponseStreamEvent as ResponseStreamEvent,
+    type ResponseCreateResponse as ResponseCreateResponse,
+    type ResponseCreateParams as ResponseCreateParams,
+    type ResponseCreateParamsNonStreaming as ResponseCreateParamsNonStreaming,
+    type ResponseCreateParamsStreaming as ResponseCreateParamsStreaming,
+  };
 
   export { Models as Models, type ModelResponse as ModelResponse, type ModelsResponse as ModelsResponse };
 }

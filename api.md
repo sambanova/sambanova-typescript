@@ -62,6 +62,18 @@ Methods:
 
 - <code title="post /audio/translations">client.audio.translations.<a href="./src/resources/audio/translations.ts">create</a>({ ...params }) -> TranslationCreateResponse</code>
 
+# Responses
+
+Types:
+
+- <code><a href="./src/resources/responses.ts">ResponseResponse</a></code>
+- <code><a href="./src/resources/responses.ts">ResponseStreamEvent</a></code>
+- <code><a href="./src/resources/responses.ts">ResponseCreateResponse</a></code>
+
+Methods:
+
+- <code title="post /responses">client.responses.<a href="./src/resources/responses.ts">create</a>({ ...params }) -> ResponseCreateResponse</code>
+
 # Models
 
 Types:
