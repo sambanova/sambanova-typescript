@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.5.1 (2026-04-22)
+
+Full Changelog: [v1.5.0...v1.5.1](https://github.com/sambanova/sambanova-typescript/compare/v1.5.0...v1.5.1)
+
+### Chores
+
+* **internal:** more robust bootstrap script ([37047f9](https://github.com/sambanova/sambanova-typescript/commit/37047f92a2fe1a676e8ce7606e70198edf5f5bd2))
+
 ## 1.5.0 (2026-04-21)
 
 Full Changelog: [v1.4.2...v1.5.0](https://github.com/sambanova/sambanova-typescript/compare/v1.4.2...v1.5.0)
