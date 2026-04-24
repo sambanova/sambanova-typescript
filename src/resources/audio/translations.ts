@@ -20,26 +20,11 @@ export class Translations extends APIResource {
    * });
    * ```
    */
-  create(
-    body: TranslationCreateParamsNonStreaming,
-    options?: RequestOptions,
-  ): APIPromise<TranslationCreateResponse>;
-  create(
-    body: TranslationCreateParamsStreaming,
-    options?: RequestOptions,
-  ): APIPromise<Stream<TranslationStreamResponse>>;
-  create(
-    body: TranslationCreateParamsBase,
-    options?: RequestOptions,
-  ): APIPromise<Stream<TranslationStreamResponse> | TranslationCreateResponse>;
-  create(
-    body: TranslationCreateParams,
-    options?: RequestOptions,
-  ): APIPromise<TranslationCreateResponse> | APIPromise<Stream<TranslationStreamResponse>> {
-    return this._client.post(
-      '/audio/translations',
-      multipartFormRequestOptions({ body, ...options, stream: body.stream ?? false }, this._client),
-    ) as APIPromise<TranslationCreateResponse> | APIPromise<Stream<TranslationStreamResponse>>;
+  create(body: TranslationCreateParamsNonStreaming, options?: RequestOptions): APIPromise<TranslationCreateResponse>
+  create(body: TranslationCreateParamsStreaming, options?: RequestOptions): APIPromise<Stream<TranslationStreamResponse>>
+  create(body: TranslationCreateParamsBase, options?: RequestOptions): APIPromise<Stream<TranslationStreamResponse> | TranslationCreateResponse>
+  create(body: TranslationCreateParams, options?: RequestOptions): APIPromise<TranslationCreateResponse> | APIPromise<Stream<TranslationStreamResponse>> {
+    return this._client.post('/audio/translations', multipartFormRequestOptions({ body, ...options, stream: body.stream ?? false }, this._client)) as APIPromise<TranslationCreateResponse> | APIPromise<Stream<TranslationStreamResponse>>;
   }
 }
 
@@ -52,7 +37,7 @@ export interface TranslationResponse {
    */
   text: string;
 
-  [k: string]: unknown;
+[k: string]: unknown
 }
 
 /**
@@ -95,7 +80,7 @@ export interface TranslationStreamResponse {
    */
   usage?: TranslationStreamResponse.Usage | null;
 
-  [k: string]: unknown;
+[k: string]: unknown
 }
 
 export namespace TranslationStreamResponse {
@@ -124,7 +109,7 @@ export namespace TranslationStreamResponse {
      */
     logprobs?: Choice.Logprobs | null;
 
-    [k: string]: unknown;
+  [k: string]: unknown
   }
 
   export namespace Choice {
@@ -143,7 +128,7 @@ export namespace TranslationStreamResponse {
        */
       role?: 'assistant' | null;
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
 
     /**
@@ -152,7 +137,7 @@ export namespace TranslationStreamResponse {
     export interface Logprobs {
       content: Logprobs.Content;
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
 
     export namespace Logprobs {
@@ -165,7 +150,7 @@ export namespace TranslationStreamResponse {
 
         bytes?: Array<number> | null;
 
-        [k: string]: unknown;
+      [k: string]: unknown
       }
 
       export namespace Content {
@@ -176,7 +161,7 @@ export namespace TranslationStreamResponse {
 
           bytes?: Array<number> | null;
 
-          [k: string]: unknown;
+        [k: string]: unknown
         }
       }
     }
@@ -279,7 +264,7 @@ export namespace TranslationStreamResponse {
      */
     total_tokens_per_sec?: number;
 
-    [k: string]: unknown;
+  [k: string]: unknown
   }
 
   export namespace Usage {
@@ -293,7 +278,7 @@ export namespace TranslationStreamResponse {
        */
       reasoning_tokens?: number;
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
 
     /**
@@ -305,7 +290,7 @@ export namespace TranslationStreamResponse {
        */
       cached_tokens?: number;
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
   }
 }
@@ -313,9 +298,9 @@ export namespace TranslationStreamResponse {
 /**
  * Translation response json object
  */
-export type TranslationCreateResponse = TranslationResponse | TranslationStreamResponse;
+export type TranslationCreateResponse = TranslationResponse | TranslationStreamResponse
 
-export type TranslationCreateParams = TranslationCreateParamsNonStreaming | TranslationCreateParamsStreaming;
+export type TranslationCreateParams = TranslationCreateParamsNonStreaming | TranslationCreateParamsStreaming
 
 export interface TranslationCreateParamsBase {
   /**
@@ -334,108 +319,7 @@ export interface TranslationCreateParamsBase {
    * Optional language of the input audio. Supplying the input language in ISO-639-1
    * (e.g. en) format will improve accuracy and latency.
    */
-  language?:
-    | 'en'
-    | 'zh'
-    | 'de'
-    | 'es'
-    | 'ru'
-    | 'ko'
-    | 'fr'
-    | 'ja'
-    | 'pt'
-    | 'tr'
-    | 'pl'
-    | 'ca'
-    | 'nl'
-    | 'ar'
-    | 'sv'
-    | 'it'
-    | 'id'
-    | 'hi'
-    | 'fi'
-    | 'vi'
-    | 'he'
-    | 'uk'
-    | 'el'
-    | 'ms'
-    | 'cs'
-    | 'ro'
-    | 'da'
-    | 'hu'
-    | 'ta'
-    | 'no'
-    | 'th'
-    | 'ur'
-    | 'hr'
-    | 'bg'
-    | 'lt'
-    | 'la'
-    | 'mi'
-    | 'ml'
-    | 'cy'
-    | 'sk'
-    | 'te'
-    | 'fa'
-    | 'lv'
-    | 'bn'
-    | 'sr'
-    | 'az'
-    | 'sl'
-    | 'kn'
-    | 'et'
-    | 'mk'
-    | 'br'
-    | 'eu'
-    | 'is'
-    | 'hy'
-    | 'ne'
-    | 'mn'
-    | 'bs'
-    | 'kk'
-    | 'sq'
-    | 'sw'
-    | 'gl'
-    | 'mr'
-    | 'pa'
-    | 'si'
-    | 'km'
-    | 'sn'
-    | 'yo'
-    | 'so'
-    | 'af'
-    | 'oc'
-    | 'ka'
-    | 'be'
-    | 'tg'
-    | 'sd'
-    | 'gu'
-    | 'am'
-    | 'yi'
-    | 'lo'
-    | 'uz'
-    | 'fo'
-    | 'ht'
-    | 'ps'
-    | 'tk'
-    | 'nn'
-    | 'mt'
-    | 'sa'
-    | 'lb'
-    | 'my'
-    | 'bo'
-    | 'tl'
-    | 'mg'
-    | 'as'
-    | 'tt'
-    | 'haw'
-    | 'ln'
-    | 'ha'
-    | 'ba'
-    | 'jw'
-    | 'su'
-    | 'yue'
-    | null;
+  language?: 'en' | 'zh' | 'de' | 'es' | 'ru' | 'ko' | 'fr' | 'ja' | 'pt' | 'tr' | 'pl' | 'ca' | 'nl' | 'ar' | 'sv' | 'it' | 'id' | 'hi' | 'fi' | 'vi' | 'he' | 'uk' | 'el' | 'ms' | 'cs' | 'ro' | 'da' | 'hu' | 'ta' | 'no' | 'th' | 'ur' | 'hr' | 'bg' | 'lt' | 'la' | 'mi' | 'ml' | 'cy' | 'sk' | 'te' | 'fa' | 'lv' | 'bn' | 'sr' | 'az' | 'sl' | 'kn' | 'et' | 'mk' | 'br' | 'eu' | 'is' | 'hy' | 'ne' | 'mn' | 'bs' | 'kk' | 'sq' | 'sw' | 'gl' | 'mr' | 'pa' | 'si' | 'km' | 'sn' | 'yo' | 'so' | 'af' | 'oc' | 'ka' | 'be' | 'tg' | 'sd' | 'gu' | 'am' | 'yi' | 'lo' | 'uz' | 'fo' | 'ht' | 'ps' | 'tk' | 'nn' | 'mt' | 'sa' | 'lb' | 'my' | 'bo' | 'tl' | 'mg' | 'as' | 'tt' | 'haw' | 'ln' | 'ha' | 'ba' | 'jw' | 'su' | 'yue' | null;
 
   /**
    * Optional text prompt provided to influence transcription Translation style or
@@ -456,7 +340,7 @@ export interface TranslationCreateParamsBase {
    */
   stream_options?: TranslationCreateParams.StreamOptions | null;
 
-  [k: string]: unknown;
+[k: string]: unknown
 }
 
 export namespace TranslationCreateParams {
@@ -467,20 +351,20 @@ export namespace TranslationCreateParams {
     include_usage?: boolean;
   }
 
-  export type TranslationCreateParamsNonStreaming = TranslationsAPI.TranslationCreateParamsNonStreaming;
-  export type TranslationCreateParamsStreaming = TranslationsAPI.TranslationCreateParamsStreaming;
+  export type TranslationCreateParamsNonStreaming = TranslationsAPI.TranslationCreateParamsNonStreaming
+  export type TranslationCreateParamsStreaming = TranslationsAPI.TranslationCreateParamsStreaming
 }
 
 export interface TranslationCreateParamsNonStreaming extends TranslationCreateParamsBase {
   stream?: false;
 
-  [k: string]: unknown;
+[k: string]: unknown
 }
 
 export interface TranslationCreateParamsStreaming extends TranslationCreateParamsBase {
   stream: true;
 
-  [k: string]: unknown;
+[k: string]: unknown
 }
 
 export declare namespace Translations {
@@ -490,6 +374,6 @@ export declare namespace Translations {
     type TranslationCreateResponse as TranslationCreateResponse,
     type TranslationCreateParams as TranslationCreateParams,
     type TranslationCreateParamsNonStreaming as TranslationCreateParamsNonStreaming,
-    type TranslationCreateParamsStreaming as TranslationCreateParamsStreaming,
+    type TranslationCreateParamsStreaming as TranslationCreateParamsStreaming
   };
 }

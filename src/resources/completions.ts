@@ -19,25 +19,11 @@ export class Completions extends APIResource {
    * });
    * ```
    */
-  create(
-    body: CompletionCreateParamsNonStreaming,
-    options?: RequestOptions,
-  ): APIPromise<CompletionCreateResponse>;
-  create(
-    body: CompletionCreateParamsStreaming,
-    options?: RequestOptions,
-  ): APIPromise<Stream<CompletionStreamResponse>>;
-  create(
-    body: CompletionCreateParamsBase,
-    options?: RequestOptions,
-  ): APIPromise<Stream<CompletionStreamResponse> | CompletionCreateResponse>;
-  create(
-    body: CompletionCreateParams,
-    options?: RequestOptions,
-  ): APIPromise<CompletionCreateResponse> | APIPromise<Stream<CompletionStreamResponse>> {
-    return this._client.post('/completions', { body, ...options, stream: body.stream ?? false }) as
-      | APIPromise<CompletionCreateResponse>
-      | APIPromise<Stream<CompletionStreamResponse>>;
+  create(body: CompletionCreateParamsNonStreaming, options?: RequestOptions): APIPromise<CompletionCreateResponse>
+  create(body: CompletionCreateParamsStreaming, options?: RequestOptions): APIPromise<Stream<CompletionStreamResponse>>
+  create(body: CompletionCreateParamsBase, options?: RequestOptions): APIPromise<Stream<CompletionStreamResponse> | CompletionCreateResponse>
+  create(body: CompletionCreateParams, options?: RequestOptions): APIPromise<CompletionCreateResponse> | APIPromise<Stream<CompletionStreamResponse>> {
+    return this._client.post('/completions', { body, ...options, stream: body.stream ?? false }) as APIPromise<CompletionCreateResponse> | APIPromise<Stream<CompletionStreamResponse>>;
   }
 }
 
@@ -109,7 +95,7 @@ export namespace CompletionResponse {
      */
     message?: Choice.Message;
 
-    [k: string]: unknown;
+  [k: string]: unknown
   }
 
   export namespace Choice {
@@ -119,7 +105,7 @@ export namespace CompletionResponse {
     export interface Logprobs {
       content: Logprobs.Content;
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
 
     export namespace Logprobs {
@@ -132,7 +118,7 @@ export namespace CompletionResponse {
 
         bytes?: Array<number> | null;
 
-        [k: string]: unknown;
+      [k: string]: unknown
       }
 
       export namespace Content {
@@ -143,7 +129,7 @@ export namespace CompletionResponse {
 
           bytes?: Array<number> | null;
 
-          [k: string]: unknown;
+        [k: string]: unknown
         }
       }
     }
@@ -167,7 +153,7 @@ export namespace CompletionResponse {
        */
       tool_calls?: Array<Message.ToolCall> | null;
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
 
     export namespace Message {
@@ -192,7 +178,7 @@ export namespace CompletionResponse {
          */
         index?: number | null;
 
-        [k: string]: unknown;
+      [k: string]: unknown
       }
 
       export namespace ToolCall {
@@ -213,7 +199,7 @@ export namespace CompletionResponse {
            */
           name: string;
 
-          [k: string]: unknown;
+        [k: string]: unknown
         }
       }
     }
@@ -316,7 +302,7 @@ export namespace CompletionResponse {
      */
     total_tokens_per_sec?: number;
 
-    [k: string]: unknown;
+  [k: string]: unknown
   }
 
   export namespace Usage {
@@ -330,7 +316,7 @@ export namespace CompletionResponse {
        */
       reasoning_tokens?: number;
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
 
     /**
@@ -342,7 +328,7 @@ export namespace CompletionResponse {
        */
       cached_tokens?: number;
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
   }
 }
@@ -387,7 +373,7 @@ export interface CompletionStreamResponse {
    */
   usage?: CompletionStreamResponse.Usage | null;
 
-  [k: string]: unknown;
+[k: string]: unknown
 }
 
 export namespace CompletionStreamResponse {
@@ -415,7 +401,7 @@ export namespace CompletionStreamResponse {
      */
     logprobs?: Choice.Logprobs | null;
 
-    [k: string]: unknown;
+  [k: string]: unknown
   }
 
   export namespace Choice {
@@ -425,7 +411,7 @@ export namespace CompletionStreamResponse {
     export interface Logprobs {
       content: Logprobs.Content;
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
 
     export namespace Logprobs {
@@ -438,7 +424,7 @@ export namespace CompletionStreamResponse {
 
         bytes?: Array<number> | null;
 
-        [k: string]: unknown;
+      [k: string]: unknown
       }
 
       export namespace Content {
@@ -449,7 +435,7 @@ export namespace CompletionStreamResponse {
 
           bytes?: Array<number> | null;
 
-          [k: string]: unknown;
+        [k: string]: unknown
         }
       }
     }
@@ -552,7 +538,7 @@ export namespace CompletionStreamResponse {
      */
     total_tokens_per_sec?: number;
 
-    [k: string]: unknown;
+  [k: string]: unknown
   }
 
   export namespace Usage {
@@ -566,7 +552,7 @@ export namespace CompletionStreamResponse {
        */
       reasoning_tokens?: number;
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
 
     /**
@@ -578,7 +564,7 @@ export namespace CompletionStreamResponse {
        */
       cached_tokens?: number;
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
   }
 }
@@ -586,46 +572,16 @@ export namespace CompletionStreamResponse {
 /**
  * ompletion response returned by the model
  */
-export type CompletionCreateResponse = CompletionResponse | CompletionStreamResponse;
+export type CompletionCreateResponse = CompletionResponse | CompletionStreamResponse
 
-export type CompletionCreateParams = CompletionCreateParamsNonStreaming | CompletionCreateParamsStreaming;
+export type CompletionCreateParams = CompletionCreateParamsNonStreaming | CompletionCreateParamsStreaming
 
 export interface CompletionCreateParamsBase {
   /**
    * The model ID to use (e.g. gpt-oss-120b). See available
    * [models](https://docs.sambanova.ai/cloud/docs/get-started/supported-models)
    */
-  model:
-    | (string & {})
-    | 'Meta-Llama-3.3-70B-Instruct'
-    | 'Meta-Llama-3.2-1B-Instruct'
-    | 'Meta-Llama-3.2-3B-Instruct'
-    | 'Llama-3.2-11B-Vision-Instruct'
-    | 'Llama-3.2-90B-Vision-Instruct'
-    | 'Meta-Llama-3.1-8B-Instruct'
-    | 'Meta-Llama-3.1-70B-Instruct'
-    | 'Meta-Llama-3.1-405B-Instruct'
-    | 'Qwen2.5-Coder-32B-Instruct'
-    | 'Qwen2.5-72B-Instruct'
-    | 'QwQ-32B-Preview'
-    | 'Meta-Llama-Guard-3-8B'
-    | 'DeepSeek-R1'
-    | 'DeepSeek-R1-0528'
-    | 'DeepSeek-V3-0324'
-    | 'DeepSeek-V3.1'
-    | 'DeepSeek-V3.1-cb'
-    | 'DeepSeek-V3.1-Terminus'
-    | 'DeepSeek-V3.2'
-    | 'DeepSeek-R1-Distill-Llama-70B'
-    | 'Llama-4-Maverick-17B-128E-Instruct'
-    | 'Llama-4-Scout-17B-16E-Instruct'
-    | 'Qwen3-32B'
-    | 'Qwen3-235B'
-    | 'Llama-3.3-Swallow-70B-Instruct-v0.4'
-    | 'gpt-oss-120b'
-    | 'ALLaM-7B-Instruct-preview'
-    | 'MiniMax-M2.5M'
-    | 'gemma-3-12b-it';
+  model: (string & {}) | 'Meta-Llama-3.3-70B-Instruct' | 'Meta-Llama-3.2-1B-Instruct' | 'Meta-Llama-3.2-3B-Instruct' | 'Llama-3.2-11B-Vision-Instruct' | 'Llama-3.2-90B-Vision-Instruct' | 'Meta-Llama-3.1-8B-Instruct' | 'Meta-Llama-3.1-70B-Instruct' | 'Meta-Llama-3.1-405B-Instruct' | 'Qwen2.5-Coder-32B-Instruct' | 'Qwen2.5-72B-Instruct' | 'QwQ-32B-Preview' | 'Meta-Llama-Guard-3-8B' | 'DeepSeek-R1' | 'DeepSeek-R1-0528' | 'DeepSeek-V3-0324' | 'DeepSeek-V3.1' | 'DeepSeek-V3.1-cb' | 'DeepSeek-V3.1-Terminus' | 'DeepSeek-V3.2' | 'DeepSeek-R1-Distill-Llama-70B' | 'Llama-4-Maverick-17B-128E-Instruct' | 'Llama-4-Scout-17B-16E-Instruct' | 'Qwen3-32B' | 'Qwen3-235B' | 'Llama-3.3-Swallow-70B-Instruct-v0.4' | 'gpt-oss-120b' | 'ALLaM-7B-Instruct-preview' | 'MiniMax-M2.5M' | 'gemma-3-12b-it';
 
   /**
    * Prompt to send to the model.
@@ -747,7 +703,7 @@ export interface CompletionCreateParamsBase {
    */
   top_p?: number | null;
 
-  [k: string]: unknown;
+[k: string]: unknown
 }
 
 export namespace CompletionCreateParams {
@@ -760,11 +716,11 @@ export namespace CompletionCreateParams {
      */
     include_usage?: boolean | null;
 
-    [k: string]: unknown;
+  [k: string]: unknown
   }
 
-  export type CompletionCreateParamsNonStreaming = CompletionsAPI.CompletionCreateParamsNonStreaming;
-  export type CompletionCreateParamsStreaming = CompletionsAPI.CompletionCreateParamsStreaming;
+  export type CompletionCreateParamsNonStreaming = CompletionsAPI.CompletionCreateParamsNonStreaming
+  export type CompletionCreateParamsStreaming = CompletionsAPI.CompletionCreateParamsStreaming
 }
 
 export interface CompletionCreateParamsNonStreaming extends CompletionCreateParamsBase {
@@ -776,7 +732,7 @@ export interface CompletionCreateParamsNonStreaming extends CompletionCreatePara
    */
   stream?: false | null;
 
-  [k: string]: unknown;
+[k: string]: unknown
 }
 
 export interface CompletionCreateParamsStreaming extends CompletionCreateParamsBase {
@@ -788,7 +744,7 @@ export interface CompletionCreateParamsStreaming extends CompletionCreateParamsB
    */
   stream: true;
 
-  [k: string]: unknown;
+[k: string]: unknown
 }
 
 export declare namespace Completions {
@@ -798,6 +754,6 @@ export declare namespace Completions {
     type CompletionCreateResponse as CompletionCreateResponse,
     type CompletionCreateParams as CompletionCreateParams,
     type CompletionCreateParamsNonStreaming as CompletionCreateParamsNonStreaming,
-    type CompletionCreateParamsStreaming as CompletionCreateParamsStreaming,
+    type CompletionCreateParamsStreaming as CompletionCreateParamsStreaming
   };
 }

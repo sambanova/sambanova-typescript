@@ -23,25 +23,11 @@ export class Completions extends APIResource {
    * });
    * ```
    */
-  create(
-    body: CompletionCreateParamsNonStreaming,
-    options?: RequestOptions,
-  ): APIPromise<CompletionCreateResponse>;
-  create(
-    body: CompletionCreateParamsStreaming,
-    options?: RequestOptions,
-  ): APIPromise<Stream<ChatCompletionStreamResponse>>;
-  create(
-    body: CompletionCreateParamsBase,
-    options?: RequestOptions,
-  ): APIPromise<Stream<ChatCompletionStreamResponse> | CompletionCreateResponse>;
-  create(
-    body: CompletionCreateParams,
-    options?: RequestOptions,
-  ): APIPromise<CompletionCreateResponse> | APIPromise<Stream<ChatCompletionStreamResponse>> {
-    return this._client.post('/chat/completions', { body, ...options, stream: body.stream ?? false }) as
-      | APIPromise<CompletionCreateResponse>
-      | APIPromise<Stream<ChatCompletionStreamResponse>>;
+  create(body: CompletionCreateParamsNonStreaming, options?: RequestOptions): APIPromise<CompletionCreateResponse>
+  create(body: CompletionCreateParamsStreaming, options?: RequestOptions): APIPromise<Stream<ChatCompletionStreamResponse>>
+  create(body: CompletionCreateParamsBase, options?: RequestOptions): APIPromise<Stream<ChatCompletionStreamResponse> | CompletionCreateResponse>
+  create(body: CompletionCreateParams, options?: RequestOptions): APIPromise<CompletionCreateResponse> | APIPromise<Stream<ChatCompletionStreamResponse>> {
+    return this._client.post('/chat/completions', { body, ...options, stream: body.stream ?? false }) as APIPromise<CompletionCreateResponse> | APIPromise<Stream<ChatCompletionStreamResponse>>;
   }
 }
 
@@ -108,7 +94,7 @@ export namespace ChatCompletionResponse {
      */
     logprobs?: Choice.Logprobs | null;
 
-    [k: string]: unknown;
+  [k: string]: unknown
   }
 
   export namespace Choice {
@@ -131,7 +117,7 @@ export namespace ChatCompletionResponse {
        */
       tool_calls?: Array<Message.ToolCall> | null;
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
 
     export namespace Message {
@@ -156,7 +142,7 @@ export namespace ChatCompletionResponse {
          */
         index?: number | null;
 
-        [k: string]: unknown;
+      [k: string]: unknown
       }
 
       export namespace ToolCall {
@@ -177,7 +163,7 @@ export namespace ChatCompletionResponse {
            */
           name: string;
 
-          [k: string]: unknown;
+        [k: string]: unknown
         }
       }
     }
@@ -188,7 +174,7 @@ export namespace ChatCompletionResponse {
     export interface Logprobs {
       content: Logprobs.Content;
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
 
     export namespace Logprobs {
@@ -201,7 +187,7 @@ export namespace ChatCompletionResponse {
 
         bytes?: Array<number> | null;
 
-        [k: string]: unknown;
+      [k: string]: unknown
       }
 
       export namespace Content {
@@ -212,7 +198,7 @@ export namespace ChatCompletionResponse {
 
           bytes?: Array<number> | null;
 
-          [k: string]: unknown;
+        [k: string]: unknown
         }
       }
     }
@@ -315,7 +301,7 @@ export namespace ChatCompletionResponse {
      */
     total_tokens_per_sec?: number;
 
-    [k: string]: unknown;
+  [k: string]: unknown
   }
 
   export namespace Usage {
@@ -329,7 +315,7 @@ export namespace ChatCompletionResponse {
        */
       reasoning_tokens?: number;
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
 
     /**
@@ -341,7 +327,7 @@ export namespace ChatCompletionResponse {
        */
       cached_tokens?: number;
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
   }
 }
@@ -386,7 +372,7 @@ export interface ChatCompletionStreamResponse {
    */
   usage?: ChatCompletionStreamResponse.Usage | null;
 
-  [k: string]: unknown;
+[k: string]: unknown
 }
 
 export namespace ChatCompletionStreamResponse {
@@ -414,7 +400,7 @@ export namespace ChatCompletionStreamResponse {
      */
     logprobs?: Choice.Logprobs | null;
 
-    [k: string]: unknown;
+  [k: string]: unknown
   }
 
   export namespace Choice {
@@ -447,7 +433,7 @@ export namespace ChatCompletionStreamResponse {
        */
       tool_calls?: Array<Delta.ToolCall> | null;
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
 
     export namespace Delta {
@@ -472,7 +458,7 @@ export namespace ChatCompletionStreamResponse {
          */
         index?: number | null;
 
-        [k: string]: unknown;
+      [k: string]: unknown
       }
 
       export namespace ToolCall {
@@ -493,7 +479,7 @@ export namespace ChatCompletionStreamResponse {
            */
           name: string;
 
-          [k: string]: unknown;
+        [k: string]: unknown
         }
       }
     }
@@ -504,7 +490,7 @@ export namespace ChatCompletionStreamResponse {
     export interface Logprobs {
       content: Logprobs.Content;
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
 
     export namespace Logprobs {
@@ -517,7 +503,7 @@ export namespace ChatCompletionStreamResponse {
 
         bytes?: Array<number> | null;
 
-        [k: string]: unknown;
+      [k: string]: unknown
       }
 
       export namespace Content {
@@ -528,7 +514,7 @@ export namespace ChatCompletionStreamResponse {
 
           bytes?: Array<number> | null;
 
-          [k: string]: unknown;
+        [k: string]: unknown
         }
       }
     }
@@ -631,7 +617,7 @@ export namespace ChatCompletionStreamResponse {
      */
     total_tokens_per_sec?: number;
 
-    [k: string]: unknown;
+  [k: string]: unknown
   }
 
   export namespace Usage {
@@ -645,7 +631,7 @@ export namespace ChatCompletionStreamResponse {
        */
       reasoning_tokens?: number;
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
 
     /**
@@ -657,7 +643,7 @@ export namespace ChatCompletionStreamResponse {
        */
       cached_tokens?: number;
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
   }
 }
@@ -744,56 +730,21 @@ export namespace ModelOutputError {
 /**
  * chat completion response returned by the model
  */
-export type CompletionCreateResponse = ChatCompletionResponse | ChatCompletionStreamResponse;
+export type CompletionCreateResponse = ChatCompletionResponse | ChatCompletionStreamResponse
 
-export type CompletionCreateParams = CompletionCreateParamsNonStreaming | CompletionCreateParamsStreaming;
+export type CompletionCreateParams = CompletionCreateParamsNonStreaming | CompletionCreateParamsStreaming
 
 export interface CompletionCreateParamsBase {
   /**
    * A list of messages comprising the conversation so far.
    */
-  messages: Array<
-    | CompletionCreateParams.SystemMessage
-    | CompletionCreateParams.UserMessage
-    | CompletionCreateParams.AssistantMessage
-    | CompletionCreateParams.ToolMessage
-  >;
+  messages: Array<CompletionCreateParams.SystemMessage | CompletionCreateParams.UserMessage | CompletionCreateParams.AssistantMessage | CompletionCreateParams.ToolMessage>;
 
   /**
    * The model ID to use (e.g. gpt-oss-120b). See available
    * [models](https://docs.sambanova.ai/cloud/docs/get-started/supported-models)
    */
-  model:
-    | (string & {})
-    | 'Meta-Llama-3.3-70B-Instruct'
-    | 'Meta-Llama-3.2-1B-Instruct'
-    | 'Meta-Llama-3.2-3B-Instruct'
-    | 'Llama-3.2-11B-Vision-Instruct'
-    | 'Llama-3.2-90B-Vision-Instruct'
-    | 'Meta-Llama-3.1-8B-Instruct'
-    | 'Meta-Llama-3.1-70B-Instruct'
-    | 'Meta-Llama-3.1-405B-Instruct'
-    | 'Qwen2.5-Coder-32B-Instruct'
-    | 'Qwen2.5-72B-Instruct'
-    | 'QwQ-32B-Preview'
-    | 'Meta-Llama-Guard-3-8B'
-    | 'DeepSeek-R1'
-    | 'DeepSeek-R1-0528'
-    | 'DeepSeek-V3-0324'
-    | 'DeepSeek-V3.1'
-    | 'DeepSeek-V3.1-cb'
-    | 'DeepSeek-V3.1-Terminus'
-    | 'DeepSeek-V3.2'
-    | 'DeepSeek-R1-Distill-Llama-70B'
-    | 'Llama-4-Maverick-17B-128E-Instruct'
-    | 'Llama-4-Scout-17B-16E-Instruct'
-    | 'Qwen3-32B'
-    | 'Qwen3-235B'
-    | 'Llama-3.3-Swallow-70B-Instruct-v0.4'
-    | 'gpt-oss-120b'
-    | 'ALLaM-7B-Instruct-preview'
-    | 'MiniMax-M2.5M'
-    | 'gemma-3-12b-it';
+  model: (string & {}) | 'Meta-Llama-3.3-70B-Instruct' | 'Meta-Llama-3.2-1B-Instruct' | 'Meta-Llama-3.2-3B-Instruct' | 'Llama-3.2-11B-Vision-Instruct' | 'Llama-3.2-90B-Vision-Instruct' | 'Meta-Llama-3.1-8B-Instruct' | 'Meta-Llama-3.1-70B-Instruct' | 'Meta-Llama-3.1-405B-Instruct' | 'Qwen2.5-Coder-32B-Instruct' | 'Qwen2.5-72B-Instruct' | 'QwQ-32B-Preview' | 'Meta-Llama-Guard-3-8B' | 'DeepSeek-R1' | 'DeepSeek-R1-0528' | 'DeepSeek-V3-0324' | 'DeepSeek-V3.1' | 'DeepSeek-V3.1-cb' | 'DeepSeek-V3.1-Terminus' | 'DeepSeek-V3.2' | 'DeepSeek-R1-Distill-Llama-70B' | 'Llama-4-Maverick-17B-128E-Instruct' | 'Llama-4-Scout-17B-16E-Instruct' | 'Qwen3-32B' | 'Qwen3-235B' | 'Llama-3.3-Swallow-70B-Instruct-v0.4' | 'gpt-oss-120b' | 'ALLaM-7B-Instruct-preview' | 'MiniMax-M2.5M' | 'gemma-3-12b-it';
 
   /**
    * A dictionary of additional keyword arguments to pass into the chat template. Use
@@ -881,11 +832,7 @@ export interface CompletionCreateParamsBase {
    * object of type <your_schema>. Setting to `{ "type": "text"}` is equivalent to
    * the default plain text generation
    */
-  response_format?:
-    | CompletionCreateParams.ResponseFormatJsonSchema
-    | CompletionCreateParams.ResponseFormatJsonObject
-    | CompletionCreateParams.ResponseFormatText
-    | null;
+  response_format?: CompletionCreateParams.ResponseFormatJsonSchema | CompletionCreateParams.ResponseFormatJsonObject | CompletionCreateParams.ResponseFormatText | null;
 
   /**
    * If specified, our system will make a best effort to sample deterministically,
@@ -962,7 +909,7 @@ export interface CompletionCreateParamsBase {
    */
   top_p?: number | null;
 
-  [k: string]: unknown;
+[k: string]: unknown
 }
 
 export namespace CompletionCreateParams {
@@ -977,7 +924,7 @@ export namespace CompletionCreateParams {
      */
     role: 'system';
 
-    [k: string]: unknown;
+  [k: string]: unknown
   }
 
   export namespace SystemMessage {
@@ -992,7 +939,7 @@ export namespace CompletionCreateParams {
        */
       type: 'text';
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
   }
 
@@ -1000,17 +947,14 @@ export namespace CompletionCreateParams {
     /**
      * The contents of the user message.
      */
-    content:
-      | string
-      | Array<UserMessage.TextContent | UserMessage.ImageContent | UserMessage.AudioContent>
-      | null;
+    content: string | Array<UserMessage.TextContent | UserMessage.ImageContent | UserMessage.AudioContent> | null;
 
     /**
      * The role of the messages author, in this case `user`.
      */
     role: 'user';
 
-    [k: string]: unknown;
+  [k: string]: unknown
   }
 
   export namespace UserMessage {
@@ -1025,7 +969,7 @@ export namespace CompletionCreateParams {
        */
       type: 'text';
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
 
     export interface ImageContent {
@@ -1036,7 +980,7 @@ export namespace CompletionCreateParams {
        */
       type: 'image_url';
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
 
     export namespace ImageContent {
@@ -1057,7 +1001,7 @@ export namespace CompletionCreateParams {
        */
       type: 'audio_content';
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
 
     export namespace AudioContent {
@@ -1096,7 +1040,7 @@ export namespace CompletionCreateParams {
      */
     tool_calls?: Array<AssistantMessage.ToolCall> | null;
 
-    [k: string]: unknown;
+  [k: string]: unknown
   }
 
   export namespace AssistantMessage {
@@ -1111,7 +1055,7 @@ export namespace CompletionCreateParams {
        */
       type: 'text';
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
 
     export interface ToolCall {
@@ -1135,7 +1079,7 @@ export namespace CompletionCreateParams {
        */
       index?: number | null;
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
 
     export namespace ToolCall {
@@ -1156,7 +1100,7 @@ export namespace CompletionCreateParams {
          */
         name: string;
 
-        [k: string]: unknown;
+      [k: string]: unknown
       }
     }
   }
@@ -1172,7 +1116,7 @@ export namespace CompletionCreateParams {
      */
     role: 'tool';
 
-    [k: string]: unknown;
+  [k: string]: unknown
   }
 
   export namespace ToolMessage {
@@ -1187,7 +1131,7 @@ export namespace CompletionCreateParams {
        */
       type: 'text';
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
   }
 
@@ -1203,7 +1147,7 @@ export namespace CompletionCreateParams {
      */
     enable_thinking?: boolean;
 
-    [k: string]: unknown;
+  [k: string]: unknown
   }
 
   /**
@@ -1219,7 +1163,7 @@ export namespace CompletionCreateParams {
 
     type: 'json_schema';
 
-    [k: string]: unknown;
+  [k: string]: unknown
   }
 
   export namespace ResponseFormatJsonSchema {
@@ -1248,7 +1192,7 @@ export namespace CompletionCreateParams {
        */
       strict?: boolean | null;
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
   }
 
@@ -1258,7 +1202,7 @@ export namespace CompletionCreateParams {
   export interface ResponseFormatJsonObject {
     type: 'json_object';
 
-    [k: string]: unknown;
+  [k: string]: unknown
   }
 
   /**
@@ -1269,7 +1213,7 @@ export namespace CompletionCreateParams {
   export interface ResponseFormatText {
     type: 'text';
 
-    [k: string]: unknown;
+  [k: string]: unknown
   }
 
   /**
@@ -1281,7 +1225,7 @@ export namespace CompletionCreateParams {
      */
     include_usage?: boolean | null;
 
-    [k: string]: unknown;
+  [k: string]: unknown
   }
 
   export interface ToolChoiceObject {
@@ -1296,7 +1240,7 @@ export namespace CompletionCreateParams {
      */
     type: 'function';
 
-    [k: string]: unknown;
+  [k: string]: unknown
   }
 
   export namespace ToolChoiceObject {
@@ -1310,7 +1254,7 @@ export namespace CompletionCreateParams {
        */
       name: string;
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
   }
 
@@ -1322,7 +1266,7 @@ export namespace CompletionCreateParams {
      */
     type: string;
 
-    [k: string]: unknown;
+  [k: string]: unknown
   }
 
   export namespace Tool {
@@ -1347,12 +1291,12 @@ export namespace CompletionCreateParams {
        */
       parameters?: { [key: string]: unknown };
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
   }
 
-  export type CompletionCreateParamsNonStreaming = CompletionsAPI.CompletionCreateParamsNonStreaming;
-  export type CompletionCreateParamsStreaming = CompletionsAPI.CompletionCreateParamsStreaming;
+  export type CompletionCreateParamsNonStreaming = CompletionsAPI.CompletionCreateParamsNonStreaming
+  export type CompletionCreateParamsStreaming = CompletionsAPI.CompletionCreateParamsStreaming
 }
 
 export interface CompletionCreateParamsNonStreaming extends CompletionCreateParamsBase {
@@ -1364,7 +1308,7 @@ export interface CompletionCreateParamsNonStreaming extends CompletionCreatePara
    */
   stream?: false | null;
 
-  [k: string]: unknown;
+[k: string]: unknown
 }
 
 export interface CompletionCreateParamsStreaming extends CompletionCreateParamsBase {
@@ -1376,7 +1320,7 @@ export interface CompletionCreateParamsStreaming extends CompletionCreateParamsB
    */
   stream: true;
 
-  [k: string]: unknown;
+[k: string]: unknown
 }
 
 export declare namespace Completions {
@@ -1388,6 +1332,6 @@ export declare namespace Completions {
     type CompletionCreateResponse as CompletionCreateResponse,
     type CompletionCreateParams as CompletionCreateParams,
     type CompletionCreateParamsNonStreaming as CompletionCreateParamsNonStreaming,
-    type CompletionCreateParamsStreaming as CompletionCreateParamsStreaming,
+    type CompletionCreateParamsStreaming as CompletionCreateParamsStreaming
   };
 }

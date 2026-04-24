@@ -168,7 +168,7 @@ export namespace EmbeddingsResponse {
      */
     total_tokens_per_sec?: number;
 
-    [k: string]: unknown;
+  [k: string]: unknown
   }
 
   export namespace Usage {
@@ -182,7 +182,7 @@ export namespace EmbeddingsResponse {
        */
       reasoning_tokens?: number;
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
 
     /**
@@ -194,7 +194,7 @@ export namespace EmbeddingsResponse {
        */
       cached_tokens?: number;
 
-      [k: string]: unknown;
+    [k: string]: unknown
     }
   }
 }
@@ -212,12 +212,12 @@ export interface EmbeddingCreateParams {
    */
   model: (string & {}) | 'E5-Mistral-7B-Instruct';
 
-  [k: string]: unknown;
+[k: string]: unknown
 }
 
 export declare namespace Embeddings {
   export {
     type EmbeddingsResponse as EmbeddingsResponse,
-    type EmbeddingCreateParams as EmbeddingCreateParams,
+    type EmbeddingCreateParams as EmbeddingCreateParams
   };
 }
