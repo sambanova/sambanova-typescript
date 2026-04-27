@@ -2,9 +2,25 @@
 
 import { APIResource } from '../../core/resource';
 import * as TranscriptionsAPI from './transcriptions';
-import { TranscriptionCreateParams, TranscriptionCreateParamsNonStreaming, TranscriptionCreateParamsStreaming, TranscriptionCreateResponse, TranscriptionResponse, TranscriptionStreamResponse, Transcriptions } from './transcriptions';
+import {
+  TranscriptionCreateParams,
+  TranscriptionCreateParamsNonStreaming,
+  TranscriptionCreateParamsStreaming,
+  TranscriptionCreateResponse,
+  TranscriptionResponse,
+  TranscriptionStreamResponse,
+  Transcriptions,
+} from './transcriptions';
 import * as TranslationsAPI from './translations';
-import { TranslationCreateParams, TranslationCreateParamsNonStreaming, TranslationCreateParamsStreaming, TranslationCreateResponse, TranslationResponse, TranslationStreamResponse, Translations } from './translations';
+import {
+  TranslationCreateParams,
+  TranslationCreateParamsNonStreaming,
+  TranslationCreateParamsStreaming,
+  TranslationCreateResponse,
+  TranslationResponse,
+  TranslationStreamResponse,
+  Translations,
+} from './translations';
 
 export class Audio extends APIResource {
   transcriptions: TranscriptionsAPI.Transcriptions = new TranscriptionsAPI.Transcriptions(this._client);
@@ -22,7 +38,7 @@ export declare namespace Audio {
     type TranscriptionCreateResponse as TranscriptionCreateResponse,
     type TranscriptionCreateParams as TranscriptionCreateParams,
     type TranscriptionCreateParamsNonStreaming as TranscriptionCreateParamsNonStreaming,
-    type TranscriptionCreateParamsStreaming as TranscriptionCreateParamsStreaming
+    type TranscriptionCreateParamsStreaming as TranscriptionCreateParamsStreaming,
   };
 
   export {
@@ -32,6 +48,6 @@ export declare namespace Audio {
     type TranslationCreateResponse as TranslationCreateResponse,
     type TranslationCreateParams as TranslationCreateParams,
     type TranslationCreateParamsNonStreaming as TranslationCreateParamsNonStreaming,
-    type TranslationCreateParamsStreaming as TranslationCreateParamsStreaming
+    type TranslationCreateParamsStreaming as TranslationCreateParamsStreaming,
   };
 }

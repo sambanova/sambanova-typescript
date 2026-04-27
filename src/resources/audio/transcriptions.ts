@@ -21,11 +21,26 @@ export class Transcriptions extends APIResource {
    *   });
    * ```
    */
-  create(body: TranscriptionCreateParamsNonStreaming, options?: RequestOptions): APIPromise<TranscriptionCreateResponse>
-  create(body: TranscriptionCreateParamsStreaming, options?: RequestOptions): APIPromise<Stream<TranscriptionStreamResponse>>
-  create(body: TranscriptionCreateParamsBase, options?: RequestOptions): APIPromise<Stream<TranscriptionStreamResponse> | TranscriptionCreateResponse>
-  create(body: TranscriptionCreateParams, options?: RequestOptions): APIPromise<TranscriptionCreateResponse> | APIPromise<Stream<TranscriptionStreamResponse>> {
-    return this._client.post('/audio/transcriptions', multipartFormRequestOptions({ body, ...options, stream: body.stream ?? false }, this._client)) as APIPromise<TranscriptionCreateResponse> | APIPromise<Stream<TranscriptionStreamResponse>>;
+  create(
+    body: TranscriptionCreateParamsNonStreaming,
+    options?: RequestOptions,
+  ): APIPromise<TranscriptionCreateResponse>;
+  create(
+    body: TranscriptionCreateParamsStreaming,
+    options?: RequestOptions,
+  ): APIPromise<Stream<TranscriptionStreamResponse>>;
+  create(
+    body: TranscriptionCreateParamsBase,
+    options?: RequestOptions,
+  ): APIPromise<Stream<TranscriptionStreamResponse> | TranscriptionCreateResponse>;
+  create(
+    body: TranscriptionCreateParams,
+    options?: RequestOptions,
+  ): APIPromise<TranscriptionCreateResponse> | APIPromise<Stream<TranscriptionStreamResponse>> {
+    return this._client.post(
+      '/audio/transcriptions',
+      multipartFormRequestOptions({ body, ...options, stream: body.stream ?? false }, this._client),
+    ) as APIPromise<TranscriptionCreateResponse> | APIPromise<Stream<TranscriptionStreamResponse>>;
   }
 }
 
@@ -38,7 +53,7 @@ export interface TranscriptionResponse {
    */
   text: string;
 
-[k: string]: unknown
+  [k: string]: unknown;
 }
 
 /**
@@ -81,7 +96,7 @@ export interface TranscriptionStreamResponse {
    */
   usage?: TranscriptionStreamResponse.Usage | null;
 
-[k: string]: unknown
+  [k: string]: unknown;
 }
 
 export namespace TranscriptionStreamResponse {
@@ -110,7 +125,7 @@ export namespace TranscriptionStreamResponse {
      */
     logprobs?: Choice.Logprobs | null;
 
-  [k: string]: unknown
+    [k: string]: unknown;
   }
 
   export namespace Choice {
@@ -129,7 +144,7 @@ export namespace TranscriptionStreamResponse {
        */
       role?: 'assistant' | null;
 
-    [k: string]: unknown
+      [k: string]: unknown;
     }
 
     /**
@@ -138,7 +153,7 @@ export namespace TranscriptionStreamResponse {
     export interface Logprobs {
       content: Logprobs.Content;
 
-    [k: string]: unknown
+      [k: string]: unknown;
     }
 
     export namespace Logprobs {
@@ -151,7 +166,7 @@ export namespace TranscriptionStreamResponse {
 
         bytes?: Array<number> | null;
 
-      [k: string]: unknown
+        [k: string]: unknown;
       }
 
       export namespace Content {
@@ -162,7 +177,7 @@ export namespace TranscriptionStreamResponse {
 
           bytes?: Array<number> | null;
 
-        [k: string]: unknown
+          [k: string]: unknown;
         }
       }
     }
@@ -265,7 +280,7 @@ export namespace TranscriptionStreamResponse {
      */
     total_tokens_per_sec?: number;
 
-  [k: string]: unknown
+    [k: string]: unknown;
   }
 
   export namespace Usage {
@@ -279,7 +294,7 @@ export namespace TranscriptionStreamResponse {
        */
       reasoning_tokens?: number;
 
-    [k: string]: unknown
+      [k: string]: unknown;
     }
 
     /**
@@ -291,7 +306,7 @@ export namespace TranscriptionStreamResponse {
        */
       cached_tokens?: number;
 
-    [k: string]: unknown
+      [k: string]: unknown;
     }
   }
 }
@@ -299,9 +314,11 @@ export namespace TranscriptionStreamResponse {
 /**
  * Transcription response json object
  */
-export type TranscriptionCreateResponse = TranscriptionResponse | TranscriptionStreamResponse
+export type TranscriptionCreateResponse = TranscriptionResponse | TranscriptionStreamResponse;
 
-export type TranscriptionCreateParams = TranscriptionCreateParamsNonStreaming | TranscriptionCreateParamsStreaming
+export type TranscriptionCreateParams =
+  | TranscriptionCreateParamsNonStreaming
+  | TranscriptionCreateParamsStreaming;
 
 export interface TranscriptionCreateParamsBase {
   /**
@@ -320,7 +337,108 @@ export interface TranscriptionCreateParamsBase {
    * Optional language of the input audio. Supplying the input language in ISO-639-1
    * (e.g. en) format will improve accuracy and latency.
    */
-  language?: 'en' | 'zh' | 'de' | 'es' | 'ru' | 'ko' | 'fr' | 'ja' | 'pt' | 'tr' | 'pl' | 'ca' | 'nl' | 'ar' | 'sv' | 'it' | 'id' | 'hi' | 'fi' | 'vi' | 'he' | 'uk' | 'el' | 'ms' | 'cs' | 'ro' | 'da' | 'hu' | 'ta' | 'no' | 'th' | 'ur' | 'hr' | 'bg' | 'lt' | 'la' | 'mi' | 'ml' | 'cy' | 'sk' | 'te' | 'fa' | 'lv' | 'bn' | 'sr' | 'az' | 'sl' | 'kn' | 'et' | 'mk' | 'br' | 'eu' | 'is' | 'hy' | 'ne' | 'mn' | 'bs' | 'kk' | 'sq' | 'sw' | 'gl' | 'mr' | 'pa' | 'si' | 'km' | 'sn' | 'yo' | 'so' | 'af' | 'oc' | 'ka' | 'be' | 'tg' | 'sd' | 'gu' | 'am' | 'yi' | 'lo' | 'uz' | 'fo' | 'ht' | 'ps' | 'tk' | 'nn' | 'mt' | 'sa' | 'lb' | 'my' | 'bo' | 'tl' | 'mg' | 'as' | 'tt' | 'haw' | 'ln' | 'ha' | 'ba' | 'jw' | 'su' | 'yue' | null;
+  language?:
+    | 'en'
+    | 'zh'
+    | 'de'
+    | 'es'
+    | 'ru'
+    | 'ko'
+    | 'fr'
+    | 'ja'
+    | 'pt'
+    | 'tr'
+    | 'pl'
+    | 'ca'
+    | 'nl'
+    | 'ar'
+    | 'sv'
+    | 'it'
+    | 'id'
+    | 'hi'
+    | 'fi'
+    | 'vi'
+    | 'he'
+    | 'uk'
+    | 'el'
+    | 'ms'
+    | 'cs'
+    | 'ro'
+    | 'da'
+    | 'hu'
+    | 'ta'
+    | 'no'
+    | 'th'
+    | 'ur'
+    | 'hr'
+    | 'bg'
+    | 'lt'
+    | 'la'
+    | 'mi'
+    | 'ml'
+    | 'cy'
+    | 'sk'
+    | 'te'
+    | 'fa'
+    | 'lv'
+    | 'bn'
+    | 'sr'
+    | 'az'
+    | 'sl'
+    | 'kn'
+    | 'et'
+    | 'mk'
+    | 'br'
+    | 'eu'
+    | 'is'
+    | 'hy'
+    | 'ne'
+    | 'mn'
+    | 'bs'
+    | 'kk'
+    | 'sq'
+    | 'sw'
+    | 'gl'
+    | 'mr'
+    | 'pa'
+    | 'si'
+    | 'km'
+    | 'sn'
+    | 'yo'
+    | 'so'
+    | 'af'
+    | 'oc'
+    | 'ka'
+    | 'be'
+    | 'tg'
+    | 'sd'
+    | 'gu'
+    | 'am'
+    | 'yi'
+    | 'lo'
+    | 'uz'
+    | 'fo'
+    | 'ht'
+    | 'ps'
+    | 'tk'
+    | 'nn'
+    | 'mt'
+    | 'sa'
+    | 'lb'
+    | 'my'
+    | 'bo'
+    | 'tl'
+    | 'mg'
+    | 'as'
+    | 'tt'
+    | 'haw'
+    | 'ln'
+    | 'ha'
+    | 'ba'
+    | 'jw'
+    | 'su'
+    | 'yue'
+    | null;
 
   /**
    * Optional text prompt provided to influence transcription Translation style or
@@ -341,7 +459,7 @@ export interface TranscriptionCreateParamsBase {
    */
   stream_options?: TranscriptionCreateParams.StreamOptions | null;
 
-[k: string]: unknown
+  [k: string]: unknown;
 }
 
 export namespace TranscriptionCreateParams {
@@ -352,20 +470,20 @@ export namespace TranscriptionCreateParams {
     include_usage?: boolean;
   }
 
-  export type TranscriptionCreateParamsNonStreaming = TranscriptionsAPI.TranscriptionCreateParamsNonStreaming
-  export type TranscriptionCreateParamsStreaming = TranscriptionsAPI.TranscriptionCreateParamsStreaming
+  export type TranscriptionCreateParamsNonStreaming = TranscriptionsAPI.TranscriptionCreateParamsNonStreaming;
+  export type TranscriptionCreateParamsStreaming = TranscriptionsAPI.TranscriptionCreateParamsStreaming;
 }
 
 export interface TranscriptionCreateParamsNonStreaming extends TranscriptionCreateParamsBase {
   stream?: false;
 
-[k: string]: unknown
+  [k: string]: unknown;
 }
 
 export interface TranscriptionCreateParamsStreaming extends TranscriptionCreateParamsBase {
   stream: true;
 
-[k: string]: unknown
+  [k: string]: unknown;
 }
 
 export declare namespace Transcriptions {
@@ -375,6 +493,6 @@ export declare namespace Transcriptions {
     type TranscriptionCreateResponse as TranscriptionCreateResponse,
     type TranscriptionCreateParams as TranscriptionCreateParams,
     type TranscriptionCreateParamsNonStreaming as TranscriptionCreateParamsNonStreaming,
-    type TranscriptionCreateParamsStreaming as TranscriptionCreateParamsStreaming
+    type TranscriptionCreateParamsStreaming as TranscriptionCreateParamsStreaming,
   };
 }

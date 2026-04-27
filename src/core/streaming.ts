@@ -9,7 +9,7 @@ import { encodeUTF8 } from '../internal/utils/bytes';
 import { loggerFor } from '../internal/utils/log';
 import type { SambaNova } from '../client';
 
-import { APIError } from './error';;
+import { APIError } from './error';
 
 type Bytes = string | ArrayBuffer | Uint8Array | null | undefined;
 
@@ -32,29 +32,29 @@ export class Stream<Item> implements AsyncIterable<Item> {
     this.#client = client;
   }
 
-  static fromSSEResponse<Item>(response: Response,
-controller: AbortController,
-client?: SambaNova,): Stream<Item> {
+  static fromSSEResponse<Item>(
+    response: Response,
+    controller: AbortController,
+    client?: SambaNova,
+  ): Stream<Item> {
     let consumed = false;
     const logger = client ? loggerFor(client) : console;
 
     async function* iterator(): AsyncIterator<Item, any, undefined> {
       if (consumed) {
-        throw new SambaNovaError(
-          'Cannot iterate over a consumed stream, use `.tee()` to split the stream.',
-        );
+        throw new SambaNovaError('Cannot iterate over a consumed stream, use `.tee()` to split the stream.');
       }
       consumed = true;
       let done = false;
       try {
         for await (const sse of _iterSSEMessages(response, controller)) {
           if (done) continue;
-          
+
           if (sse.data.startsWith('[DONE]')) {
             done = true;
             continue;
           }
-          
+
           if (sse.event === null) {
             try {
               yield JSON.parse(sse.data) as Item;
@@ -64,12 +64,10 @@ client?: SambaNova,): Stream<Item> {
               throw e;
             }
           }
-          
+
           if (sse.event === 'error') {
             throw new APIError(undefined, safeJSON(sse.data) ?? sse.data, undefined, response.headers);
-          }
-          
-          else {
+          } else {
             try {
               yield JSON.parse(sse.data) as Item;
             } catch (e) {
@@ -77,7 +75,7 @@ client?: SambaNova,): Stream<Item> {
               logger.error(`From chunk:`, sse.raw);
               throw e;
             }
-          };
+          }
         }
         done = true;
       } catch (e) {
@@ -121,9 +119,7 @@ client?: SambaNova,): Stream<Item> {
 
     async function* iterator(): AsyncIterator<Item, any, undefined> {
       if (consumed) {
-        throw new SambaNovaError(
-          'Cannot iterate over a consumed stream, use `.tee()` to split the stream.',
-        );
+        throw new SambaNovaError('Cannot iterate over a consumed stream, use `.tee()` to split the stream.');
       }
       consumed = true;
       let done = false;

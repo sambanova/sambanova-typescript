@@ -2,11 +2,17 @@
 
 import SambaNova, { toFile } from 'sambanova';
 
-const client = new SambaNova({ apiKey: 'My API Key', baseURL: process.env["TEST_API_BASE_URL"] ?? 'http://127.0.0.1:4010' });
+const client = new SambaNova({
+  apiKey: 'My API Key',
+  baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
+});
 
 describe('resource transcriptions', () => {
   test('create: only required params', async () => {
-    const responsePromise = client.audio.transcriptions.create({ file: await toFile(Buffer.from('Example data'), 'README.md'), model: 'Whisper-Large-v3' });
+    const responsePromise = client.audio.transcriptions.create({
+      file: await toFile(Buffer.from('Example data'), 'README.md'),
+      model: 'Whisper-Large-v3',
+    });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -18,13 +24,13 @@ describe('resource transcriptions', () => {
 
   test('create: required and optional params', async () => {
     const response = await client.audio.transcriptions.create({
-    file: await toFile(Buffer.from('Example data'), 'README.md'),
-    model: 'Whisper-Large-v3',
-    language: 'es',
-    prompt: 'Please transcribe carefully, including pauses and hesitations.',
-    response_format: 'json',
-    stream: false,
-    stream_options: { include_usage: true },
-  });
+      file: await toFile(Buffer.from('Example data'), 'README.md'),
+      model: 'Whisper-Large-v3',
+      language: 'es',
+      prompt: 'Please transcribe carefully, including pauses and hesitations.',
+      response_format: 'json',
+      stream: false,
+      stream_options: { include_usage: true },
+    });
   });
 });

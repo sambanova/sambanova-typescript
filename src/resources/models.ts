@@ -60,7 +60,7 @@ export interface ModelResponse {
    */
   sn_metadata?: unknown;
 
-[k: string]: unknown
+  [k: string]: unknown;
 }
 
 export namespace ModelResponse {
@@ -83,7 +83,7 @@ export namespace ModelResponse {
      */
     prompt?: number;
 
-  [k: string]: unknown
+    [k: string]: unknown;
   }
 }
 
@@ -98,12 +98,9 @@ export interface ModelsResponse {
 
   object?: 'list';
 
-[k: string]: unknown
+  [k: string]: unknown;
 }
 
 export declare namespace Models {
-  export {
-    type ModelResponse as ModelResponse,
-    type ModelsResponse as ModelsResponse
-  };
+  export { type ModelResponse as ModelResponse, type ModelsResponse as ModelsResponse };
 }
