@@ -3883,7 +3883,7 @@ export interface ResponseCreateParamsBase {
 
   /**
    * The model ID to use (e.g. gpt-oss-120b). See available
-   * [models](https://docs.sambanova.ai/cloud/docs/get-started/supported-models)
+   * [models](https://docs.sambanova.ai/docs/en/models/sambacloud-models)
    */
   model: (string & {}) | 'gpt-oss-120b';
 

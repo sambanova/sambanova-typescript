@@ -1,5 +1,26 @@
 # Changelog
 
+## 1.6.0 (2026-05-05)
+
+Full Changelog: [v1.5.0...v1.6.0](https://github.com/sambanova/sambanova-typescript/compare/v1.5.0...v1.6.0)
+
+### Features
+
+* support setting headers via env ([66e1663](https://github.com/sambanova/sambanova-typescript/commit/66e16634dbe2bf2fd805d7103034fa5ce5c94f49))
+
+
+### Bug Fixes
+
+* **api:** manual updates in model lists and docs ([1145e23](https://github.com/sambanova/sambanova-typescript/commit/1145e23d3793fa75563e73a75a5b193ae200bfcc))
+
+
+### Chores
+
+* **format:** run eslint and prettier separately ([e05f30f](https://github.com/sambanova/sambanova-typescript/commit/e05f30f22ec59cef7c17f56e558b55ba27a758eb))
+* **formatter:** run prettier and eslint separately ([2bdc210](https://github.com/sambanova/sambanova-typescript/commit/2bdc210bd0cd6c9f25102ced4e8a25364f3fe2b6))
+* **internal:** codegen related update ([2a271df](https://github.com/sambanova/sambanova-typescript/commit/2a271dfdca720399bfcaa439c62c4b8b7c588b63))
+* **internal:** more robust bootstrap script ([37047f9](https://github.com/sambanova/sambanova-typescript/commit/37047f92a2fe1a676e8ce7606e70198edf5f5bd2))
+
 ## 1.5.0 (2026-04-21)
 
 Full Changelog: [v1.4.2...v1.5.0](https://github.com/sambanova/sambanova-typescript/compare/v1.4.2...v1.5.0)
