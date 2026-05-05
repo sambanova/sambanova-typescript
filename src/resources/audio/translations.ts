@@ -326,7 +326,7 @@ export interface TranslationCreateParamsBase {
 
   /**
    * The model ID to use See available
-   * [models](https://docs.sambanova.ai/cloud/docs/get-started/supported-models)
+   * [models](https://docs.sambanova.ai/docs/en/models/sambacloud-models)
    */
   model: (string & {}) | 'Whisper-Large-v3';
 
