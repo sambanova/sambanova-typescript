@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.6.1 (2026-05-05)
+
+Full Changelog: [v1.6.0...v1.6.1](https://github.com/sambanova/sambanova-typescript/compare/v1.6.0...v1.6.1)
+
+### Bug Fixes
+
+* **api:** update responses supported models ([1edac73](https://github.com/sambanova/sambanova-typescript/commit/1edac732a67c1b7d1116ff6e8f608fba3cbe7eed))
+
 ## 1.6.0 (2026-05-05)
 
 Full Changelog: [v1.5.0...v1.6.0](https://github.com/sambanova/sambanova-typescript/compare/v1.5.0...v1.6.0)
