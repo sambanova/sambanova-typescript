@@ -29,7 +29,7 @@ describe('resource completions', () => {
       chat_template_kwargs: { enable_thinking: true },
       do_sample: true,
       frequency_penalty: -2,
-      logit_bias: { foo: 0 },
+      logit_bias: {},
       logprobs: true,
       max_completion_tokens: 2048,
       max_tokens: 2048,
