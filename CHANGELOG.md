@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.6.2 (2026-05-07)
+
+Full Changelog: [v1.6.1...v1.6.2](https://github.com/sambanova/sambanova-typescript/compare/v1.6.1...v1.6.2)
+
+### Documentation
+
+* **api:** logit bias support ([d992f08](https://github.com/sambanova/sambanova-typescript/commit/d992f08d897f4a90dee57d758ccf3ef9ca4bd368))
+
 ## 1.6.1 (2026-05-05)
 
 Full Changelog: [v1.6.0...v1.6.1](https://github.com/sambanova/sambanova-typescript/compare/v1.6.0...v1.6.1)
