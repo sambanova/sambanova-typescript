@@ -74,6 +74,21 @@ Methods:
 
 - <code title="post /responses">client.responses.<a href="./src/resources/responses.ts">create</a>({ ...params }) -> ResponseCreateResponse</code>
 
+# Messages
+
+Types:
+
+- <code><a href="./src/resources/messages.ts">Message</a></code>
+- <code><a href="./src/resources/messages.ts">MessageCountTokensResponse</a></code>
+- <code><a href="./src/resources/messages.ts">MessageErrorResponse</a></code>
+- <code><a href="./src/resources/messages.ts">MessageStreamEvent</a></code>
+- <code><a href="./src/resources/messages.ts">MessageCreateResponse</a></code>
+
+Methods:
+
+- <code title="post /messages">client.messages.<a href="./src/resources/messages.ts">create</a>({ ...params }) -> MessageCreateResponse</code>
+- <code title="post /messages/count_tokens">client.messages.<a href="./src/resources/messages.ts">countTokens</a>({ ...params }) -> MessageCountTokensResponse</code>
+
 # Models
 
 Types:

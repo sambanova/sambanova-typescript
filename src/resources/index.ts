@@ -12,6 +12,18 @@ export {
   type CompletionCreateParamsStreaming,
 } from './completions';
 export { Embeddings, type EmbeddingsResponse, type EmbeddingCreateParams } from './embeddings';
+export {
+  Messages,
+  type Message,
+  type MessageCountTokensResponse,
+  type MessageErrorResponse,
+  type MessageStreamEvent,
+  type MessageCreateResponse,
+  type MessageCreateParams,
+  type MessageCreateParamsNonStreaming,
+  type MessageCreateParamsStreaming,
+  type MessageCountTokensParams,
+} from './messages';
 export { Models, type ModelResponse, type ModelsResponse } from './models';
 export {
   Responses,
