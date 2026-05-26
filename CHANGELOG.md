@@ -1,5 +1,24 @@
 # Changelog
 
+## 1.7.0 (2026-05-26)
+
+Full Changelog: [v1.6.2...v1.7.0](https://github.com/sambanova/sambanova-typescript/compare/v1.6.2...v1.7.0)
+
+### Features
+
+* **api:** add anthropic compatible messages api support ([518f209](https://github.com/sambanova/sambanova-typescript/commit/518f2093eafd9fcbc83912c22252ec1dce7fa74e))
+
+
+### Bug Fixes
+
+* **typescript:** upgrade tsc-multi so that it works with Node 26 ([974925e](https://github.com/sambanova/sambanova-typescript/commit/974925e732355dee19f225b3bace75bf4220f2ac))
+
+
+### Chores
+
+* redact api-key headers in debug logs ([4396f8f](https://github.com/sambanova/sambanova-typescript/commit/4396f8f28719aaf98525d06fcb7a64515001db3d))
+* **tests:** remove redundant File import ([3d53c47](https://github.com/sambanova/sambanova-typescript/commit/3d53c47725ab53588a71d7340f2a87676a8a42ad))
+
 ## 1.6.2 (2026-05-07)
 
 Full Changelog: [v1.6.1...v1.6.2](https://github.com/sambanova/sambanova-typescript/compare/v1.6.1...v1.6.2)
