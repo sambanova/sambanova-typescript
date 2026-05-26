@@ -27,6 +27,18 @@ import {
   Completions,
 } from './resources/completions';
 import { EmbeddingCreateParams, Embeddings, EmbeddingsResponse } from './resources/embeddings';
+import {
+  Message,
+  MessageCountTokensParams,
+  MessageCountTokensResponse,
+  MessageCreateParams,
+  MessageCreateParamsNonStreaming,
+  MessageCreateParamsStreaming,
+  MessageCreateResponse,
+  MessageErrorResponse,
+  MessageStreamEvent,
+  Messages,
+} from './resources/messages';
 import { ModelResponse, Models, ModelsResponse } from './resources/models';
 import {
   ResponseCreateParams,
@@ -57,6 +69,11 @@ export interface ClientOptions {
    * API Key for authentication
    */
   apiKey?: string | undefined;
+
+  /**
+   * Alternate transport for the SambaNova API key. Bound to the `x-api-key` header scheme accepted on the Messages API routes (`/messages`, `/messages/count_tokens`) for Anthropic SDK compatibility. The credential value is identical to `api_key`; if `api_key` (or `SAMBANOVA_API_KEY`) is set, the SDK authenticates with bearer on every route and this option is unnecessary.
+   */
+  xAPIKey?: string | null | undefined;
 
   /**
    * Integration name for usage attribution (e.g., crew-ai, litellm, langchain)
@@ -137,6 +154,7 @@ export interface ClientOptions {
  */
 export class SambaNova {
   apiKey: string;
+  xAPIKey: string | null;
   integrationSource: string | null;
 
   baseURL: string;
@@ -155,6 +173,7 @@ export class SambaNova {
    * API Client for interfacing with the Samba Nova API.
    *
    * @param {string | undefined} [opts.apiKey=process.env['SAMBANOVA_API_KEY'] ?? undefined]
+   * @param {string | null | undefined} [opts.xAPIKey=process.env['SAMBANOVA_API_KEY'] ?? null]
    * @param {string | null | undefined} [opts.integrationSource=process.env['SAMBANOVA_INTEGRATION_SOURCE'] ?? null]
    * @param {string} [opts.baseURL=process.env['SAMBA_NOVA_BASE_URL'] ?? https://api.sambanova.ai/v1] - Override the default base URL for the API.
    * @param {number} [opts.timeout=10 minutes] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
@@ -167,6 +186,7 @@ export class SambaNova {
   constructor({
     baseURL = readEnv('SAMBA_NOVA_BASE_URL'),
     apiKey = readEnv('SAMBANOVA_API_KEY'),
+    xAPIKey = readEnv('SAMBANOVA_API_KEY') ?? null,
     integrationSource = readEnv('SAMBANOVA_INTEGRATION_SOURCE') ?? null,
     ...opts
   }: ClientOptions = {}) {
@@ -178,6 +198,7 @@ export class SambaNova {
 
     const options: ClientOptions = {
       apiKey,
+      xAPIKey,
       integrationSource,
       ...opts,
       baseURL: baseURL || `https://api.sambanova.ai/v1`,
@@ -213,6 +234,7 @@ export class SambaNova {
     this._options = options;
 
     this.apiKey = apiKey;
+    this.xAPIKey = xAPIKey;
     this.integrationSource = integrationSource;
   }
 
@@ -230,6 +252,7 @@ export class SambaNova {
       fetch: this.fetch,
       fetchOptions: this.fetchOptions,
       apiKey: this.apiKey,
+      xAPIKey: this.xAPIKey,
       integrationSource: this.integrationSource,
       ...options,
     });
@@ -252,7 +275,18 @@ export class SambaNova {
   }
 
   protected async authHeaders(opts: FinalRequestOptions): Promise<NullableHeaders | undefined> {
+    return buildHeaders([await this.apiKeyAuth(opts), await this.xAPIKeyAuth(opts)]);
+  }
+
+  protected async apiKeyAuth(opts: FinalRequestOptions): Promise<NullableHeaders | undefined> {
     return buildHeaders([{ Authorization: `Bearer ${this.apiKey}` }]);
+  }
+
+  protected async xAPIKeyAuth(opts: FinalRequestOptions): Promise<NullableHeaders | undefined> {
+    if (this.xAPIKey == null) {
+      return undefined;
+    }
+    return buildHeaders([{ 'x-api-key': this.xAPIKey }]);
   }
 
   /**
@@ -768,6 +802,7 @@ export class SambaNova {
   embeddings: API.Embeddings = new API.Embeddings(this);
   audio: API.Audio = new API.Audio(this);
   responses: API.Responses = new API.Responses(this);
+  messages: API.Messages = new API.Messages(this);
   models: API.Models = new API.Models(this);
 }
 
@@ -776,6 +811,7 @@ SambaNova.Completions = Completions;
 SambaNova.Embeddings = Embeddings;
 SambaNova.Audio = Audio;
 SambaNova.Responses = Responses;
+SambaNova.Messages = Messages;
 SambaNova.Models = Models;
 
 export declare namespace SambaNova {
@@ -809,6 +845,19 @@ export declare namespace SambaNova {
     type ResponseCreateParams as ResponseCreateParams,
     type ResponseCreateParamsNonStreaming as ResponseCreateParamsNonStreaming,
     type ResponseCreateParamsStreaming as ResponseCreateParamsStreaming,
+  };
+
+  export {
+    Messages as Messages,
+    type Message as Message,
+    type MessageCountTokensResponse as MessageCountTokensResponse,
+    type MessageErrorResponse as MessageErrorResponse,
+    type MessageStreamEvent as MessageStreamEvent,
+    type MessageCreateResponse as MessageCreateResponse,
+    type MessageCreateParams as MessageCreateParams,
+    type MessageCreateParamsNonStreaming as MessageCreateParamsNonStreaming,
+    type MessageCreateParamsStreaming as MessageCreateParamsStreaming,
+    type MessageCountTokensParams as MessageCountTokensParams,
   };
 
   export { Models as Models, type ModelResponse as ModelResponse, type ModelsResponse as ModelsResponse };
