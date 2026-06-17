@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.7.1 (2026-06-17)
+
+Full Changelog: [v1.7.0...v1.7.1](https://github.com/sambanova/sambanova-typescript/compare/v1.7.0...v1.7.1)
+
+### Bug Fixes
+
+* **client:** send content-type header for requests with an omitted optional body ([dc900c4](https://github.com/sambanova/sambanova-typescript/commit/dc900c4089133af111f777f3d7eb85516119f54a))
+* **streaming:** resolve duplicate chunk emission in SSE event routing ([37a0808](https://github.com/sambanova/sambanova-typescript/commit/37a080806b98c216fbe5a76e83fe65d45b2be3d9))
+
 ## 1.7.0 (2026-05-26)
 
 Full Changelog: [v1.6.2...v1.7.0](https://github.com/sambanova/sambanova-typescript/compare/v1.6.2...v1.7.0)
