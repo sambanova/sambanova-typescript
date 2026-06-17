@@ -67,7 +67,9 @@ export class Stream<Item> implements AsyncIterable<Item> {
 
           if (sse.event === 'error') {
             throw new APIError(undefined, safeJSON(sse.data) ?? sse.data, undefined, response.headers);
-          } else {
+          }
+
+          if (sse.event === 'response.created') {
             try {
               yield JSON.parse(sse.data) as Item;
             } catch (e) {
@@ -75,6 +77,198 @@ export class Stream<Item> implements AsyncIterable<Item> {
               logger.error(`From chunk:`, sse.raw);
               throw e;
             }
+          }
+
+          if (sse.event === 'response.in_progress') {
+            try {
+              yield JSON.parse(sse.data) as Item;
+            } catch (e) {
+              logger.error(`Could not parse message into JSON:`, sse.data);
+              logger.error(`From chunk:`, sse.raw);
+              throw e;
+            }
+          }
+
+          if (sse.event === 'response.output_item.added') {
+            try {
+              yield JSON.parse(sse.data) as Item;
+            } catch (e) {
+              logger.error(`Could not parse message into JSON:`, sse.data);
+              logger.error(`From chunk:`, sse.raw);
+              throw e;
+            }
+          }
+
+          if (sse.event === 'response.content_part.added') {
+            try {
+              yield JSON.parse(sse.data) as Item;
+            } catch (e) {
+              logger.error(`Could not parse message into JSON:`, sse.data);
+              logger.error(`From chunk:`, sse.raw);
+              throw e;
+            }
+          }
+
+          if (sse.event === 'response.reasoning_text.delta') {
+            try {
+              yield JSON.parse(sse.data) as Item;
+            } catch (e) {
+              logger.error(`Could not parse message into JSON:`, sse.data);
+              logger.error(`From chunk:`, sse.raw);
+              throw e;
+            }
+          }
+
+          if (sse.event === 'response.reasoning_text.done') {
+            try {
+              yield JSON.parse(sse.data) as Item;
+            } catch (e) {
+              logger.error(`Could not parse message into JSON:`, sse.data);
+              logger.error(`From chunk:`, sse.raw);
+              throw e;
+            }
+          }
+
+          if (sse.event === 'response.output_text.delta') {
+            try {
+              yield JSON.parse(sse.data) as Item;
+            } catch (e) {
+              logger.error(`Could not parse message into JSON:`, sse.data);
+              logger.error(`From chunk:`, sse.raw);
+              throw e;
+            }
+          }
+
+          if (sse.event === 'response.output_text.done') {
+            try {
+              yield JSON.parse(sse.data) as Item;
+            } catch (e) {
+              logger.error(`Could not parse message into JSON:`, sse.data);
+              logger.error(`From chunk:`, sse.raw);
+              throw e;
+            }
+          }
+
+          if (sse.event === 'response.function_call_arguments.delta') {
+            try {
+              yield JSON.parse(sse.data) as Item;
+            } catch (e) {
+              logger.error(`Could not parse message into JSON:`, sse.data);
+              logger.error(`From chunk:`, sse.raw);
+              throw e;
+            }
+          }
+
+          if (sse.event === 'response.function_call_arguments.done') {
+            try {
+              yield JSON.parse(sse.data) as Item;
+            } catch (e) {
+              logger.error(`Could not parse message into JSON:`, sse.data);
+              logger.error(`From chunk:`, sse.raw);
+              throw e;
+            }
+          }
+
+          if (sse.event === 'response.content_part.done') {
+            try {
+              yield JSON.parse(sse.data) as Item;
+            } catch (e) {
+              logger.error(`Could not parse message into JSON:`, sse.data);
+              logger.error(`From chunk:`, sse.raw);
+              throw e;
+            }
+          }
+
+          if (sse.event === 'response.output_item.done') {
+            try {
+              yield JSON.parse(sse.data) as Item;
+            } catch (e) {
+              logger.error(`Could not parse message into JSON:`, sse.data);
+              logger.error(`From chunk:`, sse.raw);
+              throw e;
+            }
+          }
+
+          if (sse.event === 'response.completed') {
+            try {
+              yield JSON.parse(sse.data) as Item;
+            } catch (e) {
+              logger.error(`Could not parse message into JSON:`, sse.data);
+              logger.error(`From chunk:`, sse.raw);
+              throw e;
+            }
+          }
+
+          if (sse.event === 'message_start') {
+            try {
+              yield JSON.parse(sse.data) as Item;
+            } catch (e) {
+              logger.error(`Could not parse message into JSON:`, sse.data);
+              logger.error(`From chunk:`, sse.raw);
+              throw e;
+            }
+          }
+
+          if (sse.event === 'content_block_start') {
+            try {
+              yield JSON.parse(sse.data) as Item;
+            } catch (e) {
+              logger.error(`Could not parse message into JSON:`, sse.data);
+              logger.error(`From chunk:`, sse.raw);
+              throw e;
+            }
+          }
+
+          if (sse.event === 'content_block_delta') {
+            try {
+              yield JSON.parse(sse.data) as Item;
+            } catch (e) {
+              logger.error(`Could not parse message into JSON:`, sse.data);
+              logger.error(`From chunk:`, sse.raw);
+              throw e;
+            }
+          }
+
+          if (sse.event === 'content_block_stop') {
+            try {
+              yield JSON.parse(sse.data) as Item;
+            } catch (e) {
+              logger.error(`Could not parse message into JSON:`, sse.data);
+              logger.error(`From chunk:`, sse.raw);
+              throw e;
+            }
+          }
+
+          if (sse.event === 'message_delta') {
+            try {
+              yield JSON.parse(sse.data) as Item;
+            } catch (e) {
+              logger.error(`Could not parse message into JSON:`, sse.data);
+              logger.error(`From chunk:`, sse.raw);
+              throw e;
+            }
+          }
+
+          if (sse.event === 'message_stop') {
+            try {
+              yield JSON.parse(sse.data) as Item;
+            } catch (e) {
+              logger.error(`Could not parse message into JSON:`, sse.data);
+              logger.error(`From chunk:`, sse.raw);
+              throw e;
+            }
+          }
+
+          if (sse.event === 'ping') {
+            try {
+              yield JSON.parse(sse.data) as Item;
+            } catch (e) {
+              logger.error(`Could not parse message into JSON:`, sse.data);
+              logger.error(`From chunk:`, sse.raw);
+              throw e;
+            }
+          } else {
+            continue;
           }
         }
         done = true;
