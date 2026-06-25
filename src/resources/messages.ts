@@ -1501,6 +1501,7 @@ export namespace MessageCreateParams {
       | Array<
           | Message.MessageInputTextBlock
           | Message.MessageInputImageBlock
+          | Message.MessageInputVideoBlock
           | Message.MessageInputToolUseBlock
           | Message.MessageInputToolResultBlock
           | Message.MessageInputServerToolUseBlock
@@ -1600,7 +1601,7 @@ export namespace MessageCreateParams {
         /**
          * MIME type of the image bytes.
          */
-        media_type: 'image/jpeg' | 'image/png' | 'image/gif' | 'image/webp';
+        media_type: 'image/jpeg' | 'image/png' | 'image/webp';
 
         type: 'base64';
       }
@@ -1610,6 +1611,74 @@ export namespace MessageCreateParams {
        * Use `type:"base64"` instead.
        */
       export interface MessageInputImageSourceURL {
+        type: 'url';
+
+        url: string;
+      }
+
+      /**
+       * Marks the preceding content block (or system text block) as a prompt- cache
+       * breakpoint. Marker positions are collected by the adapter; their wiring into the
+       * router's longest-prefix matching **In v1**: position is recorded; the `ttl`
+       * value is ignored.
+       */
+      export interface CacheControl {
+        /**
+         * Cache breakpoint type. Only `ephemeral` is supported by Anthropic.
+         */
+        type: 'ephemeral';
+
+        /**
+         * Optional time-to-live hint (e.g. `"5m"`, `"1h"`). **Currently ignored** in v1
+         */
+        ttl?: string | null;
+      }
+    }
+
+    /**
+     * Video content.
+     */
+    export interface MessageInputVideoBlock {
+      /**
+       * Inline video data encoded as base64.
+       */
+      source:
+        | MessageInputVideoBlock.MessageInputVideoSourceBase64
+        | MessageInputVideoBlock.MessageInputVideoSourceURL;
+
+      type: 'video';
+
+      /**
+       * Marks the preceding content block (or system text block) as a prompt- cache
+       * breakpoint. Marker positions are collected by the adapter; their wiring into the
+       * router's longest-prefix matching **In v1**: position is recorded; the `ttl`
+       * value is ignored.
+       */
+      cache_control?: MessageInputVideoBlock.CacheControl;
+    }
+
+    export namespace MessageInputVideoBlock {
+      /**
+       * Inline video data encoded as base64.
+       */
+      export interface MessageInputVideoSourceBase64 {
+        /**
+         * Base64-encoded video bytes (no `data:` URI prefix).
+         */
+        data: string;
+
+        /**
+         * MIME type of the video bytes.
+         */
+        media_type: 'video/mp4';
+
+        type: 'base64';
+      }
+
+      /**
+       * HTTPS URL pointing to a video.
+       */
+      export interface MessageInputVideoSourceURL {
         type: 'url';
 
         url: string;
@@ -1810,7 +1879,7 @@ export namespace MessageCreateParams {
           /**
            * MIME type of the image bytes.
            */
-          media_type: 'image/jpeg' | 'image/png' | 'image/gif' | 'image/webp';
+          media_type: 'image/jpeg' | 'image/png' | 'image/webp';
 
           type: 'base64';
         }
@@ -2654,6 +2723,7 @@ export namespace MessageCountTokensParams {
       | Array<
           | Message.MessageInputTextBlock
           | Message.MessageInputImageBlock
+          | Message.MessageInputVideoBlock
           | Message.MessageInputToolUseBlock
           | Message.MessageInputToolResultBlock
           | Message.MessageInputServerToolUseBlock
@@ -2753,7 +2823,7 @@ export namespace MessageCountTokensParams {
         /**
          * MIME type of the image bytes.
          */
-        media_type: 'image/jpeg' | 'image/png' | 'image/gif' | 'image/webp';
+        media_type: 'image/jpeg' | 'image/png' | 'image/webp';
 
         type: 'base64';
       }
@@ -2763,6 +2833,74 @@ export namespace MessageCountTokensParams {
        * Use `type:"base64"` instead.
        */
       export interface MessageInputImageSourceURL {
+        type: 'url';
+
+        url: string;
+      }
+
+      /**
+       * Marks the preceding content block (or system text block) as a prompt- cache
+       * breakpoint. Marker positions are collected by the adapter; their wiring into the
+       * router's longest-prefix matching **In v1**: position is recorded; the `ttl`
+       * value is ignored.
+       */
+      export interface CacheControl {
+        /**
+         * Cache breakpoint type. Only `ephemeral` is supported by Anthropic.
+         */
+        type: 'ephemeral';
+
+        /**
+         * Optional time-to-live hint (e.g. `"5m"`, `"1h"`). **Currently ignored** in v1
+         */
+        ttl?: string | null;
+      }
+    }
+
+    /**
+     * Video content.
+     */
+    export interface MessageInputVideoBlock {
+      /**
+       * Inline video data encoded as base64.
+       */
+      source:
+        | MessageInputVideoBlock.MessageInputVideoSourceBase64
+        | MessageInputVideoBlock.MessageInputVideoSourceURL;
+
+      type: 'video';
+
+      /**
+       * Marks the preceding content block (or system text block) as a prompt- cache
+       * breakpoint. Marker positions are collected by the adapter; their wiring into the
+       * router's longest-prefix matching **In v1**: position is recorded; the `ttl`
+       * value is ignored.
+       */
+      cache_control?: MessageInputVideoBlock.CacheControl;
+    }
+
+    export namespace MessageInputVideoBlock {
+      /**
+       * Inline video data encoded as base64.
+       */
+      export interface MessageInputVideoSourceBase64 {
+        /**
+         * Base64-encoded video bytes (no `data:` URI prefix).
+         */
+        data: string;
+
+        /**
+         * MIME type of the video bytes.
+         */
+        media_type: 'video/mp4';
+
+        type: 'base64';
+      }
+
+      /**
+       * HTTPS URL pointing to a video.
+       */
+      export interface MessageInputVideoSourceURL {
         type: 'url';
 
         url: string;
@@ -2963,7 +3101,7 @@ export namespace MessageCountTokensParams {
           /**
            * MIME type of the image bytes.
            */
-          media_type: 'image/jpeg' | 'image/png' | 'image/gif' | 'image/webp';
+          media_type: 'image/jpeg' | 'image/png' | 'image/webp';
 
           type: 'base64';
         }

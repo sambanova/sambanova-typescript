@@ -1008,7 +1008,12 @@ export namespace CompletionCreateParams {
      */
     content:
       | string
-      | Array<UserMessage.TextContent | UserMessage.ImageContent | UserMessage.AudioContent>
+      | Array<
+          | UserMessage.TextContent
+          | UserMessage.ImageContent
+          | UserMessage.AudioContent
+          | UserMessage.VideoContent
+        >
       | null;
 
     /**
@@ -1072,6 +1077,26 @@ export namespace CompletionCreateParams {
          * the base64 encoded audio data.
          */
         content?: string;
+      }
+    }
+
+    export interface VideoContent {
+      /**
+       * type of content to send. in this case `video_url`.
+       */
+      type: 'video_url';
+
+      video_url: VideoContent.VideoURL;
+
+      [k: string]: unknown;
+    }
+
+    export namespace VideoContent {
+      export interface VideoURL {
+        /**
+         * Either a URL of the video or the base64 encoded video data.
+         */
+        url?: string;
       }
     }
   }
