@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.8.0 (2026-06-25)
+
+Full Changelog: [v1.7.1...v1.8.0](https://github.com/sambanova/sambanova-typescript/compare/v1.7.1...v1.8.0)
+
+### Features
+
+* **api:** video input type support ([9639f9f](https://github.com/sambanova/sambanova-typescript/commit/9639f9f9f32d5c21768c3d59258568685f168890))
+
+
+### Bug Fixes
+
+* **api:** loosen tool call field requirements to support streaming deltas ([54be633](https://github.com/sambanova/sambanova-typescript/commit/54be6336ca13526d78def140a7ee68fdf3d2407a))
+
 ## 1.7.1 (2026-06-17)
 
 Full Changelog: [v1.7.0...v1.7.1](https://github.com/sambanova/sambanova-typescript/compare/v1.7.0...v1.7.1)
