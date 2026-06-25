@@ -137,24 +137,24 @@ export namespace ChatCompletionResponse {
     export namespace Message {
       export interface ToolCall {
         /**
-         * ID of the tool call.
-         */
-        id: string;
-
-        /**
          * The tool that the model called.
          */
         function: ToolCall.Function;
 
         /**
-         * type of the tool cal. only `function` is supported.
+         * ID of the tool call.
          */
-        type: 'function';
+        id?: string | null;
 
         /**
          * index of tool call chunk only used when using streaming
          */
         index?: number | null;
+
+        /**
+         * type of the tool cal. only `function` is supported.
+         */
+        type?: 'function' | null;
 
         [k: string]: unknown;
       }
@@ -170,12 +170,12 @@ export namespace ChatCompletionResponse {
            * hallucinate parameters not defined by your function schema. Validate the
            * arguments in your code before calling your function.
            */
-          arguments: string;
+          arguments?: string | null;
 
           /**
            * The name of the function to call.
            */
-          name: string;
+          name?: string | null;
 
           [k: string]: unknown;
         }
@@ -453,24 +453,24 @@ export namespace ChatCompletionStreamResponse {
     export namespace Delta {
       export interface ToolCall {
         /**
-         * ID of the tool call.
-         */
-        id: string;
-
-        /**
          * The tool that the model called.
          */
         function: ToolCall.Function;
 
         /**
-         * type of the tool cal. only `function` is supported.
+         * ID of the tool call.
          */
-        type: 'function';
+        id?: string | null;
 
         /**
          * index of tool call chunk only used when using streaming
          */
         index?: number | null;
+
+        /**
+         * type of the tool cal. only `function` is supported.
+         */
+        type?: 'function' | null;
 
         [k: string]: unknown;
       }
@@ -486,12 +486,12 @@ export namespace ChatCompletionStreamResponse {
            * hallucinate parameters not defined by your function schema. Validate the
            * arguments in your code before calling your function.
            */
-          arguments: string;
+          arguments?: string | null;
 
           /**
            * The name of the function to call.
            */
-          name: string;
+          name?: string | null;
 
           [k: string]: unknown;
         }
@@ -1147,24 +1147,24 @@ export namespace CompletionCreateParams {
 
     export interface ToolCall {
       /**
-       * ID of the tool call.
-       */
-      id: string;
-
-      /**
        * The tool that the model called.
        */
       function: ToolCall.Function;
 
       /**
-       * type of the tool cal. only `function` is supported.
+       * ID of the tool call.
        */
-      type: 'function';
+      id?: string | null;
 
       /**
        * index of tool call chunk only used when using streaming
        */
       index?: number | null;
+
+      /**
+       * type of the tool cal. only `function` is supported.
+       */
+      type?: 'function' | null;
 
       [k: string]: unknown;
     }
@@ -1180,12 +1180,12 @@ export namespace CompletionCreateParams {
          * hallucinate parameters not defined by your function schema. Validate the
          * arguments in your code before calling your function.
          */
-        arguments: string;
+        arguments?: string | null;
 
         /**
          * The name of the function to call.
          */
-        name: string;
+        name?: string | null;
 
         [k: string]: unknown;
       }
