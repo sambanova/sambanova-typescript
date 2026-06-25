@@ -287,6 +287,7 @@ export namespace ResponseResponse {
           | ResponseMessage.ResponseTextContent
           | ResponseMessage.ResponseImageContent
           | ResponseMessage.ResponseAudioContent
+          | ResponseMessage.ResponseVideoContent
         >;
 
     /**
@@ -484,6 +485,23 @@ export namespace ResponseResponse {
          */
         format: 'mp3' | 'wav';
       }
+    }
+
+    /**
+     * A video content part for use inside a ResponseMessage. Supported in input
+     * messages (user role). Provide a URL or base64-encoded video data.
+     */
+    export interface ResponseVideoContent {
+      /**
+       * The type of this content part. Always "input_video".
+       */
+      type: 'input_video';
+
+      /**
+       * A URL of the video or base64-encoded video data in data URL format (e.g.
+       * "data:video/mp4;base64,...").
+       */
+      video_url: string;
     }
   }
 
@@ -949,6 +967,7 @@ export namespace ResponseStreamEvent {
             | ResponseMessage.ResponseTextContent
             | ResponseMessage.ResponseImageContent
             | ResponseMessage.ResponseAudioContent
+            | ResponseMessage.ResponseVideoContent
           >;
 
       /**
@@ -1146,6 +1165,23 @@ export namespace ResponseStreamEvent {
            */
           format: 'mp3' | 'wav';
         }
+      }
+
+      /**
+       * A video content part for use inside a ResponseMessage. Supported in input
+       * messages (user role). Provide a URL or base64-encoded video data.
+       */
+      export interface ResponseVideoContent {
+        /**
+         * The type of this content part. Always "input_video".
+         */
+        type: 'input_video';
+
+        /**
+         * A URL of the video or base64-encoded video data in data URL format (e.g.
+         * "data:video/mp4;base64,...").
+         */
+        video_url: string;
       }
     }
 
@@ -2023,6 +2059,7 @@ export namespace ResponseStreamEvent {
             | ResponseMessage.ResponseTextContent
             | ResponseMessage.ResponseImageContent
             | ResponseMessage.ResponseAudioContent
+            | ResponseMessage.ResponseVideoContent
           >;
 
       /**
@@ -2220,6 +2257,23 @@ export namespace ResponseStreamEvent {
            */
           format: 'mp3' | 'wav';
         }
+      }
+
+      /**
+       * A video content part for use inside a ResponseMessage. Supported in input
+       * messages (user role). Provide a URL or base64-encoded video data.
+       */
+      export interface ResponseVideoContent {
+        /**
+         * The type of this content part. Always "input_video".
+         */
+        type: 'input_video';
+
+        /**
+         * A URL of the video or base64-encoded video data in data URL format (e.g.
+         * "data:video/mp4;base64,...").
+         */
+        video_url: string;
       }
     }
 
@@ -2462,6 +2516,7 @@ export namespace ResponseCreateResponse {
             | ResponseMessage.ResponseTextContent
             | ResponseMessage.ResponseImageContent
             | ResponseMessage.ResponseAudioContent
+            | ResponseMessage.ResponseVideoContent
           >;
 
       /**
@@ -2659,6 +2714,23 @@ export namespace ResponseCreateResponse {
            */
           format: 'mp3' | 'wav';
         }
+      }
+
+      /**
+       * A video content part for use inside a ResponseMessage. Supported in input
+       * messages (user role). Provide a URL or base64-encoded video data.
+       */
+      export interface ResponseVideoContent {
+        /**
+         * The type of this content part. Always "input_video".
+         */
+        type: 'input_video';
+
+        /**
+         * A URL of the video or base64-encoded video data in data URL format (e.g.
+         * "data:video/mp4;base64,...").
+         */
+        video_url: string;
       }
     }
 
@@ -3536,6 +3608,7 @@ export namespace ResponseCreateResponse {
             | ResponseMessage.ResponseTextContent
             | ResponseMessage.ResponseImageContent
             | ResponseMessage.ResponseAudioContent
+            | ResponseMessage.ResponseVideoContent
           >;
 
       /**
@@ -3733,6 +3806,23 @@ export namespace ResponseCreateResponse {
            */
           format: 'mp3' | 'wav';
         }
+      }
+
+      /**
+       * A video content part for use inside a ResponseMessage. Supported in input
+       * messages (user role). Provide a URL or base64-encoded video data.
+       */
+      export interface ResponseVideoContent {
+        /**
+         * The type of this content part. Always "input_video".
+         */
+        type: 'input_video';
+
+        /**
+         * A URL of the video or base64-encoded video data in data URL format (e.g.
+         * "data:video/mp4;base64,...").
+         */
+        video_url: string;
       }
     }
 
@@ -4038,6 +4128,7 @@ export namespace ResponseCreateParams {
           | ResponseMessage.ResponseTextContent
           | ResponseMessage.ResponseImageContent
           | ResponseMessage.ResponseAudioContent
+          | ResponseMessage.ResponseVideoContent
         >;
 
     /**
@@ -4235,6 +4326,23 @@ export namespace ResponseCreateParams {
          */
         format: 'mp3' | 'wav';
       }
+    }
+
+    /**
+     * A video content part for use inside a ResponseMessage. Supported in input
+     * messages (user role). Provide a URL or base64-encoded video data.
+     */
+    export interface ResponseVideoContent {
+      /**
+       * The type of this content part. Always "input_video".
+       */
+      type: 'input_video';
+
+      /**
+       * A URL of the video or base64-encoded video data in data URL format (e.g.
+       * "data:video/mp4;base64,...").
+       */
+      video_url: string;
     }
   }
 
