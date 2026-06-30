@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.9.0 (2026-06-30)
+
+Full Changelog: [v1.8.0...v1.9.0](https://github.com/sambanova/sambanova-typescript/compare/v1.8.0...v1.9.0)
+
+### Features
+
+* add stlc trigger-back-sync workflow ([#28](https://github.com/sambanova/sambanova-typescript/issues/28)) ([4e4559c](https://github.com/sambanova/sambanova-typescript/commit/4e4559cd3bca6b50f0d5aacf72f7f4a35a9a2bf6))
+
 ## 1.8.0 (2026-06-25)
 
 Full Changelog: [v1.7.1...v1.8.0](https://github.com/sambanova/sambanova-typescript/compare/v1.7.1...v1.8.0)
