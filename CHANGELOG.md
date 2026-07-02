@@ -1,5 +1,27 @@
 # Changelog
 
+## 1.9.0 (2026-07-02)
+
+Full Changelog: [v1.8.0...v1.9.0](https://github.com/sambanova/sambanova-typescript/compare/v1.8.0...v1.9.0)
+
+### Features
+
+* add stlc promote, sync, lock, and seal-dispatch workflows ([36bd982](https://github.com/sambanova/sambanova-typescript/commit/36bd98201a1824940a692ac84afe5108841e1543))
+* add stlc trigger-back-sync workflow ([#28](https://github.com/sambanova/sambanova-typescript/issues/28)) ([2eb1fdd](https://github.com/sambanova/sambanova-typescript/commit/2eb1fdd34277eb988c02eeab8de39c8164a3ef06))
+* enable release-please for python and typescript ([3c25c5a](https://github.com/sambanova/sambanova-typescript/commit/3c25c5af2a7214caa7d40c6945f72e7993dc8225))
+* initial stlc build ([122d0a9](https://github.com/sambanova/sambanova-typescript/commit/122d0a95276249b03cf9a61e012e2677e4f5589d))
+
+
+### Bug Fixes
+
+* backsync-persist-creds ([6cea559](https://github.com/sambanova/sambanova-typescript/commit/6cea5590250b31f18de2edfbfb31a5373a82ebd7))
+* use PRODUCTION_REPO_TOKEN for back-sync push (workflows permission) ([1c73df5](https://github.com/sambanova/sambanova-typescript/commit/1c73df5536ebb64cdf48dfb02a721420c1d22924))
+
+
+### Chores
+
+* apply prettier formatting ([fe36af0](https://github.com/sambanova/sambanova-typescript/commit/fe36af07044a20bc14374438e2c1c0ff7e06c8d5))
+
 ## 1.8.0 (2026-06-25)
 
 Full Changelog: [v1.7.1...v1.8.0](https://github.com/sambanova/sambanova-typescript/compare/v1.7.1...v1.8.0)
