@@ -212,6 +212,12 @@ export interface EmbeddingCreateParams {
    */
   model: (string & {}) | 'E5-Mistral-7B-Instruct';
 
+  /**
+   * The format to return the embeddings in. Can be either `float` or `base64`.
+   * Omitted from the request when not set.
+   */
+  encoding_format?: 'float' | 'base64' | null;
+
   [k: string]: unknown;
 }
 

@@ -26,6 +26,7 @@ describe('resource embeddings', () => {
     const response = await client.embeddings.create({
       input: ['text to embed number 1', 'text to embed number 2'],
       model: 'E5-Mistral-7B-Instruct',
+      encoding_format: 'float',
     });
   });
 });
