@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.9.1](https://github.com/sambanova/sambanova-typescript/compare/v1.9.0...v1.9.1) (2026-07-08)
+
+
+### Bug Fixes
+
+* add missing trigger-back-sync-on-release workflow ([#37](https://github.com/sambanova/sambanova-typescript/issues/37)) ([e71b59c](https://github.com/sambanova/sambanova-typescript/commit/e71b59c61b700610720a59c189bf293d93021b23))
+
 ## [1.9.0](https://github.com/sambanova/sambanova-typescript/compare/v1.8.0...v1.9.0) (2026-07-08)
 
 
