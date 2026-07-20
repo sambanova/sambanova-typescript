@@ -857,8 +857,7 @@ export interface CompletionCreateParamsBase {
   n?: number | null;
 
   /**
-   * Whether to enable parallel function calling during tool use, This is not yet
-   * supported by our models.
+   * Whether to enable parallel function calling during tool use.
    */
   parallel_tool_calls?: boolean | null;
 
