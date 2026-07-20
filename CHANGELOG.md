@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.9.2](https://github.com/sambanova/sambanova-typescript/compare/v1.9.1...v1.9.2) (2026-07-20)
+
+
+### Chores
+
+* verify service-account token swap ([1bc35b3](https://github.com/sambanova/sambanova-typescript/commit/1bc35b391775909e4fcf2da83eeadf308ad28457))
+
 ## [1.9.1](https://github.com/sambanova/sambanova-typescript/compare/v1.9.0...v1.9.1) (2026-07-08)
 
 
