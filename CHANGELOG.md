@@ -1,0 +1,440 @@
+# Changelog
+
+## [1.9.2](https://github.com/sambanova/sambanova-typescript/compare/v1.9.1...v1.9.2) (2026-07-20)
+
+
+### Chores
+
+* verify service-account token swap ([1bc35b3](https://github.com/sambanova/sambanova-typescript/commit/1bc35b391775909e4fcf2da83eeadf308ad28457))
+
+## [1.9.1](https://github.com/sambanova/sambanova-typescript/compare/v1.9.0...v1.9.1) (2026-07-08)
+
+
+### Bug Fixes
+
+* add missing trigger-back-sync-on-release workflow ([#37](https://github.com/sambanova/sambanova-typescript/issues/37)) ([e71b59c](https://github.com/sambanova/sambanova-typescript/commit/e71b59c61b700610720a59c189bf293d93021b23))
+
+## [1.9.0](https://github.com/sambanova/sambanova-typescript/compare/v1.8.0...v1.9.0) (2026-07-08)
+
+
+### Features
+
+* add stlc promote, sync, lock, and seal-dispatch workflows ([62ec138](https://github.com/sambanova/sambanova-typescript/commit/62ec138ff317174eadd330a8596e6aad5c165cae))
+* add stlc promote, sync, lock, and seal-dispatch workflows ([36bd982](https://github.com/sambanova/sambanova-typescript/commit/36bd98201a1824940a692ac84afe5108841e1543))
+* enable release-please for python and typescript ([3c25c5a](https://github.com/sambanova/sambanova-typescript/commit/3c25c5af2a7214caa7d40c6945f72e7993dc8225))
+* initial stlc build ([122d0a9](https://github.com/sambanova/sambanova-typescript/commit/122d0a95276249b03cf9a61e012e2677e4f5589d))
+
+
+### Bug Fixes
+
+* add missing encoding format param for embeddings ([65c31ae](https://github.com/sambanova/sambanova-typescript/commit/65c31ae24a0c9414a8cea1a9b034b218afbf1632))
+* backsync-persist-creds ([6cea559](https://github.com/sambanova/sambanova-typescript/commit/6cea5590250b31f18de2edfbfb31a5373a82ebd7))
+* use PRODUCTION_REPO_TOKEN for back-sync push (workflows permission) ([dd76d0e](https://github.com/sambanova/sambanova-typescript/commit/dd76d0ef7238709a010a8cedb2da6f20721e79ca))
+* use PRODUCTION_REPO_TOKEN for back-sync push (workflows permission) ([1c73df5](https://github.com/sambanova/sambanova-typescript/commit/1c73df5536ebb64cdf48dfb02a721420c1d22924))
+
+
+### Chores
+
+* apply prettier formatting ([fe36af0](https://github.com/sambanova/sambanova-typescript/commit/fe36af07044a20bc14374438e2c1c0ff7e06c8d5))
+
+## 1.8.0 (2026-06-25)
+
+Full Changelog: [v1.7.1...v1.8.0](https://github.com/sambanova/sambanova-typescript/compare/v1.7.1...v1.8.0)
+
+### Features
+
+* **api:** video input type support ([9639f9f](https://github.com/sambanova/sambanova-typescript/commit/9639f9f9f32d5c21768c3d59258568685f168890))
+
+
+### Bug Fixes
+
+* **api:** loosen tool call field requirements to support streaming deltas ([54be633](https://github.com/sambanova/sambanova-typescript/commit/54be6336ca13526d78def140a7ee68fdf3d2407a))
+
+## 1.7.1 (2026-06-17)
+
+Full Changelog: [v1.7.0...v1.7.1](https://github.com/sambanova/sambanova-typescript/compare/v1.7.0...v1.7.1)
+
+### Bug Fixes
+
+* **client:** send content-type header for requests with an omitted optional body ([dc900c4](https://github.com/sambanova/sambanova-typescript/commit/dc900c4089133af111f777f3d7eb85516119f54a))
+* **streaming:** resolve duplicate chunk emission in SSE event routing ([37a0808](https://github.com/sambanova/sambanova-typescript/commit/37a080806b98c216fbe5a76e83fe65d45b2be3d9))
+
+## 1.7.0 (2026-05-26)
+
+Full Changelog: [v1.6.2...v1.7.0](https://github.com/sambanova/sambanova-typescript/compare/v1.6.2...v1.7.0)
+
+### Features
+
+* **api:** add anthropic compatible messages api support ([518f209](https://github.com/sambanova/sambanova-typescript/commit/518f2093eafd9fcbc83912c22252ec1dce7fa74e))
+
+
+### Bug Fixes
+
+* **typescript:** upgrade tsc-multi so that it works with Node 26 ([974925e](https://github.com/sambanova/sambanova-typescript/commit/974925e732355dee19f225b3bace75bf4220f2ac))
+
+
+### Chores
+
+* redact api-key headers in debug logs ([4396f8f](https://github.com/sambanova/sambanova-typescript/commit/4396f8f28719aaf98525d06fcb7a64515001db3d))
+* **tests:** remove redundant File import ([3d53c47](https://github.com/sambanova/sambanova-typescript/commit/3d53c47725ab53588a71d7340f2a87676a8a42ad))
+
+## 1.6.2 (2026-05-07)
+
+Full Changelog: [v1.6.1...v1.6.2](https://github.com/sambanova/sambanova-typescript/compare/v1.6.1...v1.6.2)
+
+### Documentation
+
+* **api:** logit bias support ([d992f08](https://github.com/sambanova/sambanova-typescript/commit/d992f08d897f4a90dee57d758ccf3ef9ca4bd368))
+
+## 1.6.1 (2026-05-05)
+
+Full Changelog: [v1.6.0...v1.6.1](https://github.com/sambanova/sambanova-typescript/compare/v1.6.0...v1.6.1)
+
+### Bug Fixes
+
+* **api:** update responses supported models ([1edac73](https://github.com/sambanova/sambanova-typescript/commit/1edac732a67c1b7d1116ff6e8f608fba3cbe7eed))
+
+## 1.6.0 (2026-05-05)
+
+Full Changelog: [v1.5.0...v1.6.0](https://github.com/sambanova/sambanova-typescript/compare/v1.5.0...v1.6.0)
+
+### Features
+
+* support setting headers via env ([66e1663](https://github.com/sambanova/sambanova-typescript/commit/66e16634dbe2bf2fd805d7103034fa5ce5c94f49))
+
+
+### Bug Fixes
+
+* **api:** manual updates in model lists and docs ([1145e23](https://github.com/sambanova/sambanova-typescript/commit/1145e23d3793fa75563e73a75a5b193ae200bfcc))
+
+
+### Chores
+
+* **format:** run eslint and prettier separately ([e05f30f](https://github.com/sambanova/sambanova-typescript/commit/e05f30f22ec59cef7c17f56e558b55ba27a758eb))
+* **formatter:** run prettier and eslint separately ([2bdc210](https://github.com/sambanova/sambanova-typescript/commit/2bdc210bd0cd6c9f25102ced4e8a25364f3fe2b6))
+* **internal:** codegen related update ([2a271df](https://github.com/sambanova/sambanova-typescript/commit/2a271dfdca720399bfcaa439c62c4b8b7c588b63))
+* **internal:** more robust bootstrap script ([37047f9](https://github.com/sambanova/sambanova-typescript/commit/37047f92a2fe1a676e8ce7606e70198edf5f5bd2))
+
+## 1.5.0 (2026-04-21)
+
+Full Changelog: [v1.4.2...v1.5.0](https://github.com/sambanova/sambanova-typescript/compare/v1.4.2...v1.5.0)
+
+### Features
+
+* **api:** add n and seed chat completions parameters ([1f33a27](https://github.com/sambanova/sambanova-typescript/commit/1f33a276d53f6996de961df87a0611ea840ecfa1))
+* **api:** Responses API Support ([67d6e15](https://github.com/sambanova/sambanova-typescript/commit/67d6e15eee4362321b688145da94e5fa7dc4691c))
+
+
+### Chores
+
+* **internal:** codegen related update ([1f4b770](https://github.com/sambanova/sambanova-typescript/commit/1f4b770ef020629aae2f261fdda3afd7279fff88))
+* **internal:** codegen related update ([25a3f60](https://github.com/sambanova/sambanova-typescript/commit/25a3f60a040987ea29b961995c791de286c29275))
+* **tests:** bump steady to v0.22.1 ([549b71f](https://github.com/sambanova/sambanova-typescript/commit/549b71fae9d5b6369e22eb5f6d614e864bbf4b40))
+
+
+### Documentation
+
+* improve examples ([2b20c15](https://github.com/sambanova/sambanova-typescript/commit/2b20c15eb56784d361cdd07be104b8542f22f5d3))
+* update examples ([1b5e675](https://github.com/sambanova/sambanova-typescript/commit/1b5e675252b44cc37fb020ec44f3da1858e498b4))
+
+## 1.4.2 (2026-04-06)
+
+Full Changelog: [v1.4.1...v1.4.2](https://github.com/sambanova/sambanova-typescript/compare/v1.4.1...v1.4.2)
+
+### Bug Fixes
+
+* **api:** audio usage schema ([4aa4a83](https://github.com/sambanova/sambanova-typescript/commit/4aa4a839b22c48f9276b2e6bd20518cf27f48ccf))
+* **api:** audio usage schema ([795f1bd](https://github.com/sambanova/sambanova-typescript/commit/795f1bd5b94b5352cc6b85a931a82d6f540f2939))
+* **api:** audio usage spec ([c8960d4](https://github.com/sambanova/sambanova-typescript/commit/c8960d43a648aaced1dc57d358f9720b6e17da93))
+* **api:** audio usage types ([8202832](https://github.com/sambanova/sambanova-typescript/commit/8202832e4c9101432c968b9d90bbd5d27ee1b85a))
+* **api:** update error response schemas ([5acc901](https://github.com/sambanova/sambanova-typescript/commit/5acc901a45b3b83a0646d0dba0c6f3b7ebe86e31))
+* **internal:** gitignore generated `oidc` dir ([8e535ca](https://github.com/sambanova/sambanova-typescript/commit/8e535caed977f55766aa6100d2220d8352f821e2))
+
+
+### Chores
+
+* **ci:** skip lint on metadata-only changes ([94d4c5c](https://github.com/sambanova/sambanova-typescript/commit/94d4c5c3e70ca9cc29ee5b9cabf9fa046982f46b))
+* **internal:** codegen related update ([0b2e0fb](https://github.com/sambanova/sambanova-typescript/commit/0b2e0fb3135f8980e952b39b6ed38f00a0e06154))
+* **internal:** update gitignore ([09d6146](https://github.com/sambanova/sambanova-typescript/commit/09d6146ce3d382477b464c5c65c84a029cf6383b))
+* **internal:** update multipart form array serialization ([f5e425c](https://github.com/sambanova/sambanova-typescript/commit/f5e425c0146b3f8d615a816364593b98acddb9b8))
+* **tests:** bump steady to v0.19.4 ([d57ca48](https://github.com/sambanova/sambanova-typescript/commit/d57ca48c84d0d2060002332655e030406b6174be))
+* **tests:** bump steady to v0.19.5 ([4f052aa](https://github.com/sambanova/sambanova-typescript/commit/4f052aa882f640ad8f93983e70db0e7079076e8e))
+* **tests:** bump steady to v0.19.6 ([c8a0704](https://github.com/sambanova/sambanova-typescript/commit/c8a0704144e094e2dce3877a344df435c25552b8))
+* **tests:** bump steady to v0.19.7 ([3103e60](https://github.com/sambanova/sambanova-typescript/commit/3103e60732f56f32c5074767f3d65d206497be56))
+* **tests:** bump steady to v0.20.1 ([521f872](https://github.com/sambanova/sambanova-typescript/commit/521f8721f27da0d474ee3336acd5ed42518e0e77))
+* **tests:** bump steady to v0.20.2 ([cf92e23](https://github.com/sambanova/sambanova-typescript/commit/cf92e238da8f7628addd98301b4bc2f23000952c))
+
+## 1.4.1 (2026-03-19)
+
+Full Changelog: [v1.4.0...v1.4.1](https://github.com/sambanova/sambanova-typescript/compare/v1.4.0...v1.4.1)
+
+### Bug Fixes
+
+* **api:** metadata manual updates ([3366a44](https://github.com/sambanova/sambanova-typescript/commit/3366a44f965e7ede739401fe04087c0a28048d62))
+* **client:** preserve URL params already embedded in path ([1482c21](https://github.com/sambanova/sambanova-typescript/commit/1482c214535b5b7c56638a34125a6894c45c94f5))
+* fix request delays for retrying to be more respectful of high requested delays ([7e17ca2](https://github.com/sambanova/sambanova-typescript/commit/7e17ca298a845e9478a91fbb98a20c9460d5ef19))
+
+
+### Chores
+
+* **ci:** skip uploading artifacts on stainless-internal branches ([64ac8e7](https://github.com/sambanova/sambanova-typescript/commit/64ac8e7dc899e63b09196f86d37e2a7fa380695d))
+* **internal:** tweak CI branches ([ff3ec8f](https://github.com/sambanova/sambanova-typescript/commit/ff3ec8f43032ce017775e8fac5d4eb0b4b93c521))
+* **internal:** update dependencies to address dependabot vulnerabilities ([77e3ab9](https://github.com/sambanova/sambanova-typescript/commit/77e3ab90292a478140fb0c58d5dc05c94f95123c))
+* **test:** do not count install time for mock server timeout ([e631a1b](https://github.com/sambanova/sambanova-typescript/commit/e631a1b69ef9ae98be65a1f0371bb0c426a47e13))
+* update placeholder string ([21cc1d5](https://github.com/sambanova/sambanova-typescript/commit/21cc1d56c81e068e60be3027af4644c74fba9e90))
+
+
+### Refactors
+
+* **tests:** switch from prism to steady ([1a685d6](https://github.com/sambanova/sambanova-typescript/commit/1a685d6938a9e905428ff940885b4cc629ae4b8f))
+
+## 1.4.0 (2026-03-02)
+
+Full Changelog: [v1.3.1...v1.4.0](https://github.com/sambanova/sambanova-typescript/compare/v1.3.1...v1.4.0)
+
+### Features
+
+* **api:** logprobs and top_logprobs in chat completions API ([e88ecb1](https://github.com/sambanova/sambanova-typescript/commit/e88ecb149a2ebc3a71530d023e6fc7b7c88ec5cc))
+
+
+### Bug Fixes
+
+* **docs/contributing:** correct pnpm link command ([5ea8cad](https://github.com/sambanova/sambanova-typescript/commit/5ea8caddc2fecdd5b29b668835beff69b698d73d))
+
+
+### Chores
+
+* **internal/client:** fix form-urlencoded requests ([7eefd3d](https://github.com/sambanova/sambanova-typescript/commit/7eefd3d00c87fba6d3bbd5dca751062bb07be12e))
+* **internal:** move stringifyQuery implementation to internal function ([96ab516](https://github.com/sambanova/sambanova-typescript/commit/96ab5160e57fa6ce276f7904f396245df8372254))
+* update mock server docs ([bdab678](https://github.com/sambanova/sambanova-typescript/commit/bdab678dfe05fc60fe7764450520b7f75243b0d5))
+
+## 1.3.1 (2026-02-13)
+
+Full Changelog: [v1.3.0...v1.3.1](https://github.com/sambanova/sambanova-typescript/compare/v1.3.0...v1.3.1)
+
+### Bug Fixes
+
+* **api:** update temp range ([7ad6caa](https://github.com/sambanova/sambanova-typescript/commit/7ad6caaecae2830855a4f0b0e5aead72ab086491))
+* **client:** avoid removing abort listener too early ([7bffbe6](https://github.com/sambanova/sambanova-typescript/commit/7bffbe6060700f175c5c60ed035f81adf568c926))
+
+
+### Chores
+
+* **client:** restructure abort controller binding ([e9c0a93](https://github.com/sambanova/sambanova-typescript/commit/e9c0a93bc186d6423e7fd09cb7bf31ec5a594447))
+* **internal:** avoid type checking errors with ts-reset ([67d7c02](https://github.com/sambanova/sambanova-typescript/commit/67d7c02c9c5567d2e323c2d7b7b1c1b1466d23e8))
+
+## 1.3.0 (2026-02-02)
+
+Full Changelog: [v1.2.2...v1.3.0](https://github.com/sambanova/sambanova-typescript/compare/v1.2.2...v1.3.0)
+
+### Features
+
+* **api:** add optional custom integration_source param ([ef8a5a7](https://github.com/sambanova/sambanova-typescript/commit/ef8a5a7593edfacfadf6e5f82c7c704b50f2c54a))
+
+
+### Bug Fixes
+
+* **client:** avoid memory leak with abort signals ([3ec2e1e](https://github.com/sambanova/sambanova-typescript/commit/3ec2e1e6fe4d9adf01bc40b1a0283dc9cf6e55c9))
+
+
+### Chores
+
+* **client:** do not parse responses with empty content-length ([4f26fc2](https://github.com/sambanova/sambanova-typescript/commit/4f26fc2672d97e4cbfa64d61a82647c28576420e))
+
+## 1.2.2 (2026-01-29)
+
+Full Changelog: [v1.2.1...v1.2.2](https://github.com/sambanova/sambanova-typescript/compare/v1.2.1...v1.2.2)
+
+### Chores
+
+* update SDK settings ([a473a4b](https://github.com/sambanova/sambanova-typescript/commit/a473a4bd3e7d9f1c5e1b040f6fc36111d1604494))
+
+## 1.2.1 (2026-01-23)
+
+Full Changelog: [v1.2.0...v1.2.1](https://github.com/sambanova/sambanova-typescript/compare/v1.2.0...v1.2.1)
+
+### Bug Fixes
+
+* **api:** minor openAPI spec fixes ([f0cd95a](https://github.com/sambanova/sambanova-typescript/commit/f0cd95a412c65d7214ceffa293bbcf46af3d084c))
+* **mcp:** correct code tool API endpoint ([ec3c235](https://github.com/sambanova/sambanova-typescript/commit/ec3c2354b5865a6063bfde263d3552b20067b0e6))
+* **mcp:** return correct lines on typescript errors ([3c63226](https://github.com/sambanova/sambanova-typescript/commit/3c63226132ccac760aac473c9960c89ce5bea582))
+
+
+### Chores
+
+* break long lines in snippets into multiline ([fb8eee0](https://github.com/sambanova/sambanova-typescript/commit/fb8eee09cdb1d363cfaf123f3a7e46937cfb4186))
+* **ci:** upgrade `actions/github-script` ([287fc2f](https://github.com/sambanova/sambanova-typescript/commit/287fc2f1947a99c2557c6ce3f5660461a803830f))
+* **client:** fix logger property type ([ac1902a](https://github.com/sambanova/sambanova-typescript/commit/ac1902a4f84c354a939b148de86523b30ecc9844))
+* **internal:** codegen related update ([c29a736](https://github.com/sambanova/sambanova-typescript/commit/c29a7365c3959b421897a2f730937f5a55443926))
+* **internal:** codegen related update ([85fa237](https://github.com/sambanova/sambanova-typescript/commit/85fa2379ce40d54ed08658e34e5c2407837501af))
+* **internal:** codegen related update ([fefbc68](https://github.com/sambanova/sambanova-typescript/commit/fefbc68f0c4ee2d32e6d35d99bfc5594c1897762))
+* **internal:** update `actions/checkout` version ([b1c5fa8](https://github.com/sambanova/sambanova-typescript/commit/b1c5fa8ed4215f5ec1462bc57146f1424ebc9fc7))
+* **internal:** upgrade babel, qs, js-yaml ([8e04100](https://github.com/sambanova/sambanova-typescript/commit/8e04100700641ec6374b18687522cf53be260bed))
+* **internal:** upgrade eslint ([403a277](https://github.com/sambanova/sambanova-typescript/commit/403a277b9a65a49373b174144c730356f259a728))
+
+## 1.2.0 (2025-11-07)
+
+Full Changelog: [v1.1.6...v1.2.0](https://github.com/sambanova/sambanova-typescript/compare/v1.1.6...v1.2.0)
+
+### Features
+
+* **api:** add completions support ([cc1fdda](https://github.com/sambanova/sambanova-typescript/commit/cc1fddaa6a23ea576473dec36557462fee196108))
+
+## 1.1.6 (2025-11-07)
+
+Full Changelog: [v1.1.5...v1.1.6](https://github.com/sambanova/sambanova-typescript/compare/v1.1.5...v1.1.6)
+
+### Bug Fixes
+
+* **api:** add missing chat_template_kwargs chat completions argument ([b60a15e](https://github.com/sambanova/sambanova-typescript/commit/b60a15eb86108dc73356406d458d92b2136b659a))
+* **api:** update deafault models ([0575914](https://github.com/sambanova/sambanova-typescript/commit/05759142c73b04499e2dbcbff71160cc3408a4d2))
+
+## 1.1.5 (2025-10-24)
+
+Full Changelog: [v1.1.4...v1.1.5](https://github.com/sambanova/sambanova-typescript/compare/v1.1.4...v1.1.5)
+
+### Bug Fixes
+
+* **api:** increase default timeouts ([5c4867e](https://github.com/sambanova/sambanova-typescript/commit/5c4867ebbb046c84161bc6520c9eeb72174be23f))
+
+## 1.1.4 (2025-10-09)
+
+Full Changelog: [v1.1.3...v1.1.4](https://github.com/sambanova/sambanova-typescript/compare/v1.1.3...v1.1.4)
+
+### Bug Fixes
+
+* **api:** embeddings summary ([5bada3c](https://github.com/sambanova/sambanova-typescript/commit/5bada3c711e4250b054417e67877d62aedb36412))
+
+## 1.1.3 (2025-10-06)
+
+Full Changelog: [v1.1.2...v1.1.3](https://github.com/sambanova/sambanova-typescript/compare/v1.1.2...v1.1.3)
+
+### Chores
+
+* **internal:** use npm pack for build uploads ([3abe37a](https://github.com/sambanova/sambanova-typescript/commit/3abe37a57ffcbd2499661770b6e485c032f218de))
+* **jsdoc:** fix [@link](https://github.com/link) annotations to refer only to parts of the package‘s public interface ([6aea350](https://github.com/sambanova/sambanova-typescript/commit/6aea3504f92483caed38f1dfbc50cf83c25784c0))
+
+## 1.1.2 (2025-10-02)
+
+Full Changelog: [v1.1.1...v1.1.2](https://github.com/sambanova/sambanova-typescript/compare/v1.1.1...v1.1.2)
+
+### Chores
+
+* **internal:** remove .eslintcache ([ff13f78](https://github.com/sambanova/sambanova-typescript/commit/ff13f78891917f1df1089d35bc5f706166d74583))
+
+## 1.1.1 (2025-09-27)
+
+Full Changelog: [v1.1.0...v1.1.1](https://github.com/sambanova/sambanova-typescript/compare/v1.1.0...v1.1.1)
+
+### Features
+
+* **api:** fix delta dict structure ([a39d4ec](https://github.com/sambanova/sambanova-typescript/commit/a39d4ec9360b700b0a4904cb67b3b724380e189f))
+* **api:** fix delta object type for chat completions ([8b60409](https://github.com/sambanova/sambanova-typescript/commit/8b604096a9ef9c8bf4dab5504424c10a665d7f88))
+* **api:** fix streaming event models ([7aef6f9](https://github.com/sambanova/sambanova-typescript/commit/7aef6f926b0ed463a7552bb6da6ca37177c2965e))
+* **api:** keep additional properties for streaming and pricing object ([e5aa28f](https://github.com/sambanova/sambanova-typescript/commit/e5aa28fb6be7ffced0925d2c95179dc2b7ef6b48))
+* **api:** update prod-url ([0bb9a5e](https://github.com/sambanova/sambanova-typescript/commit/0bb9a5e0fb4c4f92ace61d84e99cfbfb3a2ff8f8))
+
+
+### Performance Improvements
+
+* faster formatting ([e858ef4](https://github.com/sambanova/sambanova-typescript/commit/e858ef48c1eda6f928f6306a57cc0e2913d07e12))
+
+
+### Chores
+
+* **internal:** codegen related update ([01c92c9](https://github.com/sambanova/sambanova-typescript/commit/01c92c976c691f368bedb431d18efec795fe4acc))
+* **internal:** fix incremental formatting in some cases ([013c24d](https://github.com/sambanova/sambanova-typescript/commit/013c24da0bea091eb1ff8045c56a590e39ee8067))
+* **internal:** ignore .eslintcache ([b815a91](https://github.com/sambanova/sambanova-typescript/commit/b815a9108e49c259f8ba26cc2f860353f25e9001))
+* **internal:** remove deprecated `compilerOptions.baseUrl` from tsconfig.json ([4f1e4e0](https://github.com/sambanova/sambanova-typescript/commit/4f1e4e0df77817161202d4bfc6e918cb8846ea6d))
+
+## 1.1.0 (2025-09-22)
+
+Full Changelog: [v0.1.0-alpha.2...v1.1.0](https://github.com/sambanova/sambanova-typescript/compare/v0.1.0-alpha.2...v1.1.0)
+
+### Chores
+
+* **internal:** trigger CI ([a56b6d8](https://github.com/sambanova/sambanova-typescript/commit/a56b6d80c336553c50b7dbde0365e24c11e84340))
+
+## 0.1.0-alpha.2 (2025-09-19)
+
+Full Changelog: [v0.1.0-alpha.1...v0.1.0-alpha.2](https://github.com/sambanova/sambanova-typescript/compare/v0.1.0-alpha.1...v0.1.0-alpha.2)
+
+### Features
+
+* **api:** add reasoning and channel param to messages delta ([74b38f6](https://github.com/sambanova/sambanova-typescript/commit/74b38f6450f82d75763ac519e31c80394a8302ca))
+* **api:** manual updates ([ea47138](https://github.com/sambanova/sambanova-typescript/commit/ea47138d1e2f721eade16f26bd2ca883451368c5))
+
+
+### Chores
+
+* do not install brew dependencies in ./scripts/bootstrap by default ([23d7e93](https://github.com/sambanova/sambanova-typescript/commit/23d7e930073e91cc27e590d78ca7c0fb587f609f))
+
+## 0.1.0-alpha.1 (2025-09-17)
+
+Full Changelog: [v0.0.1-alpha.0...v0.1.0-alpha.1](https://github.com/sambanova/sambanova-typescript/compare/v0.0.1-alpha.0...v0.1.0-alpha.1)
+
+### Features
+
+* **api:** change node to typescript ([65f38a4](https://github.com/sambanova/sambanova-typescript/commit/65f38a498edc96afc7f062543ffe80718402e772))
+* **api:** manual updates ([a5debc1](https://github.com/sambanova/sambanova-typescript/commit/a5debc1036051eba0ad1e763656fb460a2c24f3e))
+* **api:** manual updates ([063506b](https://github.com/sambanova/sambanova-typescript/commit/063506b492278c82cb6260dba55d7dd1feda5526))
+* **api:** manual updates ([0bd1ddc](https://github.com/sambanova/sambanova-typescript/commit/0bd1ddca00ccfee73261165a21afcfd9488a8a77))
+* **api:** manual updates ([52652b7](https://github.com/sambanova/sambanova-typescript/commit/52652b7df69b07a592f22fcb46b2c3e88a56d48e))
+* **api:** manual updates ([3570643](https://github.com/sambanova/sambanova-typescript/commit/3570643f7dec77deb2665b4b074ca9ba54038cfd))
+* **api:** manual updates ([b7ad47e](https://github.com/sambanova/sambanova-typescript/commit/b7ad47e3135bf166e43f4276329a6623998d8714))
+* **api:** open api spec updates ([22b4fd7](https://github.com/sambanova/sambanova-typescript/commit/22b4fd76e58606e04b23b8291fe01b933aec566c))
+* **api:** update via SDK Studio ([2cde438](https://github.com/sambanova/sambanova-typescript/commit/2cde438d65cce85e597096483c11ae89c9d04760))
+* **api:** update via SDK Studio ([a6bcc3e](https://github.com/sambanova/sambanova-typescript/commit/a6bcc3e9999781469cfc1f292c259814ad85776a))
+* **api:** update via SDK Studio ([8e8cd0a](https://github.com/sambanova/sambanova-typescript/commit/8e8cd0a9dfdd4a8f28d81848364bd394843882f3))
+* **api:** update via SDK Studio ([c90ff23](https://github.com/sambanova/sambanova-typescript/commit/c90ff23203c22050ddaea3e4d1f5f943f553371c))
+* **api:** update via SDK Studio ([b1a10f3](https://github.com/sambanova/sambanova-typescript/commit/b1a10f346696e2566a453707e1fc846394c984d2))
+* **api:** update via SDK Studio ([1708317](https://github.com/sambanova/sambanova-typescript/commit/1708317ca1b79856f892d1c122d7757a7ae918d5))
+* **api:** update via SDK Studio ([90ad3d6](https://github.com/sambanova/sambanova-typescript/commit/90ad3d6e4c3029cc51aa35c6509965bfada1e928))
+* **api:** update via SDK Studio ([9ec5527](https://github.com/sambanova/sambanova-typescript/commit/9ec5527e95628e801444e3ed7aca592ed7dc43ed))
+* **api:** update via SDK Studio ([50357fe](https://github.com/sambanova/sambanova-typescript/commit/50357fe27766dbed42ef5d04cdf1c24976c96143))
+* **api:** update via SDK Studio ([c188700](https://github.com/sambanova/sambanova-typescript/commit/c188700119763895ef7f26d517aee9e566f744f6))
+* **api:** update via SDK Studio ([96ebfc9](https://github.com/sambanova/sambanova-typescript/commit/96ebfc987a5b720ed7ef884b55a0611df43b7257))
+* **api:** update via SDK Studio ([33e17ed](https://github.com/sambanova/sambanova-typescript/commit/33e17ed538e957660c7f3f25f1277b8908ffaa29))
+* **api:** update via SDK Studio ([30b0999](https://github.com/sambanova/sambanova-typescript/commit/30b0999020fb69bcc8600a90e190bf9545ca9048))
+* **api:** update via SDK Studio ([d3bdd93](https://github.com/sambanova/sambanova-typescript/commit/d3bdd935d2bef835e1c4099b3522ef8ce8f08cfe))
+* **api:** update via SDK Studio ([ac244fb](https://github.com/sambanova/sambanova-typescript/commit/ac244fb839d7d221c616f679869fbfd668cab50c))
+* **api:** update via SDK Studio ([6ae4370](https://github.com/sambanova/sambanova-typescript/commit/6ae43702b5a7f608f63cab514621cea02da4f549))
+* **api:** update via SDK Studio ([5aeaf0d](https://github.com/sambanova/sambanova-typescript/commit/5aeaf0d1ae3b4001145cb283af964054eb6ecd85))
+* **api:** update via SDK Studio ([e2f6059](https://github.com/sambanova/sambanova-typescript/commit/e2f60596a1d9131406d801facb72b485e914ae21))
+* **api:** update via SDK Studio ([5ac957a](https://github.com/sambanova/sambanova-typescript/commit/5ac957aa59418563dbc292ebba7b84ed07c0cff3))
+* **api:** update via SDK Studio ([890a0d6](https://github.com/sambanova/sambanova-typescript/commit/890a0d6cbdfc982e200c66d117a05f679d3f739f))
+* **api:** update via SDK Studio ([8cfb1e2](https://github.com/sambanova/sambanova-typescript/commit/8cfb1e218e710bc5328f63534eba56055e7d5fac))
+* **api:** update via SDK Studio ([13b5796](https://github.com/sambanova/sambanova-typescript/commit/13b5796d375fc5c8d9ae4eb57a335a701be18c2d))
+* **api:** update via SDK Studio ([feecd7e](https://github.com/sambanova/sambanova-typescript/commit/feecd7e5403dab2e49e37a76c417fbd2a5861a61))
+* **api:** update via SDK Studio ([d390387](https://github.com/sambanova/sambanova-typescript/commit/d390387c03a007d4416e6e3bdeda40acb6e63d1a))
+* **api:** update via SDK Studio ([461580a](https://github.com/sambanova/sambanova-typescript/commit/461580a6c8dfac021ebc29e3eb1e80cc7f6c9dad))
+* **api:** update via SDK Studio ([4a27f90](https://github.com/sambanova/sambanova-typescript/commit/4a27f9093919f0481487ba2f9dd988cab5fde960))
+* **api:** update via SDK Studio ([34cab94](https://github.com/sambanova/sambanova-typescript/commit/34cab94b01211d6649e6dd38bc39931bff86ba75))
+* **api:** update via SDK Studio ([c52bdd2](https://github.com/sambanova/sambanova-typescript/commit/c52bdd2f755e1b5d481b1f87f315a7308101073e))
+* **api:** update via SDK Studio ([7b5ae2b](https://github.com/sambanova/sambanova-typescript/commit/7b5ae2b30bc04a9f7ef24d2a0edbb56cba8ba255))
+* **api:** update via SDK Studio ([8f4c8ad](https://github.com/sambanova/sambanova-typescript/commit/8f4c8adbc86905acf198ed1bc1987ea923d05f27))
+* **api:** update via SDK Studio ([29cb183](https://github.com/sambanova/sambanova-typescript/commit/29cb183b3363b39d3328244774b5d88f8c8b9d6f))
+* **api:** update via SDK Studio ([6fe3222](https://github.com/sambanova/sambanova-typescript/commit/6fe3222cc8f5125091e09b68ea20044203c9bc5d))
+* **client:** send `X-Stainless-Timeout` header ([3356bcd](https://github.com/sambanova/sambanova-typescript/commit/3356bcda4a8b48b93a9c270cb3d55d2a6de3352c))
+
+
+### Bug Fixes
+
+* **client:** fix export map for index exports ([019d76e](https://github.com/sambanova/sambanova-typescript/commit/019d76ed72babae670ee7e16b41e4446850533ca))
+* coerce nullable values to undefined ([99b41e3](https://github.com/sambanova/sambanova-typescript/commit/99b41e37f84fbaca88406c2b25f02b00ecff4aaf))
+* correctly decode multi-byte characters over multiple chunks ([84a1c55](https://github.com/sambanova/sambanova-typescript/commit/84a1c55a4c7b9b4f00f5d50b8fee01e4661ee9e6))
+* optimize sse chunk reading off-by-one error ([63e2b96](https://github.com/sambanova/sambanova-typescript/commit/63e2b96eea89770ea708c3f15926ef5321daae28))
+
+
+### Chores
+
+* ci build action ([41974e0](https://github.com/sambanova/sambanova-typescript/commit/41974e08c27dcc8b044a948116c4463e400098c3))
+* configure new SDK language ([594ae96](https://github.com/sambanova/sambanova-typescript/commit/594ae96165712a4324c1b07e9c864d1787a7eb3b))
+* **deps:** update dependency node-fetch to v2.6.13 ([f321923](https://github.com/sambanova/sambanova-typescript/commit/f321923061fa48292c5eb312799809bcbdfe1499))
+* **internal:** codegen related update ([930fc13](https://github.com/sambanova/sambanova-typescript/commit/930fc1348b82152b9180b43809bc61e3e5cef49e))
+* **internal:** fix devcontainers setup ([c25665f](https://github.com/sambanova/sambanova-typescript/commit/c25665fe98f491ed51c8f643a471e349fbfa9417))
+* **internal:** formatting change ([3aa3f8a](https://github.com/sambanova/sambanova-typescript/commit/3aa3f8aafe1fd1a6b808d07a43f7a7d8859f2d4d))
+* minor change to tests ([1307fc9](https://github.com/sambanova/sambanova-typescript/commit/1307fc9e8106ed92d7dd595df767b2bd16649fcd))
+* update CI script ([4d24fde](https://github.com/sambanova/sambanova-typescript/commit/4d24fde15f651431dc8fc599acbf16289d8d99f6))
+* update SDK settings ([033df10](https://github.com/sambanova/sambanova-typescript/commit/033df100a3e3f0a90e0dbf8d3648937f21275fe9))
+* update SDK settings ([06a9c5d](https://github.com/sambanova/sambanova-typescript/commit/06a9c5d2c58d1bf44327e003e11d84f79acd1264))
