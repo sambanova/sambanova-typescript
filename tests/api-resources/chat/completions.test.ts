@@ -37,6 +37,7 @@ describe('resource completions', () => {
       parallel_tool_calls: true,
       presence_penalty: -2,
       reasoning_effort: 'low',
+      repetition_penalty: 1,
       response_format: {
         json_schema: {
           name: 'User',
