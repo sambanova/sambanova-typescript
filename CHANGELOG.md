@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.10.0](https://github.com/sambanova/sambanova-typescript/compare/v1.9.2...v1.10.0) (2026-09-17)
+
+
+### Features
+
+* add repetition penalty ([c8a551b](https://github.com/sambanova/sambanova-typescript/commit/c8a551bf67182903e6fc11f531fd53c9b3bac8f6))
+
 ## [1.9.2](https://github.com/sambanova/sambanova-typescript/compare/v1.9.1...v1.9.2) (2026-07-20)
 
 
