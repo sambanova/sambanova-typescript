@@ -794,6 +794,7 @@ export interface CompletionCreateParamsBase {
     | 'ALLaM-7B-Instruct-preview'
     | 'MiniMax-M2.5'
     | 'MiniMax-M2.7'
+    | 'MiniMax-M3'
     | 'gemma-3-12b-it';
 
   /**
@@ -875,6 +876,13 @@ export interface CompletionCreateParamsBase {
    * 'high'
    */
   reasoning_effort?: 'low' | 'medium' | 'high' | null;
+
+  /**
+   * Penalizes repeated tokens. A value of 1.0 applies no penalty; values above 1.0
+   * discourage repetition. Only supported for some models (currently MiniMax and
+   * gpt-oss models); silently ignored on models that do not support it.
+   */
+  repetition_penalty?: number | null;
 
   /**
    * An object specifying the format that the model must output. Setting to

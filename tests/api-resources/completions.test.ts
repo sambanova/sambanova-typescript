@@ -36,6 +36,7 @@ describe('resource completions', () => {
       max_tokens: 2048,
       n: 1,
       presence_penalty: -2,
+      repetition_penalty: 1,
       seed: 0,
       stop: '\n',
       stream: false,
