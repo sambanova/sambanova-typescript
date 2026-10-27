@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.11.0](https://github.com/sambanova/sambanova-typescript/compare/v1.10.0...v1.11.0) (2026-10-27)
+
+
+### Features
+
+* strict request params, verbose_json audio formats, drop audio streaming ([1280230](https://github.com/sambanova/sambanova-typescript/commit/128023023eb6ec3b63cabe1c45f0941eb9ba4b8d))
+
 ## [1.10.0](https://github.com/sambanova/sambanova-typescript/compare/v1.9.2...v1.10.0) (2026-09-17)
 
 
