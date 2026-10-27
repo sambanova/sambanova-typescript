@@ -38,7 +38,7 @@ export class Responses extends APIResource {
    *       type: 'message',
    *     },
    *   ],
-   *   model: 'gpt-oss-120b',
+   *   model: 'MiniMax-M3',
    * });
    * ```
    */
@@ -3975,7 +3975,7 @@ export interface ResponseCreateParamsBase {
    * The model ID to use (e.g. gpt-oss-120b). See available
    * [models](https://docs.sambanova.ai/docs/en/models/sambacloud-models)
    */
-  model: (string & {}) | 'gpt-oss-120b' | 'MiniMax-M2.5' | 'MiniMax-M2.7';
+  model: (string & {}) | 'MiniMax-M3' | 'MiniMax-M3.1-Flash' | 'gemma-4-31B-it' | 'gpt-oss-120b';
 
   /**
    * Accepted for API compatibility and echoed back in the response. Has no effect on

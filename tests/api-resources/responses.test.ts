@@ -27,7 +27,7 @@ describe('resource responses', () => {
           type: 'message',
         },
       ],
-      model: 'gpt-oss-120b',
+      model: 'MiniMax-M3',
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -89,7 +89,7 @@ describe('resource responses', () => {
           status: 'in_progress',
         },
       ],
-      model: 'gpt-oss-120b',
+      model: 'MiniMax-M3',
       background: true,
       frequency_penalty: -2,
       instructions: 'instructions',
