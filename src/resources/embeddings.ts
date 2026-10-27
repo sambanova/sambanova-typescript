@@ -217,8 +217,6 @@ export interface EmbeddingCreateParams {
    * Omitted from the request when not set.
    */
   encoding_format?: 'float' | 'base64' | null;
-
-  [k: string]: unknown;
 }
 
 export declare namespace Embeddings {

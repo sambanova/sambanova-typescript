@@ -49,7 +49,7 @@ import {
   ResponseStreamEvent,
   Responses,
 } from './resources/responses';
-import { Audio } from './resources/audio/audio';
+import { Audio, TranscriptionSegment } from './resources/audio/audio';
 import { Chat } from './resources/chat/chat';
 import { type Fetch } from './internal/builtin-types';
 import { HeadersLike, NullableHeaders, buildHeaders } from './internal/headers';
@@ -843,7 +843,7 @@ export declare namespace SambaNova {
     type EmbeddingCreateParams as EmbeddingCreateParams,
   };
 
-  export { Audio as Audio };
+  export { Audio as Audio, type TranscriptionSegment as TranscriptionSegment };
 
   export {
     Responses as Responses,

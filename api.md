@@ -38,29 +38,29 @@ Methods:
 
 # Audio
 
+Types:
+
+- <code><a href="./src/resources/audio/audio.ts">TranscriptionSegment</a></code>
+
 ## Transcriptions
 
 Types:
 
 - <code><a href="./src/resources/audio/transcriptions.ts">TranscriptionResponse</a></code>
-- <code><a href="./src/resources/audio/transcriptions.ts">TranscriptionStreamResponse</a></code>
-- <code><a href="./src/resources/audio/transcriptions.ts">TranscriptionCreateResponse</a></code>
 
 Methods:
 
-- <code title="post /audio/transcriptions">client.audio.transcriptions.<a href="./src/resources/audio/transcriptions.ts">create</a>({ ...params }) -> TranscriptionCreateResponse</code>
+- <code title="post /audio/transcriptions">client.audio.transcriptions.<a href="./src/resources/audio/transcriptions.ts">create</a>({ ...params }) -> TranscriptionResponse</code>
 
 ## Translations
 
 Types:
 
 - <code><a href="./src/resources/audio/translations.ts">TranslationResponse</a></code>
-- <code><a href="./src/resources/audio/translations.ts">TranslationStreamResponse</a></code>
-- <code><a href="./src/resources/audio/translations.ts">TranslationCreateResponse</a></code>
 
 Methods:
 
-- <code title="post /audio/translations">client.audio.translations.<a href="./src/resources/audio/translations.ts">create</a>({ ...params }) -> TranslationCreateResponse</code>
+- <code title="post /audio/translations">client.audio.translations.<a href="./src/resources/audio/translations.ts">create</a>({ ...params }) -> TranslationResponse</code>
 
 # Responses
 

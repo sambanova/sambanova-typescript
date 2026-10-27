@@ -27,7 +27,6 @@ describe('resource completions', () => {
       messages: [{ content: 'create a poem using palindromes', role: 'user' }],
       model: 'gpt-oss-120b',
       chat_template_kwargs: { enable_thinking: true },
-      do_sample: true,
       frequency_penalty: -2,
       logit_bias: {},
       logprobs: true,

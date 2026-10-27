@@ -765,37 +765,13 @@ export interface CompletionCreateParamsBase {
    */
   model:
     | (string & {})
-    | 'Meta-Llama-3.3-70B-Instruct'
-    | 'Meta-Llama-3.2-1B-Instruct'
-    | 'Meta-Llama-3.2-3B-Instruct'
-    | 'Llama-3.2-11B-Vision-Instruct'
-    | 'Llama-3.2-90B-Vision-Instruct'
-    | 'Meta-Llama-3.1-8B-Instruct'
-    | 'Meta-Llama-3.1-70B-Instruct'
-    | 'Meta-Llama-3.1-405B-Instruct'
-    | 'Qwen2.5-Coder-32B-Instruct'
-    | 'Qwen2.5-72B-Instruct'
-    | 'QwQ-32B-Preview'
-    | 'Meta-Llama-Guard-3-8B'
-    | 'DeepSeek-R1'
-    | 'DeepSeek-R1-0528'
-    | 'DeepSeek-V3-0324'
     | 'DeepSeek-V3.1'
-    | 'DeepSeek-V3.1-cb'
-    | 'DeepSeek-V3.1-Terminus'
     | 'DeepSeek-V3.2'
-    | 'DeepSeek-R1-Distill-Llama-70B'
-    | 'Llama-4-Maverick-17B-128E-Instruct'
-    | 'Llama-4-Scout-17B-16E-Instruct'
-    | 'Qwen3-32B'
-    | 'Qwen3-235B'
-    | 'Llama-3.3-Swallow-70B-Instruct-v0.4'
-    | 'gpt-oss-120b'
-    | 'ALLaM-7B-Instruct-preview'
-    | 'MiniMax-M2.5'
-    | 'MiniMax-M2.7'
+    | 'Meta-Llama-3.3-70B-Instruct'
     | 'MiniMax-M3'
-    | 'gemma-3-12b-it';
+    | 'MiniMax-M3.1-Flash'
+    | 'gemma-4-31B-it'
+    | 'gpt-oss-120b';
 
   /**
    * A dictionary of additional keyword arguments to pass into the chat template. Use
@@ -803,12 +779,6 @@ export interface CompletionCreateParamsBase {
    * process. Keys must be strings; values may be any valid JSON type.
    */
   chat_template_kwargs?: CompletionCreateParams.ChatTemplateKwargs | null;
-
-  /**
-   * If true, sampling is enabled during output generation. If false, deterministic
-   * decoding is used.
-   */
-  do_sample?: boolean | null;
 
   /**
    * Number between -2.0 and 2.0. Positive values penalize new tokens based on their
@@ -974,8 +944,6 @@ export interface CompletionCreateParamsBase {
    * or temperature but not more than one of these.
    */
   top_p?: number | null;
-
-  [k: string]: unknown;
 }
 
 export namespace CompletionCreateParams {
@@ -1401,8 +1369,6 @@ export interface CompletionCreateParamsNonStreaming extends CompletionCreatePara
    * message.
    */
   stream?: false | null;
-
-  [k: string]: unknown;
 }
 
 export interface CompletionCreateParamsStreaming extends CompletionCreateParamsBase {
@@ -1413,8 +1379,6 @@ export interface CompletionCreateParamsStreaming extends CompletionCreateParamsB
    * message.
    */
   stream: true;
-
-  [k: string]: unknown;
 }
 
 export declare namespace Completions {
