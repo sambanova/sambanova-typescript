@@ -4089,7 +4089,7 @@ export interface ResponseCreateParamsBase {
   truncation?: 'auto' | 'disabled' | null;
 
   /**
-   * Included for API compatibility, but only echoed back in response
+   * Included for API compatibility. Only echoed back in the response.
    */
   user?: string | null;
 }
