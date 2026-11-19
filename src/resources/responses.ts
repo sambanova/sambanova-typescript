@@ -38,7 +38,7 @@ export class Responses extends APIResource {
    *       type: 'message',
    *     },
    *   ],
-   *   model: 'MiniMax-M3',
+   *   model: 'GLM-5.3',
    * });
    * ```
    */
@@ -3975,21 +3975,15 @@ export interface ResponseCreateParamsBase {
    * The model ID to use (e.g. gpt-oss-120b). See available
    * [models](https://docs.sambanova.ai/docs/en/models/sambacloud-models)
    */
-  model: (string & {}) | 'MiniMax-M3' | 'MiniMax-M3.1-Flash' | 'gemma-4-31B-it' | 'gpt-oss-120b';
-
-  /**
-   * Accepted for API compatibility and echoed back in the response. Has no effect on
-   * server behavior.
-   */
-  background?: boolean | null;
+  model: (string & {}) | 'GLM-5.3' | 'MiniMax-M3' | 'MiniMax-M3.1-Flash' | 'gemma-4-31B-it' | 'gpt-oss-120b';
 
   /**
    * Number between -2.0 and 2.0. Positive values penalize new tokens based on their
    * existing frequency in the text so far, decreasing the model's likelihood to
-   * repeat the same line verbatim. Not currently implemented; accepted for API
-   * compatibility and echoed in the response.
+   * repeat the same line verbatim. Not currently implemented; only `0` is accepted
+   * and any other value returns a `400` error. Echoed in the response.
    */
-  frequency_penalty?: number | null;
+  frequency_penalty?: 0 | null;
 
   /**
    * Inserts a system (or developer) message as the first item in the model's
@@ -4010,11 +4004,6 @@ export interface ResponseCreateParamsBase {
   max_tool_calls?: number | null;
 
   /**
-   * Included for API compatibility, but not supported
-   */
-  metadata?: { [key: string]: string } | null;
-
-  /**
    * Whether the model may issue multiple tool calls in parallel within one turn.
    */
   parallel_tool_calls?: boolean | null;
@@ -4022,17 +4011,10 @@ export interface ResponseCreateParamsBase {
   /**
    * Number between -2.0 and 2.0. Positive values penalize new tokens based on
    * whether they appear in the text so far, increasing the model's likelihood to
-   * talk about new topics. Not currently implemented; accepted for API compatibility
-   * and echoed in the response.
+   * talk about new topics. Not currently implemented; only `0` is accepted and any
+   * other value returns a `400` error. Echoed in the response.
    */
-  presence_penalty?: number | null;
-
-  /**
-   * Not supported. SambaNova is stateless and does not maintain server-side
-   * conversation state. Accepted for API compatibility but ignored; clients must
-   * supply the full conversation history in input[].
-   */
-  previous_response_id?: string | null;
+  presence_penalty?: 0 | null;
 
   /**
    * Reasoning configuration for models that support it. Ignored on non-reasoning
@@ -4080,7 +4062,7 @@ export interface ResponseCreateParamsBase {
    * Tools available to the model. Only type: "function" is supported; all other tool
    * types are filtered server-side.
    */
-  tools?: Array<ResponseCreateParams.Tool> | null;
+  tools?: Array<ResponseCreateParams.Tool>;
 
   /**
    * Limits sampling to the top K most probable tokens. It is recommended to alter
@@ -4110,8 +4092,6 @@ export interface ResponseCreateParamsBase {
    * Included for API compatibility, but only echoed back in response
    */
   user?: string | null;
-
-  [k: string]: unknown;
 }
 
 export namespace ResponseCreateParams {
@@ -4634,8 +4614,6 @@ export interface ResponseCreateParamsNonStreaming extends ResponseCreateParamsBa
    * If true, the response is delivered as server-sent events (SSE).
    */
   stream?: false | null;
-
-  [k: string]: unknown;
 }
 
 export interface ResponseCreateParamsStreaming extends ResponseCreateParamsBase {
@@ -4643,8 +4621,6 @@ export interface ResponseCreateParamsStreaming extends ResponseCreateParamsBase 
    * If true, the response is delivered as server-sent events (SSE).
    */
   stream: true;
-
-  [k: string]: unknown;
 }
 
 export declare namespace Responses {

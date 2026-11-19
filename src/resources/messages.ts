@@ -1371,6 +1371,7 @@ export interface MessageCreateParamsBase {
     | (string & {})
     | 'DeepSeek-V3.1'
     | 'DeepSeek-V3.2'
+    | 'GLM-5.3'
     | 'Meta-Llama-3.3-70B-Instruct'
     | 'MiniMax-M3'
     | 'MiniMax-M3.1-Flash'
@@ -1448,7 +1449,7 @@ export interface MessageCreateParamsBase {
 
   /**
    * Body param: Top-k sampling. Considers only the K most likely tokens at each
-   * step. Set to 0 to disable.
+   * step. Must be at least 1.
    */
   top_k?: number | null;
 
@@ -2672,13 +2673,12 @@ export interface MessageCountTokensParams {
     | MessageCountTokensParams.MessageToolChoiceAuto
     | MessageCountTokensParams.MessageToolChoiceAny
     | MessageCountTokensParams.MessageToolChoiceNone
-    | MessageCountTokensParams.MessageToolChoiceTool
-    | null;
+    | MessageCountTokensParams.MessageToolChoiceTool;
 
   /**
    * Body param: Tool definitions the model may call.
    */
-  tools?: Array<MessageCountTokensParams.Tool> | null;
+  tools?: Array<MessageCountTokensParams.Tool>;
 
   /**
    * Header param: Anthropic API version header sent by the official `anthropic` SDK.
@@ -2686,8 +2686,6 @@ export interface MessageCountTokensParams {
    * for drop-in SDK compatibility.
    */
   'anthropic-version'?: string;
-
-  [k: string]: unknown;
 }
 
 export namespace MessageCountTokensParams {

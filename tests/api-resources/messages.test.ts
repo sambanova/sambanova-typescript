@@ -51,7 +51,7 @@ describe('resource messages', () => {
           type: 'custom',
         },
       ],
-      top_k: 0,
+      top_k: 1,
       top_p: 0,
       'anthropic-version': '2023-06-01',
     });

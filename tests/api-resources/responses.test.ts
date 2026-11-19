@@ -27,7 +27,7 @@ describe('resource responses', () => {
           type: 'message',
         },
       ],
-      model: 'MiniMax-M3',
+      model: 'GLM-5.3',
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -89,16 +89,13 @@ describe('resource responses', () => {
           status: 'in_progress',
         },
       ],
-      model: 'MiniMax-M3',
-      background: true,
-      frequency_penalty: -2,
+      model: 'GLM-5.3',
+      frequency_penalty: 0,
       instructions: 'instructions',
       max_output_tokens: 1024,
       max_tool_calls: 0,
-      metadata: { foo: 'string' },
       parallel_tool_calls: true,
-      presence_penalty: -2,
-      previous_response_id: 'previous_response_id',
+      presence_penalty: 0,
       reasoning: { effort: 'low' },
       service_tier: 'service_tier',
       store: true,
