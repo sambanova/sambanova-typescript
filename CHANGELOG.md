@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.11.1](https://github.com/sambanova/sambanova-typescript/compare/v1.11.0...v1.11.1) (2026-11-19)
+
+
+### Bug Fixes
+
+* **api:** align request schemas with live API validation (DOC-2918) ([4ebadc9](https://github.com/sambanova/sambanova-typescript/commit/4ebadc9f63cb8673cf810652b63be51281ad2b62))
+
 ## [1.11.0](https://github.com/sambanova/sambanova-typescript/compare/v1.10.0...v1.11.0) (2026-10-27)
 
 
